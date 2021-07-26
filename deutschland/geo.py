@@ -50,8 +50,6 @@ class Geo:
 
             tr = self.__deg2num(top_right[0], top_right[1], self.LEVEL)
             bl = self.__deg2num(bottom_left[0], bottom_left[1], self.LEVEL)
-            print(tr[0]-bl[0])
-            print(bl[1]-tr[1])
 
             i = 0
 

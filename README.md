@@ -1,5 +1,5 @@
 # Deutschland
-A python package that combines access to the most valuable dataset of Germany.
+A python package that gives you easy access to the most valuable datasets of Germany.
 
 ## Installation
 ```bash

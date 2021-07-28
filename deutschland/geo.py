@@ -60,12 +60,13 @@ class Geo:
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36',
             }
 
+            parsed = {}
+
             for x in range(tr[0], bl[0]):
                 for y in range(bl[1], tr[1]):
                     url = f"{self.URL}{self.LEVEL}/{x}/{y}.pbf"
                     try:
                         result = requests.get(url, headers=headers)
-
                         geojson = mapbox_vector_tile.decode(result.content)
                         if geojson:
                             parsed = self.__parse(geojson, x, y)

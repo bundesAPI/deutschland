@@ -51,8 +51,6 @@ class Geo:
             tr = self.__deg2num(top_right[0], top_right[1], self.LEVEL)
             bl = self.__deg2num(bottom_left[0], bottom_left[1], self.LEVEL)
 
-            i = 0
-
             data = {}
 
             headers = {

@@ -84,8 +84,6 @@ class Geo:
     def __parse(self, data, x, y):
         bottom_left = self.__num2deg(int(x)+1,int(y)+1,int(self.LEVEL))
         top_right = self.__num2deg(int(x),int(y),int(self.LEVEL))
-        x_span = top_right[0] - bottom_left[0]
-        y_span = top_right[1] - bottom_left[1]
 
         result = {}
         for feature in data.keys():

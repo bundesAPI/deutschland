@@ -1,4 +1,3 @@
-import json
 import math
 from typing import List
 import requests

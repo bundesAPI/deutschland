@@ -27,8 +27,8 @@ print(data["Adresse"][0])
 
 ## Company Data
 
-### Handelsregister
-Get financial reports for all german companies that are reporting to Handelsregister.
+### Bundesanzeiger
+Get financial reports for all german companies that are reporting to Bundesanzeiger.
 
 ```python
 from deutschland import Bundesanzeiger

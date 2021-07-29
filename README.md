@@ -21,3 +21,23 @@ print(data.keys())
 print(data["Adresse"][0])
 # {'geometry': {'type': 'Point', 'coordinates': (13.422642946243286, 52.51500157651358)}, 'properties': {'postleitzahl': '10179', 'ort': 'Berlin', 'ortsteil': 'Mitte', 'strasse': 'Holzmarktstraße', 'hausnummer': '55'}, 'id': 0, 'type': 'Feature'}
 ```
+
+
+
+
+## Company Data
+
+### Handelsregister
+Get financial reports for all german companies that are reporting to Handelsregister.
+
+*Big thanks to Nico Duldhardt and Friedrich Schöne, who [supported this implementation with their machine learning model](https://av.tib.eu/media/52366).*
+
+```python
+from deutschland import Bundesanzeiger
+ba = Bundesanzeiger()
+# search term
+data = ba.get_reports("Deutsche Bahn AG")
+# returns a dictionary with all reports found as fulltext reports
+print(data.keys())
+# dict_keys(['Jahresabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020', 'Konzernabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020\nErgänzung der Veröffentlichung vom 04.06.2021',
+```

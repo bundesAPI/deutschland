@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "deutschland"
-version = "0.1.4"
+version = "0.1.5"
 description = ""
 license = "Apache-2.0"
 authors = ["Lilith Wittmann <mail@lilithwittmann.de>"]
@@ -12,6 +12,15 @@ python = "^3.7"
 Shapely = "^1.7.1"
 mapbox-vector-tile = "^1.2.1"
 requests = "^2.26.0"
+dateparser = "^1.0.0"
+gql = "^2.0.0"
+selenium = "^3.141.0"
+boto3 = "^1.18.9"
+slugify = "^0.0.1"
+tensorflow = "^2.5.0"
+Pillow = "^8.3.1"
+webdriver-manager = "^3.4.2"
+beautifulsoup4 = "^4.9.3"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"

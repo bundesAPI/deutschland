@@ -17,6 +17,7 @@ from deutschland.bundesanzeiger.model import (
     prediction_to_str,
 )
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 
 
 class Bundesanzeiger:
@@ -43,8 +44,21 @@ class Bundesanzeiger:
         options.add_argument("--single-process")
         options.add_argument("--disable-dev-shm-usage")
 
-        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        chromeDriverManager = self.__create_compatible_chrome_driver_manager()
+        self.driver = webdriver.Chrome(chromeDriverManager.install(), options=options)
         self.model = load_model()
+
+    def __create_compatible_chrome_driver_manager(self):
+        chromeTypes = (ChromeType.GOOGLE, ChromeType.CHROMIUM)
+        for typ in chromeTypes:
+            try:
+                return ChromeDriverManager(chrome_type=typ)
+            except:
+                pass
+        raise RuntimeError(
+            "No supported Chrome installation found (tried flavors: %s)"
+            % ", ".join(chromeTypes)
+        )
 
     def __solve_captcha(self, image):
         image = BytesIO(image)

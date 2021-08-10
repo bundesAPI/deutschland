@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 
 class Report:
     __slots__ = ['date', 'name', 'content_url', 'company', 'report']
+
     def __init__(self, date, name, content_url, company, report=None):
         self.date = date
         self.name = name
@@ -45,7 +46,7 @@ class Bundesanzeiger:
         prediction = self.model.predict(image_arr)[0]
         prediction_str = deutschland.bundesanzeiger.model.prediction_to_str(
             prediction)
-            
+
         return prediction_str
 
     def __is_captcha_needed(self, entry_content: str):
@@ -102,6 +103,7 @@ class Bundesanzeiger:
                 get_element_response.text, 'html.parser')
             content_element = content_soup.find(
                 "div", {"class": "publication_container"})
+                
             if not content_element:
                 continue
 

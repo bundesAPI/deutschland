@@ -26,7 +26,7 @@ class Report:
 
 class Bundesanzeiger:
     __slots__ = ['session', 'model', 'captcha_callback']
-    
+
     def __init__(self, on_captach_callback=None):
         self.session = requests.Session()
         if on_captach_callback:
@@ -45,7 +45,7 @@ class Bundesanzeiger:
         prediction = self.model.predict(image_arr)[0]
         prediction_str = deutschland.bundesanzeiger.model.prediction_to_str(
             prediction)
-        #### open(f"{prediction_str}.png", 'wb').write(image_data)
+            
         return prediction_str
 
     def __is_captcha_needed(self, entry_content: str):

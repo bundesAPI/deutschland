@@ -5,8 +5,6 @@ import tensorflow.keras.backend as K
 import numpy as np
 from PIL import Image
 
-ALPHABET = list("abcdefghijklmnopqrstuvwxyz0123456789")
-
 
 def load_image_arr(fp):
     image = Image.open(fp).convert("L")
@@ -17,6 +15,7 @@ def load_image_arr(fp):
 
 
 def character_indexes_to_str(character_indexes):
+    ALPHABET = list("abcdefghijklmnopqrstuvwxyz0123456789")
     characters = np.array(ALPHABET)[character_indexes]
     return "".join(list(characters)).upper()
 

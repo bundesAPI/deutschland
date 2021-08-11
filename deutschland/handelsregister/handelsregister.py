@@ -97,6 +97,9 @@ class Handelsregister:
             elif tr.find("td", class_="RegPortErg_FirmaKopf"):
                 data = self.__extract_name_location_and_state(tr)
                 next_entry.update(data)
+            elif tr.find("td", class_="RegPortErg_HistorieZn"):
+                data = self.__extract_history(tr)
+                next_entry.setdefault("history", []).append(data)
 
         return results
 
@@ -123,6 +126,17 @@ class Handelsregister:
         state = tds[3].text.strip()
 
         return {"company_name": name, "location": location, "state": state}
+
+    def __extract_history(self, row):
+        tds = row.find_all("td")
+        [position, historical_name] = tds[1].text.strip().split(".) ", 1)
+        historical_location = tds[2].text.strip().split(".) ", 1)[1]
+
+        return {
+            "position": position,
+            "historical_name": historical_name,
+            "historical_location": historical_location,
+        }
 
 
 if __name__ == "__main__":

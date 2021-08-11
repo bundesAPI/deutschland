@@ -1,11 +1,29 @@
 import requests
-import re
 
 from bs4 import BeautifulSoup
 
 
 class Handelsregister:
     SEARCH_URL = "https://www.handelsregister.de/rp_web/mask.do?Typ=e"
+
+    VALID_COUNTY_CODES = [
+        "BW",
+        "BY",
+        "BE",
+        "BR",
+        "HB",
+        "HH",
+        "HE",
+        "MV",
+        "NI",
+        "NW",
+        "RP",
+        "SL",
+        "SN",
+        "ST",
+        "SH",
+        "TH",
+    ]
 
     REQUEST_HEADERS = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -28,22 +46,6 @@ class Handelsregister:
     }
 
     DEFAULT_FORM_DATA = {
-        "bundeslandBW": "on",
-        "bundeslandBY": "on",
-        "bundeslandBE": "on",
-        "bundeslandBR": "on",
-        "bundeslandHB": "on",
-        "bundeslandHH": "on",
-        "bundeslandHE": "on",
-        "bundeslandMV": "on",
-        "bundeslandNI": "on",
-        "bundeslandNW": "on",
-        "bundeslandRP": "on",
-        "bundeslandSL": "on",
-        "bundeslandSN": "on",
-        "bundeslandST": "on",
-        "bundeslandSH": "on",
-        "bundeslandTH": "on",
         "schlagwoerter": None,
         "schlagwortOptionen": 2,
         "suchOptionenAehnlich": False,
@@ -58,12 +60,82 @@ class Handelsregister:
         "postleitzahl": None,
         "ort": None,
         "strasse": None,
-        "ergebnisseProSeite": "10",
+        "ergebnisseProSeite": "100",
         "btnSuche": "Suchen",
     }
 
-    def search(self, params={}):
+    def search(self, params, counties=[]):
+        """Searches the Handelsregister with a given set of parameters in all given counties (optional).
+
+        Parameters
+        ----------
+        params : dict
+          The parameters for the search. Detailed description below.
+
+        counties : list, optional
+          The counties (bundeslaender) in which we should search.
+          If not provided, all counties are searched.
+          Valid values are:
+          BW, BY, BE, BR, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH
+
+        Search Parameters
+        -----------------
+        schlagwoerter : string
+          One or space-separated Keywords like e.g. the company name.
+
+        schlagwortOptionen : int
+          Options for the 'schlagwoerter' parameter.
+          1 : Match must contain all keywords.
+          2 : Match must contain at least one keyword.
+          3 : Match's company name must equal the keyword(s).
+
+        suchOptionenAehnlich : bool
+          Match can contain similar keywords as specified in 'schlagwoerter'.
+
+        niederlassung : string
+          Location of the company.
+
+        suchOptionenGeloescht : bool
+          Search also for deleted companies.
+
+        suchOptionenNurZNneuenRechts : bool
+          Search only for deleted 'Zweigniederlassungen'.
+          More info here: https://www.handelsregister.de/rp_web/help.do?Thema=zweigniederlassungen
+
+        registerArt : string
+          Type of company registration.
+          Possible values: HRA, HRB, GnR, PR, VR
+
+        registerNummer : string
+          The registration number of the company.
+
+        registergericht : string
+          The district court where the company is registered.
+
+        rechtsform : int
+          The legal form of the company.
+          Possible values can be found in 'params.md'.
+
+        postleitzahl : string
+          The postal code of the company.
+
+        ort : string
+          The city of the company address.
+
+        strasse : string
+          The street of the company address.
+
+        ergebnisseProSeite : int
+          How many matches to return. Defaults to 100.
+        """
         search_params = {**self.DEFAULT_FORM_DATA, **params}
+
+        for code in counties:
+            if code not in self.VALID_COUNTY_CODES:
+                raise f"{code} is not a valid county code."
+
+            search_params[f"bundesland{code}"] = "on"
+
         response = requests.post(
             self.SEARCH_URL, data=search_params, headers=self.REQUEST_HEADERS
         )
@@ -141,5 +213,5 @@ class Handelsregister:
 
 if __name__ == "__main__":
     hr = Handelsregister()
-    foo = hr.search({"ort": "Köln"})
-    print(foo)
+    res = hr.search({"ort": "Köln", "ergebnisseProSeite": 10}, ["NW"])
+    print(res)

@@ -5,6 +5,7 @@ import tensorflow.keras.backend as K
 import numpy as np
 from PIL import Image
 
+
 def load_image_arr(fp):
     image = Image.open(fp).convert("L")
     image = np.array(image)

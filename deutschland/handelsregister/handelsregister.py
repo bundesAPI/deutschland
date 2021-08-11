@@ -58,7 +58,7 @@ class Handelsregister:
         "postleitzahl": None,
         "ort": None,
         "strasse": None,
-        "ergebnisseProSeite": "100",
+        "ergebnisseProSeite": "10",
         "btnSuche": "Suchen",
     }
 
@@ -83,9 +83,9 @@ class Handelsregister:
         results = []
         next_entry = {}
 
-        # Skip the first row, which is only a header
+        # Skip the first row, which is the header row
         for tr in trs[1:]:
-            if tr.find("td", class_="RegPortErg_AZ") is not None:
+            if tr.find("td", class_="RegPortErg_AZ"):
                 data = self.__extract_county_court_and_registration(tr)
 
                 # Save the current entry since we reached the next entry
@@ -94,6 +94,9 @@ class Handelsregister:
                     results.append(next_entry.copy())
 
                 next_entry = data
+            elif tr.find("td", class_="RegPortErg_FirmaKopf"):
+                data = self.__extract_name_location_and_state(tr)
+                next_entry.update(data)
 
         return results
 
@@ -112,6 +115,14 @@ class Handelsregister:
             "registration_type": reg_type,
             "registration_number": reg_num,
         }
+
+    def __extract_name_location_and_state(self, row):
+        tds = row.find_all("td")
+        name = tds[1].text.strip()
+        location = tds[2].text.strip()
+        state = tds[3].text.strip()
+
+        return {"company_name": name, "location": location, "state": state}
 
 
 if __name__ == "__main__":

@@ -132,7 +132,7 @@ class Handelsregister:
 
         for code in counties:
             if code not in self.VALID_COUNTY_CODES:
-                raise f"{code} is not a valid county code."
+                raise Exception(f"{code} is not a valid county code.")
 
             search_params[f"bundesland{code}"] = "on"
 
@@ -213,5 +213,5 @@ class Handelsregister:
 
 if __name__ == "__main__":
     hr = Handelsregister()
-    res = hr.search({"ort": "Köln", "ergebnisseProSeite": 10}, ["NW"])
+    res = hr.search({"ort": "Köln", "ergebnisseProSeite": 10}, ["AB"])
     print(res)

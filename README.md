@@ -42,7 +42,7 @@ print(data.keys())
 *Big thanks to Nico Duldhardt and Friedrich Schöne, who [supported this implementation with their machine learning model](https://av.tib.eu/media/52366).*
 
 ### Handelsregister
-Fetch general company information about any Company in the Handelsregister.
+Fetch general company information about any company in the Handelsregister.
 
 ```python
 from deutschland import Handelsregister

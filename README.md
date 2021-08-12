@@ -30,8 +30,6 @@ print(data["Adresse"][0])
 ### Bundesanzeiger
 Get financial reports for all german companies that are reporting to Bundesanzeiger.
 
-*Please note: For now [Google Chrome](https://www.google.com/chrome/) is required in order to use the Bundesanzeiger API. Please feel free to add [support for other browsers](https://github.com/SergeyPirogov/webdriver_manager).*
-
 ```python
 from deutschland import Bundesanzeiger
 ba = Bundesanzeiger()
@@ -42,4 +40,3 @@ print(data.keys())
 # dict_keys(['Jahresabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020', 'Konzernabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020\nErgänzung der Veröffentlichung vom 04.06.2021',
 ```
 *Big thanks to Nico Duldhardt and Friedrich Schöne, who [supported this implementation with their machine learning model](https://av.tib.eu/media/52366).*
-

@@ -40,3 +40,14 @@ print(data.keys())
 # dict_keys(['Jahresabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020', 'Konzernabschluss zum Geschäftsjahr vom 01.01.2020 bis zum 31.12.2020\nErgänzung der Veröffentlichung vom 04.06.2021',
 ```
 *Big thanks to Nico Duldhardt and Friedrich Schöne, who [supported this implementation with their machine learning model](https://av.tib.eu/media/52366).*
+
+### Handelsregister
+Fetch general company information about any Company in the Handelsregister.
+
+```python
+from deutschland import Handelsregister
+hr = Handelsregister()
+# search by keywords, see documentation for all available params
+hr.search(keywords="Deutsche Bahn Aktiengesellschaft")
+print(hr)
+```

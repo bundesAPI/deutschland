@@ -1,29 +1,11 @@
 import requests
 
 from bs4 import BeautifulSoup
+from requests.api import post
 
 
 class Handelsregister:
     SEARCH_URL = "https://www.handelsregister.de/rp_web/mask.do?Typ=e"
-
-    VALID_COUNTY_CODES = [
-        "BW",
-        "BY",
-        "BE",
-        "BR",
-        "HB",
-        "HH",
-        "HE",
-        "MV",
-        "NI",
-        "NW",
-        "RP",
-        "SL",
-        "SN",
-        "ST",
-        "SH",
-        "TH",
-    ]
 
     REQUEST_HEADERS = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -64,19 +46,104 @@ class Handelsregister:
         "btnSuche": "Suchen",
     }
 
-    def search(self, params, counties=[]):
-        """Searches the Handelsregister with a given set of parameters in all given counties (optional).
+    def search(
+        self,
+        keywords: str = None,
+        keyword_match_option: int = 2,
+        match_similar_keywords: bool = False,
+        head_office_location: str = None,
+        include_deleted: bool = False,
+        include_new_second_branches: bool = False,
+        registration_type: int = None,
+        registration_number: str = None,
+        court: str = None,
+        legal_form: str = None,
+        city: str = None,
+        postal_code: str = None,
+        street: str = None,
+        limit: int = 100,
+    ):
+        """Search for companies registered with the Handelsregister.
+
+        Parameters
+        ----------
+        keywords: str
+          Search for space-separated keywords like company name.
+
+        keyword_match_option: int
+          Specify how an item must match the keywords.
+          1 : Match must contain all keywords.
+          2 : Match must contain at least one keyword.
+          3 : Match's company name must equal the keyword(s).
+
+        match_similar_keywords: bool
+          Match items that include similar keywords.
+
+        head_office_location: str
+          The city where the head office of a company is located.
+
+        include_deleted: bool
+          Include deleted entries as well.
+
+        include_new_second_branches: bool
+          Include only second branches registered after the 01.01.2007.
+          More info here: https://www.handelsregister.de/rp_web/help.do?Thema=zweigniederlassungen
+
+        registration_type: int
+          Type of company registration.
+          Possible values: HRA, HRB, GnR, PR, VR
+
+        registration_number: str
+          The number of the registration.
+
+        court: str
+          The court where the company is registered.
+
+        legal_form: str
+          The legal form of the company.
+          All possible values can be found in the 'params.md' file.
+
+        city: str
+          The city of the head office or branch.
+          This can be combined with 'head_office_location' like:
+          "match branches which are located in 'city' whose head office
+          is located in 'head_office_location'"
+
+        postal_code: str
+          The postal code of the head office or branch.
+
+        street: str
+          The street of the head office or branch.
+
+        limit: int
+          The amount of results to return.
+          Defaults to 100.
+        """
+        params = {
+            "schlagwoerter": keywords,
+            "schlagwortOptionen": keyword_match_option,
+            "suchOptionenAehnlich": match_similar_keywords,
+            "niederlassung": head_office_location,
+            "suchOptionenGeloescht": include_deleted,
+            "suchOptionenNurZNneuenRechts": include_new_second_branches,
+            "registerArt": registration_type,
+            "registerNummer": registration_number,
+            "registergericht": court,
+            "rechtsform": legal_form,
+            "postleitzahl": postal_code,
+            "ort": city,
+            "strasse": street,
+            "ergebnisseProSeite": limit,
+        }
+        return self.search_with_raw_params(params)
+
+    def search_with_raw_params(self, params: dict[str, str] = {}):
+        """Searches the Handelsregister with a given dict of parameters.
 
         Parameters
         ----------
         params : dict
           The parameters for the search. Detailed description below.
-
-        counties : list, optional
-          The counties (bundeslaender) in which we should search.
-          If not provided, all counties are searched.
-          Valid values are:
-          BW, BY, BE, BR, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH
 
         Search Parameters
         -----------------
@@ -92,6 +159,14 @@ class Handelsregister:
         suchOptionenAehnlich : bool
           Match can contain similar keywords as specified in 'schlagwoerter'.
 
+        bundeslandXX : string
+          Search only in specified counties (bundeslaender).
+          If no county is specified, all counties are searched.
+
+          Each county must be specified individually in the following format:
+          {"bundeslandXX": "on"}, where 'XX' is of the following codes:
+          BW, BY, BE, BR, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH
+
         niederlassung : string
           Location of the company.
 
@@ -99,7 +174,7 @@ class Handelsregister:
           Search also for deleted companies.
 
         suchOptionenNurZNneuenRechts : bool
-          Search only for deleted 'Zweigniederlassungen'.
+          Include only 'Zweigniederlassungen' registered after the 01.01.2007.
           More info here: https://www.handelsregister.de/rp_web/help.do?Thema=zweigniederlassungen
 
         registerArt : string
@@ -129,12 +204,6 @@ class Handelsregister:
           How many matches to return. Defaults to 100.
         """
         search_params = {**self.DEFAULT_FORM_DATA, **params}
-
-        for code in counties:
-            if code not in self.VALID_COUNTY_CODES:
-                raise Exception(f"{code} is not a valid county code.")
-
-            search_params[f"bundesland{code}"] = "on"
 
         response = requests.post(
             self.SEARCH_URL, data=search_params, headers=self.REQUEST_HEADERS
@@ -172,6 +241,9 @@ class Handelsregister:
             elif tr.find("td", class_="RegPortErg_HistorieZn"):
                 data = self.__extract_history(tr)
                 next_entry.setdefault("history", []).append(data)
+
+        if next_entry:
+            results.append(next_entry)
 
         return results
 
@@ -213,5 +285,5 @@ class Handelsregister:
 
 if __name__ == "__main__":
     hr = Handelsregister()
-    res = hr.search({"ort": "Köln", "ergebnisseProSeite": 10}, ["AB"])
+    res = hr.search(keywords="Deutsche Bahn Aktiengesellschaft", keyword_match_option=3)
     print(res)

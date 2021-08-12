@@ -1,7 +1,7 @@
 import requests
 
 from bs4 import BeautifulSoup
-from requests.api import post
+from typing import Dict
 
 
 class Handelsregister:
@@ -137,7 +137,7 @@ class Handelsregister:
         }
         return self.search_with_raw_params(params)
 
-    def search_with_raw_params(self, params: dict[str, str] = {}):
+    def search_with_raw_params(self, params: Dict[str, str] = {}):
         """Searches the Handelsregister with a given dict of parameters.
 
         Parameters

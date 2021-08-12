@@ -1,4 +1,4 @@
-## Possible Values for 'rechtsform'
+## Possible Values for 'legal_form/rechtsform'
 | Value | Description                   |
 | ----- | ----------------------------- |
 | 1     | Aktiengesellschaft            |

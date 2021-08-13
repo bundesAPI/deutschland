@@ -1,51 +1,11 @@
-import requests
-
-from bs4 import BeautifulSoup
 from typing import Dict
+from datetime import date
+
+from deutschland.handelsregister.registrations import Registrations
+from deutschland.handelsregister.publications import Publications
 
 
 class Handelsregister:
-    SEARCH_URL = "https://www.handelsregister.de/rp_web/mask.do?Typ=e"
-
-    REQUEST_HEADERS = {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "Cache-Control": "max-age=0",
-        "Connection": "keep-alive",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "DNT": "1",
-        "Host": "www.handelsregister.de",
-        "Origin": "https://www.handelsregister.de",
-        "Referer": "https://www.handelsregister.de/rp_web/mask.do?Typ=e",
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua": '"Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"',
-        "Sec-Fetch-Dest": "document",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "same-origin",
-        "Sec-Fetch-User": "?1",
-        "sec-gpc": "1",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
-    }
-
-    DEFAULT_FORM_DATA = {
-        "schlagwoerter": None,
-        "schlagwortOptionen": 2,
-        "suchOptionenAehnlich": False,
-        "niederlassung": None,
-        "suchOptionenGeloescht": False,
-        "suchOptionenNurZNneuenRechts": False,
-        "suchTyp": "e",
-        "registerArt": None,
-        "registerNummer": None,
-        "registergericht": None,
-        "rechtsform": None,
-        "postleitzahl": None,
-        "ort": None,
-        "strasse": None,
-        "ergebnisseProSeite": "100",
-        "btnSuche": "Suchen",
-    }
-
     def search(
         self,
         keywords: str = None,
@@ -135,155 +95,162 @@ class Handelsregister:
             "strasse": street,
             "ergebnisseProSeite": limit,
         }
-        return self.search_with_raw_params(params)
+        r = Registrations()
+        return r.search_with_raw_params(params)
 
-    def search_with_raw_params(self, params: Dict[str, str] = {}):
-        """Searches the Handelsregister with a given dict of parameters.
+    def search_publications(
+        self,
+        county_code: str = None,
+        court_code: str = None,
+        court_name: str = None,
+        from_date: date = None,
+        until_date: date = None,
+        company_name: str = None,
+        head_office_location: str = None,
+        registration_type: str = None,
+        registration_number: str = None,
+        publication_type: int = 0,
+        order_by: int = 4,
+        detailed_search: bool = False,
+    ):
+        """
+        Search all publications by the Handelsregister.
+
+        Broad searches (e.g. find publications for all counties and all courts)
+        are only available for the past 4 weeks. If you want to search for older
+        publications, you must set 'detailed_search' to 'True' and provide the
+        'county_code', 'court_code', 'court_name' parameters, and at least one
+        of the following: 'company_name', 'head_office_location',
+        or 'registration_type' and 'registration_number'.
 
         Parameters
         ----------
-        params : dict
-          The parameters for the search. Detailed description below.
+        county_code: str
+          The county code in which to search.
 
-        Search Parameters
-        -----------------
-        schlagwoerter : string
-          One or space-separated Keywords like e.g. the company name.
+          Valid options are:
+          by: Bayern
+          be: Berlin
+          br: Brandenburg
+          hb: Bremen
+          hh: Hamburg
+          he: Hessen
+          mv: Mecklenburg-Vorpommern
+          ni: Niedersachsen
+          nw: Nordrhein-Westfalen
+          rp: Rheinland-Pfalz
+          sl: Saarland
+          sn: Sachsen
+          st: Sachsen-Anhalt
+          sh: Schleswig-Holstein
+          th: Thüringen
 
-        schlagwortOptionen : int
-          Options for the 'schlagwoerter' parameter.
-          1 : Match must contain all keywords.
-          2 : Match must contain at least one keyword.
-          3 : Match's company name must equal the keyword(s).
+        court_code: str
+          The code for the court as specified in 'params.md'.
+          Both, the court code and the court name must be provided.
 
-        suchOptionenAehnlich : bool
-          Match can contain similar keywords as specified in 'schlagwoerter'.
+        court_name: str
+          The name of the court as specified in 'params.md'.
+          Both, the court code and the court name must be provided.
 
-        bundeslandXX : string
-          Search only in specified counties (bundeslaender).
-          If no county is specified, all counties are searched.
+        from_date: date
+          Search for entries published after this date.
+          Publications older than 4 weeks can only be searched as
+          a 'detailed_search' as described above.
 
-          Each county must be specified individually in the following format:
-          {"bundeslandXX": "on"}, where 'XX' is of the following codes:
-          BW, BY, BE, BR, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH
+        until_date: date
+          Search for entries published before this date.
 
-        niederlassung : string
-          Location of the company.
+        company_name: str
+          The name of the company. Must be an exact match.
 
-        suchOptionenGeloescht : bool
-          Search also for deleted companies.
+        head_office_location: str
+          The city where the head office of the company is located.
 
-        suchOptionenNurZNneuenRechts : bool
-          Include only 'Zweigniederlassungen' registered after the 01.01.2007.
-          More info here: https://www.handelsregister.de/rp_web/help.do?Thema=zweigniederlassungen
+        registration_type: str
+          The type of the company registration.
+          Valid types are:
+          "HRA", "HRB", "GnR", "VR", "PR", "AR"
 
-        registerArt : string
-          Type of company registration.
-          Possible values: HRA, HRB, GnR, PR, VR
+        registration_number: str
+          The number of the company registration.
 
-        registerNummer : string
-          The registration number of the company.
+        publication_type: int
+          The type of publication to search for.
+          Valid options are:
+          0 : All types of publications
+          1 : New registrations
+          2 : Registration changes
+          3 : Registrations deleted by the court
+          4 : Deletion announcements
+          5 : Deletions
+          6 : Granted Permissions
+          7 : Other procedures
 
-        registergericht : string
-          The district court where the company is registered.
-
-        rechtsform : int
-          The legal form of the company.
-          Possible values can be found in 'params.md'.
-
-        postleitzahl : string
-          The postal code of the company.
-
-        ort : string
-          The city of the company address.
-
-        strasse : string
-          The street of the company address.
-
-        ergebnisseProSeite : int
-          How many matches to return. Defaults to 100.
+        order_by: int
+          How to order the publication results.
+          Valid options are:
+          1 : Registration Number
+          2 : Company name
+          3 : Order by creation date of publication
+          4 : Order by publication date
         """
-        search_params = {**self.DEFAULT_FORM_DATA, **params}
+        if (
+            detailed_search
+            and not (county_code and court_code and court_name)
+            and not (
+                company_name
+                or head_office_location
+                or (registration_type and registration_number)
+            )
+        ):
+            raise Exception(
+                """
+                In the detailed search, you must provide 'county_code', 
+                'court_code', and 'court_name' as well
+                as either 'company_name', 'head_office_location' or
+                'registration_type' and 'registration_number'.
+                """
+            )
 
-        response = requests.post(
-            self.SEARCH_URL, data=search_params, headers=self.REQUEST_HEADERS
+        reg_code = (
+            {
+                "HRA": "A",
+                "HRB": "B",
+                "GnR": "G",
+                "VR": "V",
+                "PR": "P",
+                "AR": "AR",
+            }[registration_type]
+            if registration_type
+            else None
         )
-        if response.status_code != 200:
-            return None
 
-        soup = BeautifulSoup(response.text, "html.parser")
-        return self.__find_entries(soup)
-
-    def __find_entries(self, soup):
-        table = soup.find("table", class_="RegPortErg")
-        if table is None:
-            return []
-
-        trs = table.find_all("tr")
-
-        results = []
-        next_entry = {}
-
-        # Skip the first row, which is the header row
-        for tr in trs[1:]:
-            if tr.find("td", class_="RegPortErg_AZ"):
-                data = self.__extract_county_court_and_registration(tr)
-
-                # Save the current entry since we reached the next entry
-                # demarcated by the .RegPortErg_AZ table cell.
-                if next_entry:
-                    results.append(next_entry.copy())
-
-                next_entry = data
-            elif tr.find("td", class_="RegPortErg_FirmaKopf"):
-                data = self.__extract_name_location_and_state(tr)
-                next_entry.update(data)
-            elif tr.find("td", class_="RegPortErg_HistorieZn"):
-                data = self.__extract_history(tr)
-                next_entry.setdefault("history", []).append(data)
-
-        if next_entry:
-            results.append(next_entry)
-
-        return results
-
-    def __extract_county_court_and_registration(self, row):
-        td = row.find("td", class_="RegPortErg_AZ")
-        county = td.contents[2].strip()
-        court_and_registration = (
-            td.contents[3].text.strip().replace("\n", " ").replace("\t", "").split()
-        )
-        court = " ".join(court_and_registration[:-2])
-        [reg_type, reg_num] = court_and_registration[-2:]
-
-        return {
-            "county": county,
-            "court": court,
-            "registration_type": reg_type,
-            "registration_number": reg_num,
+        params = {
+            "suchart": "detail" if detailed_search else "uneingeschr",
+            "land": county_code,
+            "gericht": court_code,
+            "gericht_name": court_name,
+            "vt": from_date.day if from_date else None,
+            "vm": from_date.month if from_date else None,
+            "vj": from_date.year if from_date else None,
+            "bt": until_date.day if until_date else None,
+            "bm": until_date.day if until_date else None,
+            "bj": until_date.day if until_date else None,
+            "fname": company_name,
+            "fsitz": head_office_location,
+            "rubrik": reg_code,
+            "az": registration_number,
+            "gegenstand": publication_type,
+            "order": order_by,
         }
 
-    def __extract_name_location_and_state(self, row):
-        tds = row.find_all("td")
-        name = tds[1].text.strip()
-        location = tds[2].text.strip()
-        state = tds[3].text.strip()
-
-        return {"company_name": name, "location": location, "state": state}
-
-    def __extract_history(self, row):
-        tds = row.find_all("td")
-        [position, historical_name] = tds[1].text.strip().split(".) ", 1)
-        historical_location = tds[2].text.strip().split(".) ", 1)[1]
-
-        return {
-            "position": position,
-            "historical_name": historical_name,
-            "historical_location": historical_location,
-        }
+        p = Publications()
+        return p.search_with_raw_params(params)
 
 
 if __name__ == "__main__":
     hr = Handelsregister()
-    res = hr.search(keywords="Deutsche Bahn Aktiengesellschaft", keyword_match_option=3)
+    # res = hr.search(keywords="Deutsche Bahn Aktiengesellschaft", keyword_match_option=3)
+    res = hr.search_publications()
     print(res)

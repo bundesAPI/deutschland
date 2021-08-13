@@ -1,5 +1,6 @@
 from deutschland import Bundesanzeiger
 from deutschland import Handelsregister
+from deutschland.handelsregister.registrations import Registrations
 
 
 def test_for_no_data_deutsche_bahn_ag():
@@ -24,3 +25,25 @@ def test_fetching_handelsregister_data_for_deutsche_bahn_ag():
     assert (
         len(data) > 0
     ), "Found no data for 'Deutsche Bahn Aktiengesellschaft' although it should exist."
+
+
+def test_fetching_handelsregister_data_for_deutsche_bahn_ag_with_raw_params():
+    r = Registrations()
+    data = r.search_with_raw_params(
+        {"schlagwoerter": "Deutsche Bahn Aktiengesellschaft", "schlagwortOptionen": 3}
+    )
+    assert (
+        len(data) > 0
+    ), "Found no data for 'Deutsche Bahn Aktiengesellschaft' although it should exist."
+
+
+def test_fetching_publications_for_deutsche_bank():
+    hr = Handelsregister()
+    data = hr.search_publications(
+        company_name="Deutsche Bank",
+        county_code="he",
+        court_code="M1201",
+        court_name="Frankfurt am Main",
+        detailed_search=True,
+    )
+    assert len(data) > 0, "Found no data for 'Deutsche Bank' although it should exist."

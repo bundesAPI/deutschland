@@ -1,5 +1,6 @@
 from deutschland import Bundesanzeiger
 from deutschland import Handelsregister
+from deutschland.handelsregister.registrations import Registrations
 
 
 def test_for_no_data_deutsche_bahn_ag():
@@ -27,8 +28,8 @@ def test_fetching_handelsregister_data_for_deutsche_bahn_ag():
 
 
 def test_fetching_handelsregister_data_for_deutsche_bahn_ag_with_raw_params():
-    hr = Handelsregister()
-    data = hr.search_with_raw_params(
+    r = Registrations()
+    data = r.search_with_raw_params(
         {"schlagwoerter": "Deutsche Bahn Aktiengesellschaft", "schlagwortOptionen": 3}
     )
     assert (

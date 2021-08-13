@@ -47,6 +47,72 @@ class Registrations:
     }
 
     def search_with_raw_params(self, params: Dict[str, str] = {}):
+        """
+        Searches the Handelsregister with a given dict of parameters.
+
+        Parameters
+        ----------
+        params : dict
+          The parameters for the search. Detailed description below.
+
+        Search Parameters
+        -----------------
+        schlagwoerter : string
+          One or space-separated Keywords like e.g. the company name.
+
+        schlagwortOptionen : int
+          Options for the 'schlagwoerter' parameter.
+          1 : Match must contain all keywords.
+          2 : Match must contain at least one keyword.
+          3 : Match's company name must equal the keyword(s).
+
+        suchOptionenAehnlich : bool
+          Match can contain similar keywords as specified in 'schlagwoerter'.
+
+        bundeslandXX : string
+          Search only in specified counties (bundeslaender).
+          If no county is specified, all counties are searched.
+
+          Each county must be specified individually in the following format:
+          {"bundeslandXX": "on"}, where 'XX' is of the following codes:
+          BW, BY, BE, BR, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH
+
+        niederlassung : string
+          Location of the company.
+
+        suchOptionenGeloescht : bool
+          Search also for deleted companies.
+
+        suchOptionenNurZNneuenRechts : bool
+          Include only 'Zweigniederlassungen' registered after the 01.01.2007.
+          More info here: https://www.handelsregister.de/rp_web/help.do?Thema=zweigniederlassungen
+
+        registerArt : string
+          Type of company registration.
+          Possible values: HRA, HRB, GnR, PR, VR
+
+        registerNummer : string
+          The registration number of the company.
+
+        registergericht : string
+          The district court where the company is registered.
+
+        rechtsform : int
+          The legal form of the company.
+          Possible values can be found in 'params.md'.
+
+        postleitzahl : string
+          The postal code of the company.
+
+        ort : string
+          The city of the company address.
+
+        strasse : string
+          The street of the company address.
+
+        ergebnisseProSeite : int
+          How many matches to return. Defaults to 100.
+        """
         search_params = {**self.DEFAULT_FORM_DATA, **params}
 
         response = requests.post(

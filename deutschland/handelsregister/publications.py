@@ -36,10 +36,6 @@ class Publications:
         "land": None,
         "gericht": None,
         "gericht_name": None,
-        "seite": None,
-        "l": None,
-        "r": None,
-        "all": False,
         "vt": None,
         "vm": None,
         "vj": None,
@@ -56,6 +52,113 @@ class Publications:
     }
 
     def search_with_raw_params(self, params: Dict[str, str] = {}):
+        """
+        Searches the Publications of the Handelsregister with a given dict of parameters.
+
+        Parameters
+        ----------
+        params : dict
+          The parameters for the search. Detailed description below.
+
+        Search Parameters
+        -----------------
+        suchart : string
+          Specifies whether the search should be general or detailed.
+          Either 'uneingeschr' or 'detail'.
+
+          General searches (e.g. find all publications in all counties and all courts)
+          can only include publications from the last 4 weeks.
+
+          Detailed searches can include past publications as well, but require
+          the following parameters:
+          'county_code', 'court_code', and 'court_name' as well as
+          either 'company_name', 'head_office_location'
+          or 'registration_type' and 'registration_number'
+
+        land : str
+          The code of the county in which to search for publications.
+
+          Valid options are:
+          by: Bayern
+          be: Berlin
+          br: Brandenburg
+          hb: Bremen
+          hh: Hamburg
+          he: Hessen
+          mv: Mecklenburg-Vorpommern
+          ni: Niedersachsen
+          nw: Nordrhein-Westfalen
+          rp: Rheinland-Pfalz
+          sl: Saarland
+          sn: Sachsen
+          st: Sachsen-Anhalt
+          sh: Schleswig-Holstein
+          th: Thüringen
+
+        gericht : str
+          The code of the court in which to search for publications.
+          Court Code + Court Name combinations can be found in 'params.md'.
+          The parameters 'gericht' and 'gericht_name' must both be present.
+
+        gericht_name : str
+          The name of the court in which to search for publications.
+          Court Code + Court Name combinations can be found in 'params.md'.
+          This parameter must be provided together with the 'gericht'-parameter.
+
+        vt: int
+          The day of the date after which publications must have been published.
+
+        vm: int
+          The month of the date after which publications must have been published.
+
+        vj: int
+          The year of the date after which publications must have been published.
+
+        bt: int
+          The day of the date before which publications must have been published.
+
+        bm: int
+          The month of the date before which publications must have been published.
+
+        bj: int
+          The year of the date before which publications must have been published.
+
+        fname: str
+          The name of the company. Must be an exact match.
+
+        fsitz: str
+          The city where the head office of the company is located.
+
+        rubrik: str
+          The type of the company registration.
+          Valid types are:
+          "A", "B", "G", "V", "P", "AR"
+
+        az: str
+          The number of the company registration.
+
+        gegenstand: int
+          The type of publication to search for.
+
+          Valid options are:
+          0 : All types of publications
+          1 : New registrations
+          2 : Registration changes
+          3 : Registrations deleted by the court
+          4 : Deletion announcements
+          5 : Deletions
+          6 : Granted Permissions
+          7 : Other procedures
+
+        order: int
+          How to order the publication results.
+
+          Valid options are:
+          1 : Registration Number
+          2 : Company name
+          3 : Order by creation date of publication
+          4 : Order by publication date
+        """
         search_params = {**self.DEFAULT_FORM_DATA, **params}
 
         response = requests.post(

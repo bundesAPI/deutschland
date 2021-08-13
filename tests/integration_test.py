@@ -24,3 +24,13 @@ def test_fetching_handelsregister_data_for_deutsche_bahn_ag():
     assert (
         len(data) > 0
     ), "Found no data for 'Deutsche Bahn Aktiengesellschaft' although it should exist."
+
+
+def test_fetching_handelsregister_data_for_deutsche_bahn_ag_with_raw_params():
+    hr = Handelsregister()
+    data = hr.search_with_raw_params(
+        {"schlagwoerter": "Deutsche Bahn Aktiengesellschaft", "schlagwortOptionen": 3}
+    )
+    assert (
+        len(data) > 0
+    ), "Found no data for 'Deutsche Bahn Aktiengesellschaft' although it should exist."

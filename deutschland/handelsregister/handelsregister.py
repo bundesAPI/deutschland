@@ -1,8 +1,8 @@
-from typing import Dict
 from datetime import date
 
 from deutschland.handelsregister.registrations import Registrations
 from deutschland.handelsregister.publications import Publications
+from deutschland.handelsregister.publication_detail import PublicationDetail
 
 
 class Handelsregister:
@@ -247,6 +247,39 @@ class Handelsregister:
 
         p = Publications()
         return p.search_with_raw_params(params)
+
+    def get_publication_detail(self, publication_id: str, county_code: str):
+        """
+        Get the details of a publication with its identifier and county code.
+
+        Parameters
+        ----------
+        publication_id : str
+          The identifier of the publication.
+          It is usually a 6 to 7 digit number.
+
+        county_code : str
+          The code of the county in which to search for publications.
+
+          Valid options are:
+          by: Bayern
+          be: Berlin
+          br: Brandenburg
+          hb: Bremen
+          hh: Hamburg
+          he: Hessen
+          mv: Mecklenburg-Vorpommern
+          ni: Niedersachsen
+          nw: Nordrhein-Westfalen
+          rp: Rheinland-Pfalz
+          sl: Saarland
+          sn: Sachsen
+          st: Sachsen-Anhalt
+          sh: Schleswig-Holstein
+          th: Thüringen
+        """
+        pd = PublicationDetail()
+        return pd.get_detail(publication_id=publication_id, county_code=county_code)
 
 
 if __name__ == "__main__":

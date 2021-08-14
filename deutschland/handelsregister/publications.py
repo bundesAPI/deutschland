@@ -178,7 +178,7 @@ class Publications:
 
         for li in lis:
             a = li.find("a")
-            [reg_id, county_code] = self.__extract_reg_id_and_county_code(a)
+            [pub_id, county_code] = self.__extract_pub_id_and_county_code(a)
 
             ul = a.find("ul")
             [info, _, published_info] = ul.contents
@@ -188,7 +188,7 @@ class Publications:
 
             data = {
                 **{
-                    "registration_id": reg_id,
+                    "publication_id": pub_id,
                     "county_code": county_code,
                     "published_at": published_at,
                 },
@@ -199,8 +199,8 @@ class Publications:
 
         return results
 
-    def __extract_reg_id_and_county_code(self, link):
-        [reg_id, county] = (
+    def __extract_pub_id_and_county_code(self, link):
+        [pub_id, county] = (
             link["href"]
             .removeprefix("javascript:NeuFenster('rb_id=")
             .removesuffix("')")
@@ -208,7 +208,7 @@ class Publications:
         )
         county_code = county.removeprefix("land_abk=")
 
-        return [reg_id, county_code]
+        return [pub_id, county_code]
 
     def __extract_company_info(self, text):
         branch_name = None

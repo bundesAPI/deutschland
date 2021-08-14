@@ -1,3 +1,4 @@
+import datetime
 from deutschland import Bundesanzeiger
 from deutschland import Handelsregister
 from deutschland.handelsregister.registrations import Registrations
@@ -47,3 +48,22 @@ def test_fetching_publications_for_deutsche_bank():
         detailed_search=True,
     )
     assert len(data) > 0, "Found no data for 'Deutsche Bank' although it should exist."
+
+
+def test_fetching_publication_detail():
+    hr = Handelsregister()
+    data = hr.get_publication_detail(publication_id="896236", county_code="bw")
+    assert data, "Found no publication detail data although it should exist."
+    assert data["court"] == "Freiburg"
+    assert data["registration_type"] == "HRB"
+    assert data["registration_number"] == "719927"
+    assert data["decided_on"] == datetime.datetime(2021, 8, 6, 0, 0)
+    assert data["published_at"] == datetime.datetime(2021, 8, 6, 9, 45)
+    assert data["publication_type"] == "Löschungen"
+    assert data["publication_text"].startswith("HRB 719927:")
+
+
+def test_no_data_for_publication_detail():
+    hr = Handelsregister()
+    data = hr.get_publication_detail(publication_id="9999999999999", county_code="bw")
+    assert data is None

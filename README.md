@@ -1,3 +1,10 @@
+[![PyPI version deutschland](https://badge.fury.io/py/deutschland.svg)](https://pypi.python.org/pypi/deutschland/)
+[![GitHub license](https://img.shields.io/github/license/bundesAPI/deutschland.svg)](https://github.com/bundesAPI/deutschland/blob/main/LICENSE)
+
+[![Lint](https://github.com/bundesAPI/deutschland/actions/workflows/black.yml/badge.svg?branch=main)](https://github.com/bundesAPI/deutschland/actions/workflows/black.yml)
+[![Publish Python 🐍 distributions 📦 to PyPI and TestPyPI](https://github.com/bundesAPI/deutschland/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/bundesAPI/deutschland/actions/workflows/publish.yml)
+[![Run Python 🐍 tests](https://github.com/bundesAPI/deutschland/actions/workflows/runtests.yml/badge.svg?branch=main)](https://github.com/bundesAPI/deutschland/actions/workflows/runtests.yml)
+
 # Deutschland
 A python package that gives you easy access to the most valuable datasets of Germany.
 

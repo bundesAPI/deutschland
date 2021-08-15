@@ -3,7 +3,7 @@ from typing import List, Dict
 import requests
 import mapbox_vector_tile
 
-from deutschland import Config
+from deutschland import Config, module_config
 
 
 class Geo:
@@ -12,7 +12,10 @@ class Geo:
     MVT_EXTENT = 4096
 
     def __init__(self, config: Config = None):
-        self._config = config
+        if config is None:
+            self._config = module_config
+        else:
+            self._config = config
 
     def __deg2num(self, lat_deg, lon_deg, zoom):
         lat_rad = math.radians(lat_deg)
@@ -49,13 +52,14 @@ class Geo:
         :param top_right: the top right [lat, lon] coordinates (e.g. [47.23,5.53])
         :param bottom_left: the bottom left [lat, lon] coordinates (e.g. [54.96,15.38])
         :param proxies: proxies to use for this call (e.g. {'http': 'http://10.10.1.10:3128',
-            'https': 'http://10.10.1.10:1080'} ) overwrites proxies from config
+        'https': 'http://10.10.1.10:1080'}) overwrites proxies from config
         :return:
         """
 
         tr = self.__deg2num(top_right[0], top_right[1], self.LEVEL)
         bl = self.__deg2num(bottom_left[0], bottom_left[1], self.LEVEL)
 
+        # parameter has higher priority than member
         if proxies is None:
             if self._config is not None and self._config.proxy_config is not None:
                 proxies = self._config.proxy_config

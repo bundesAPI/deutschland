@@ -5,7 +5,7 @@ import dateparser
 
 from bs4 import BeautifulSoup
 
-from deutschland import Config
+from deutschland import Config, module_config
 
 
 class Report:
@@ -31,10 +31,13 @@ class Bundesanzeiger:
     __slots__ = ["session", "model", "captcha_callback", "_config"]
 
     def __init__(self, on_captach_callback=None, config: Config = None):
-        self._config = config
+        if config is None:
+            self._config = module_config
+        else:
+            self._config = config
 
         self.session = requests.Session()
-        if self._config is not None and self._config.proxy_config is not None:
+        if self._config.proxy_config is not None:
             self.session.proxies.update(self._config.proxy_config)
         if on_captach_callback:
             self.callback = on_captach_callback

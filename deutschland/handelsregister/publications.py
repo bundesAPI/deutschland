@@ -202,11 +202,11 @@ class Publications:
     def __extract_pub_id_and_county_code(self, link):
         [pub_id, county] = (
             link["href"]
-            .removeprefix("javascript:NeuFenster('rb_id=")
-            .removesuffix("')")
+            .replace("javascript:NeuFenster('rb_id=", "")
+            .replace("')", "")
             .split("&")
         )
-        county_code = county.removeprefix("land_abk=")
+        county_code = county.replace("land_abk=", "")
 
         return [pub_id, county_code]
 
@@ -232,5 +232,5 @@ class Publications:
         }
 
     def __extract_published_at(self, info):
-        published_at_raw = info.removeprefix("Bekannt gemacht am: ")
+        published_at_raw = info.replace("Bekannt gemacht am: ", "")
         return dateparser.parse(published_at_raw, date_formats=["%d.%m.%Y"])

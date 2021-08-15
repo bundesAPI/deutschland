@@ -1,14 +1,18 @@
 import math
-from typing import List
+from typing import List, Dict
 import requests
 import mapbox_vector_tile
 
+from deutschland import Config
+
 
 class Geo:
-
     LEVEL = 15
     URL = "https://adv-smart.de/tiles/smarttiles_de_public_v1/"
     MVT_EXTENT = 4096
+
+    def __init__(self, config: Config = None):
+        self._config = config
 
     def __deg2num(self, lat_deg, lon_deg, zoom):
         lat_rad = math.radians(lat_deg)
@@ -39,16 +43,22 @@ class Geo:
 
         return project(px, py)
 
-    def fetch(self, top_right: List[float], bottom_left: List[float]):
+    def fetch(self, top_right: List[float], bottom_left: List[float], proxies: Dict[str, str] = None):
         """
         fetch the geo data inside the area selected
         :param top_right: the top right [lat, lon] coordinates (e.g. [47.23,5.53])
         :param bottom_left: the bottom left [lat, lon] coordinates (e.g. [54.96,15.38])
+        :param proxies: proxies to use for this call (e.g. {'http': 'http://10.10.1.10:3128',
+            'https': 'http://10.10.1.10:1080'} ) overwrites proxies from config
         :return:
         """
 
         tr = self.__deg2num(top_right[0], top_right[1], self.LEVEL)
         bl = self.__deg2num(bottom_left[0], bottom_left[1], self.LEVEL)
+
+        if proxies is None:
+            if self._config is not None and self._config.proxy_config is not None:
+                proxies = self._config.proxy_config
 
         data = {}
 
@@ -63,7 +73,8 @@ class Geo:
             for y in range(bl[1], tr[1]):
                 url = f"{self.URL}{self.LEVEL}/{x}/{y}.pbf"
                 try:
-                    result = requests.get(url, headers=headers)
+
+                    result = requests.get(url, headers=headers, proxies=proxies)
                     geojson = mapbox_vector_tile.decode(result.content)
                     if geojson:
                         parsed = self.__parse(geojson, x, y)

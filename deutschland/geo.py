@@ -46,7 +46,12 @@ class Geo:
 
         return project(px, py)
 
-    def fetch(self, top_right: List[float], bottom_left: List[float], proxies: Dict[str, str] = None):
+    def fetch(
+        self,
+        top_right: List[float],
+        bottom_left: List[float],
+        proxies: Dict[str, str] = None,
+    ):
         """
         fetch the geo data inside the area selected
         :param top_right: the top right [lat, lon] coordinates (e.g. [47.23,5.53])

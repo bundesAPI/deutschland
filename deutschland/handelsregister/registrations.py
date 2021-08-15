@@ -118,7 +118,10 @@ class Registrations:
         search_params = {**self.DEFAULT_FORM_DATA, **params}
 
         response = requests.post(
-            self.SEARCH_URL, data=search_params, headers=self.REQUEST_HEADERS, proxies=module_config.proxy_config
+            self.SEARCH_URL,
+            data=search_params,
+            headers=self.REQUEST_HEADERS,
+            proxies=module_config.proxy_config,
         )
         if response.status_code != 200:
             return None

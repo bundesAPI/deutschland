@@ -1,12 +1,19 @@
 from typing import Dict
 from bs4 import BeautifulSoup
 
-
 import dateparser
 import requests
 
+from deutschland import module_config, Config
+
 
 class Publications:
+    def __init__(self, config: Config = None):
+        if config is None:
+            self._config = module_config
+        else:
+            self._config = config
+
     REQUEST_HEADERS = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
@@ -51,7 +58,9 @@ class Publications:
         "button": "Suche starten",
     }
 
-    def search_with_raw_params(self, params: Dict[str, str] = {}):
+    def search_with_raw_params(
+        self, params: Dict[str, str] = {}, proxies: Dict[str, str] = None
+    ):
         """
         Searches the Publications of the Handelsregister with a given dict of parameters.
 
@@ -159,10 +168,19 @@ class Publications:
           3 : Order by creation date of publication
           4 : Order by publication date
         """
+
+        # parameter has higher priority than member
+        if proxies is None:
+            if self._config is not None and self._config.proxy_config is not None:
+                proxies = self._config.proxy_config
+
         search_params = {**self.DEFAULT_FORM_DATA, **params}
 
         response = requests.post(
-            self.SEARCH_URL, data=search_params, headers=self.REQUEST_HEADERS
+            self.SEARCH_URL,
+            data=search_params,
+            headers=self.REQUEST_HEADERS,
+            proxies=proxies,
         )
         if response.status_code != 200:
             return None

@@ -1,11 +1,18 @@
 from datetime import date
 
+from deutschland import module_config, Config
 from deutschland.handelsregister.registrations import Registrations
 from deutschland.handelsregister.publications import Publications
 from deutschland.handelsregister.publication_detail import PublicationDetail
 
 
 class Handelsregister:
+    def __init__(self, config: Config = None):
+        if config is None:
+            self._config = module_config
+        else:
+            self._config = config
+
     def search(
         self,
         keywords: str = None,
@@ -95,7 +102,7 @@ class Handelsregister:
             "strasse": street,
             "ergebnisseProSeite": limit,
         }
-        r = Registrations()
+        r = Registrations(self._config)
         return r.search_with_raw_params(params)
 
     def search_publications(
@@ -245,7 +252,7 @@ class Handelsregister:
             "order": order_by,
         }
 
-        p = Publications()
+        p = Publications(self._config)
         return p.search_with_raw_params(params)
 
     def get_publication_detail(self, publication_id: str, county_code: str):
@@ -278,7 +285,7 @@ class Handelsregister:
           sh: Schleswig-Holstein
           th: Thüringen
         """
-        pd = PublicationDetail()
+        pd = PublicationDetail(self._config)
         return pd.get_detail(publication_id=publication_id, county_code=county_code)
 
 

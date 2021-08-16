@@ -5,6 +5,8 @@ import dateparser
 
 from bs4 import BeautifulSoup
 
+from deutschland import Config, module_config
+
 
 class Report:
     __slots__ = ["date", "name", "content_url", "company", "report"]
@@ -26,10 +28,17 @@ class Report:
 
 
 class Bundesanzeiger:
-    __slots__ = ["session", "model", "captcha_callback"]
+    __slots__ = ["session", "model", "captcha_callback", "_config"]
 
-    def __init__(self, on_captach_callback=None):
+    def __init__(self, on_captach_callback=None, config: Config = None):
+        if config is None:
+            self._config = module_config
+        else:
+            self._config = config
+
         self.session = requests.Session()
+        if self._config.proxy_config is not None:
+            self.session.proxies.update(self._config.proxy_config)
         if on_captach_callback:
             self.callback = on_captach_callback
         else:

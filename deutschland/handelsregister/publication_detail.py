@@ -1,10 +1,20 @@
 from datetime import datetime
+from typing import Dict
+
 from bs4 import BeautifulSoup
 import dateparser
 import requests
 
+from deutschland import module_config, Config
+
 
 class PublicationDetail:
+    def __init__(self, config: Config = None):
+        if config is None:
+            self._config = module_config
+        else:
+            self._config = config
+
     DETAIL_URL = "https://www.handelsregisterbekanntmachungen.de/skripte/hrb.php?rb_id={}&land_abk={}"
 
     REQUEST_HEADERS = {
@@ -27,7 +37,9 @@ class PublicationDetail:
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
     }
 
-    def get_detail(self, publication_id: str, county_code: str):
+    def get_detail(
+        self, publication_id: str, county_code: str, proxies: Dict[str, str] = None
+    ):
         """
         Get the details of a publication with its identifier and county code.
 
@@ -57,8 +69,16 @@ class PublicationDetail:
           sh: Schleswig-Holstein
           th: Thüringen
         """
+
+        # parameter has higher priority than member
+        if proxies is None:
+            if self._config is not None and self._config.proxy_config is not None:
+                proxies = self._config.proxy_config
+
         request_url = self.DETAIL_URL.format(publication_id, county_code)
-        response = requests.get(request_url, headers=self.REQUEST_HEADERS)
+        response = requests.get(
+            request_url, headers=self.REQUEST_HEADERS, proxies=proxies
+        )
 
         if response.status_code != 200:
             return None

@@ -69,7 +69,7 @@ def test_no_data_for_publication_detail():
     data = hr.get_publication_detail(publication_id="9999999999999", county_code="bw")
     assert data is None
 
-def lebensmittelwarning_test_all_content_types_all_regions():
+def lebensmittelwarnung_test_all_content_types_all_regions():
     lw = Lebensmittelwarnung()
     data = lw.get()
     assert len(data) > 0, "Found no data in the Lebensmittelwarnung DB without search limitations, although there (probably) should be."

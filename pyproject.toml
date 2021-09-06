@@ -20,6 +20,7 @@ slugify = "^0.0.1"
 tensorflow = "^2.5.0"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
+lxml = "^4.6.3"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"

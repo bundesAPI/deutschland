@@ -58,3 +58,18 @@ hr = Handelsregister()
 hr.search(keywords="Deutsche Bahn Aktiengesellschaft")
 print(hr)
 ```
+
+
+## Consumer Protection Data
+
+### Lebensmittelwarnung
+Get current product warnings provided by the german federal portal lebensmittelwarnung.de. 
+
+```python
+from deutschland import Lebensmittelwarnung
+lw = Lebensmittelwarnung()
+# search by content type and region, see documetation for all available params
+data = lw.get("lebensmittel", "berlin")
+print(data)
+# [{'id': 19601, 'guid': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/19601', 'pubDate': 'Fri, 10 Feb 2017 12:28:45 +0000', 'imgSrc': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/attachment/979f8cd3-969e-4a6c-9a8e-4bdd61586cd4/data.jpg', 'title': 'Sidroga Bio Säuglings- und Kindertee', 'manufacturer': 'Lebensmittel', 'warning': 'Pyrrolizidinalkaloide', 'affectedStates': ['Baden-Württemberg', '...']}]
+```

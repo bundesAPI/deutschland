@@ -1,7 +1,7 @@
 import datetime
 from deutschland import Bundesanzeiger
 from deutschland import Handelsregister
-from deutschland import Lebensmittelwarnung
+
 from deutschland.handelsregister.registrations import Registrations
 
 
@@ -68,13 +68,3 @@ def test_no_data_for_publication_detail():
     hr = Handelsregister()
     data = hr.get_publication_detail(publication_id="9999999999999", county_code="bw")
     assert data is None
-
-def lebensmittelwarnung_test_all_content_types_all_regions():
-    lw = Lebensmittelwarnung()
-    data = lw.get()
-    assert len(data) > 0, "Found no data in the Lebensmittelwarnung DB without search limitations, although there (probably) should be."
-
-def lebensmittelwarnung_test_invalid_content_type_invalid_region():
-    lw = Lebensmittelwarnung()
-    data = lw.get("wrong","selector")
-    assert len(data) == 0, "Found data in the Lebensmittelwarnung DB with wrong selectors, although there should not be any."

@@ -73,3 +73,25 @@ data = lw.get("lebensmittel", "berlin")
 print(data)
 # [{'id': 19601, 'guid': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/19601', 'pubDate': 'Fri, 10 Feb 2017 12:28:45 +0000', 'imgSrc': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/attachment/979f8cd3-969e-4a6c-9a8e-4bdd61586cd4/data.jpg', 'title': 'Sidroga Bio Säuglings- und Kindertee', 'manufacturer': 'Lebensmittel', 'warning': 'Pyrrolizidinalkaloide', 'affectedStates': ['Baden-Württemberg', '...']}]
 ```
+
+
+## Generate API
+
+1. Install docker on your system: Instructions please see [here](https://docs.docker.com/engine/)
+
+2. Clone this repo:
+```shell
+git clone https://github.com/wirthual/deutschland.git
+cd deutschland
+```
+3. Execute the generation script:
+
+```shell
+python generate_openapi_apis.py
+
+# or if you use poetry
+poetry run python generate_openapi_apis.py
+```
+
+This should produce a folder called _generated_ which consists of all the APIs the tool could successfully parse from the
+bundesAPI repo.

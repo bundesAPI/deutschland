@@ -75,23 +75,30 @@ print(data)
 ```
 
 
-## Generate API
 
-1. Install docker on your system: Instructions please see [here](https://docs.docker.com/engine/)
+## Autobahn
 
-2. Clone this repo:
-```shell
-git clone https://github.com/wirthual/deutschland.git
-cd deutschland
+Get data from the Autobahn.
+
+```python
+from deutschland import autobahn
+from deutschland.autobahn.api import default_api
+
+from pprint import pprint
+
+autobahn_api_instance = default_api.DefaultApi()
+
+try:
+    # Auflistung aller Autobahnen
+    api_response = autobahn_api_instance.list_autobahnen()
+    pprint(api_response)
+
+    # Details zu einer Ladestation
+    station_id = "RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM="  # str |
+    api_response = autobahn_api_instance.get_charging_station(station_id)
+    pprint(api_response)
+
+except autobahn.ApiException as e:
+    print("Exception when calling DefaultApi->get_charging_station: %s\n" % e)
 ```
-3. Execute the generation script:
 
-```shell
-python generate_openapi_apis.py
-
-# or if you use poetry
-poetry run python generate_openapi_apis.py
-```
-
-This should produce a folder called _generated_ which consists of all the APIs the tool could successfully parse from the
-bundesAPI repo.

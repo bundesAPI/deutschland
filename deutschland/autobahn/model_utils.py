@@ -19,7 +19,7 @@ import tempfile
 
 from dateutil.parser import parse
 
-from deutschland.experimental.autobahn.exceptions import (
+from deutschland.autobahn.exceptions import (
     ApiKeyError,
     ApiAttributeError,
     ApiTypeError,

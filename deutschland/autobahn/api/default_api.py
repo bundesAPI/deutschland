@@ -11,8 +11,8 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.experimental.autobahn.api_client import ApiClient, Endpoint as _Endpoint
-from deutschland.experimental.autobahn.model_utils import (  # noqa: F401
+from deutschland.autobahn.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.autobahn.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
     date,
@@ -21,20 +21,20 @@ from deutschland.experimental.autobahn.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from deutschland.experimental.autobahn.model.closure import Closure
-from deutschland.experimental.autobahn.model.closures import Closures
-from deutschland.experimental.autobahn.model.electric_charging_station import ElectricChargingStation
-from deutschland.experimental.autobahn.model.electric_charging_stations import ElectricChargingStations
-from deutschland.experimental.autobahn.model.parking_lorries import ParkingLorries
-from deutschland.experimental.autobahn.model.parking_lorry import ParkingLorry
-from deutschland.experimental.autobahn.model.road_id import RoadId
-from deutschland.experimental.autobahn.model.roads import Roads
-from deutschland.experimental.autobahn.model.roadwork import Roadwork
-from deutschland.experimental.autobahn.model.roadworks import Roadworks
-from deutschland.experimental.autobahn.model.warning import Warning
-from deutschland.experimental.autobahn.model.warnings import Warnings
-from deutschland.experimental.autobahn.model.webcam import Webcam
-from deutschland.experimental.autobahn.model.webcams import Webcams
+from deutschland.autobahn.model.closure import Closure
+from deutschland.autobahn.model.closures import Closures
+from deutschland.autobahn.model.electric_charging_station import ElectricChargingStation
+from deutschland.autobahn.model.electric_charging_stations import ElectricChargingStations
+from deutschland.autobahn.model.parking_lorries import ParkingLorries
+from deutschland.autobahn.model.parking_lorry import ParkingLorry
+from deutschland.autobahn.model.road_id import RoadId
+from deutschland.autobahn.model.roads import Roads
+from deutschland.autobahn.model.roadwork import Roadwork
+from deutschland.autobahn.model.roadworks import Roadworks
+from deutschland.autobahn.model.warning import Warning
+from deutschland.autobahn.model.warnings import Warnings
+from deutschland.autobahn.model.webcam import Webcam
+from deutschland.autobahn.model.webcams import Webcams
 
 
 class DefaultApi(object):

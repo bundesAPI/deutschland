@@ -20,10 +20,10 @@ from urllib.parse import quote
 from urllib3.fields import RequestField
 
 
-from deutschland.experimental.autobahn import rest
-from deutschland.experimental.autobahn.configuration import Configuration
-from deutschland.experimental.autobahn.exceptions import ApiTypeError, ApiValueError, ApiException
-from deutschland.experimental.autobahn.model_utils import (
+from deutschland.autobahn import rest
+from deutschland.autobahn.configuration import Configuration
+from deutschland.autobahn.exceptions import ApiTypeError, ApiValueError, ApiException
+from deutschland.autobahn.model_utils import (
     ModelNormal,
     ModelSimple,
     ModelComposed,

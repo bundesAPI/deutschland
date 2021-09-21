@@ -13,15 +13,15 @@
 __version__ = "1.0.0"
 
 # import ApiClient
-from deutschland.experimental.autobahn.api_client import ApiClient
+from deutschland.autobahn.api_client import ApiClient
 
 # import Configuration
-from deutschland.experimental.autobahn.configuration import Configuration
+from deutschland.autobahn.configuration import Configuration
 
 # import exceptions
-from deutschland.experimental.autobahn.exceptions import OpenApiException
-from deutschland.experimental.autobahn.exceptions import ApiAttributeError
-from deutschland.experimental.autobahn.exceptions import ApiTypeError
-from deutschland.experimental.autobahn.exceptions import ApiValueError
-from deutschland.experimental.autobahn.exceptions import ApiKeyError
-from deutschland.experimental.autobahn.exceptions import ApiException
+from deutschland.autobahn.exceptions import OpenApiException
+from deutschland.autobahn.exceptions import ApiAttributeError
+from deutschland.autobahn.exceptions import ApiTypeError
+from deutschland.autobahn.exceptions import ApiValueError
+from deutschland.autobahn.exceptions import ApiKeyError
+from deutschland.autobahn.exceptions import ApiException

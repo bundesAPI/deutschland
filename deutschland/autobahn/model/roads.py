@@ -11,7 +11,7 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.experimental.autobahn.model_utils import (  # noqa: F401
+from deutschland.autobahn.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
     ModelNormal,
@@ -26,11 +26,11 @@ from deutschland.experimental.autobahn.model_utils import (  # noqa: F401
     validate_get_composed_info,
 )
 from ..model_utils import OpenApiModel
-from deutschland.experimental.autobahn.exceptions import ApiAttributeError
+from deutschland.autobahn.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from deutschland.experimental.autobahn.model.road_id import RoadId
+    from deutschland.autobahn.model.road_id import RoadId
     globals()['RoadId'] = RoadId
 
 

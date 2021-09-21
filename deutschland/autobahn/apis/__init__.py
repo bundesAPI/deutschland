@@ -14,4 +14,4 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
-from deutschland.experimental.autobahn.api.default_api import DefaultApi
+from deutschland.autobahn.api.default_api import DefaultApi

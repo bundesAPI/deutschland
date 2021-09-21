@@ -15,7 +15,7 @@ import sys
 import urllib3
 
 from http import client as http_client
-from deutschland.experimental.autobahn.exceptions import ApiValueError
+from deutschland.autobahn.exceptions import ApiValueError
 
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {

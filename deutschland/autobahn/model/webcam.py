@@ -11,7 +11,7 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.experimental.autobahn.model_utils import (  # noqa: F401
+from deutschland.autobahn.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
     ModelNormal,
@@ -26,18 +26,18 @@ from deutschland.experimental.autobahn.model_utils import (  # noqa: F401
     validate_get_composed_info,
 )
 from ..model_utils import OpenApiModel
-from deutschland.experimental.autobahn.exceptions import ApiAttributeError
+from deutschland.autobahn.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from deutschland.experimental.autobahn.model.coordinate import Coordinate
-    from deutschland.experimental.autobahn.model.display_type import DisplayType
-    from deutschland.experimental.autobahn.model.extent import Extent
-    from deutschland.experimental.autobahn.model.lorry_parking_feature_icon import LorryParkingFeatureIcon
-    from deutschland.experimental.autobahn.model.multiline_text import MultilineText
-    from deutschland.experimental.autobahn.model.point import Point
-    from deutschland.experimental.autobahn.model.road_item import RoadItem
-    from deutschland.experimental.autobahn.model.webcam_all_of import WebcamAllOf
+    from deutschland.autobahn.model.coordinate import Coordinate
+    from deutschland.autobahn.model.display_type import DisplayType
+    from deutschland.autobahn.model.extent import Extent
+    from deutschland.autobahn.model.lorry_parking_feature_icon import LorryParkingFeatureIcon
+    from deutschland.autobahn.model.multiline_text import MultilineText
+    from deutschland.autobahn.model.point import Point
+    from deutschland.autobahn.model.road_item import RoadItem
+    from deutschland.autobahn.model.webcam_all_of import WebcamAllOf
     globals()['Coordinate'] = Coordinate
     globals()['DisplayType'] = DisplayType
     globals()['Extent'] = Extent

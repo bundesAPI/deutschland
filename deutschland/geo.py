@@ -40,9 +40,10 @@ class Geo:
 
         def project(px, py):
             y2 = 180 - (y0 - py) * 360 / size
-            return (px + x0) * 360 / size - 180, 360 / math.pi * math.atan(
-                math.exp(y2 * math.pi / 180)
-            ) - 90
+            return (
+                (px + x0) * 360 / size - 180,
+                360 / math.pi * math.atan(math.exp(y2 * math.pi / 180)) - 90,
+            )
 
         return project(px, py)
 

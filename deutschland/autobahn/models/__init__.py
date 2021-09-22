@@ -14,10 +14,14 @@ from deutschland.autobahn.model.closures import Closures
 from deutschland.autobahn.model.coordinate import Coordinate
 from deutschland.autobahn.model.display_type import DisplayType
 from deutschland.autobahn.model.electric_charging_station import ElectricChargingStation
-from deutschland.autobahn.model.electric_charging_stations import ElectricChargingStations
+from deutschland.autobahn.model.electric_charging_stations import (
+    ElectricChargingStations,
+)
 from deutschland.autobahn.model.extent import Extent
 from deutschland.autobahn.model.lat_long_value import LatLongValue
-from deutschland.autobahn.model.lorry_parking_feature_icon import LorryParkingFeatureIcon
+from deutschland.autobahn.model.lorry_parking_feature_icon import (
+    LorryParkingFeatureIcon,
+)
 from deutschland.autobahn.model.multiline_text import MultilineText
 from deutschland.autobahn.model.parking_lorries import ParkingLorries
 from deutschland.autobahn.model.parking_lorry import ParkingLorry

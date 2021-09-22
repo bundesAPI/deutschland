@@ -19,12 +19,14 @@ from deutschland.autobahn.model_utils import (  # noqa: F401
     datetime,
     file_type,
     none_type,
-    validate_and_convert_types
+    validate_and_convert_types,
 )
 from deutschland.autobahn.model.closure import Closure
 from deutschland.autobahn.model.closures import Closures
 from deutschland.autobahn.model.electric_charging_station import ElectricChargingStation
-from deutschland.autobahn.model.electric_charging_stations import ElectricChargingStations
+from deutschland.autobahn.model.electric_charging_stations import (
+    ElectricChargingStations,
+)
 from deutschland.autobahn.model.parking_lorries import ParkingLorries
 from deutschland.autobahn.model.parking_lorry import ParkingLorry
 from deutschland.autobahn.model.road_id import RoadId
@@ -50,640 +52,357 @@ class DefaultApi(object):
         self.api_client = api_client
         self.get_charging_station_endpoint = _Endpoint(
             settings={
-                'response_type': (ElectricChargingStation,),
-                'auth': [],
-                'endpoint_path': '/details/electric_charging_station/{stationId}',
-                'operation_id': 'get_charging_station',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (ElectricChargingStation,),
+                "auth": [],
+                "endpoint_path": "/details/electric_charging_station/{stationId}",
+                "operation_id": "get_charging_station",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'station_id',
-                ],
-                'required': [
-                    'station_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["station_id",],
+                "required": ["station_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'station_id':
-                        (str,),
-                },
-                'attribute_map': {
-                    'station_id': 'stationId',
-                },
-                'location_map': {
-                    'station_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"station_id": (str,),},
+                "attribute_map": {"station_id": "stationId",},
+                "location_map": {"station_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.get_closure_endpoint = _Endpoint(
             settings={
-                'response_type': (Closure,),
-                'auth': [],
-                'endpoint_path': '/details/closure/{closureId}',
-                'operation_id': 'get_closure',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Closure,),
+                "auth": [],
+                "endpoint_path": "/details/closure/{closureId}",
+                "operation_id": "get_closure",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'closure_id',
-                ],
-                'required': [
-                    'closure_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["closure_id",],
+                "required": ["closure_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'closure_id':
-                        (str,),
-                },
-                'attribute_map': {
-                    'closure_id': 'closureId',
-                },
-                'location_map': {
-                    'closure_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"closure_id": (str,),},
+                "attribute_map": {"closure_id": "closureId",},
+                "location_map": {"closure_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.get_parking_lorry_endpoint = _Endpoint(
             settings={
-                'response_type': (ParkingLorry,),
-                'auth': [],
-                'endpoint_path': '/details/parking_lorry/{lorryId}',
-                'operation_id': 'get_parking_lorry',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (ParkingLorry,),
+                "auth": [],
+                "endpoint_path": "/details/parking_lorry/{lorryId}",
+                "operation_id": "get_parking_lorry",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'lorry_id',
-                ],
-                'required': [
-                    'lorry_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["lorry_id",],
+                "required": ["lorry_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'lorry_id':
-                        (str,),
-                },
-                'attribute_map': {
-                    'lorry_id': 'lorryId',
-                },
-                'location_map': {
-                    'lorry_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"lorry_id": (str,),},
+                "attribute_map": {"lorry_id": "lorryId",},
+                "location_map": {"lorry_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.get_roadwork_endpoint = _Endpoint(
             settings={
-                'response_type': (Roadwork,),
-                'auth': [],
-                'endpoint_path': '/details/roadworks/{roadworkId}',
-                'operation_id': 'get_roadwork',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Roadwork,),
+                "auth": [],
+                "endpoint_path": "/details/roadworks/{roadworkId}",
+                "operation_id": "get_roadwork",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'roadwork_id',
-                ],
-                'required': [
-                    'roadwork_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["roadwork_id",],
+                "required": ["roadwork_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'roadwork_id':
-                        (str,),
-                },
-                'attribute_map': {
-                    'roadwork_id': 'roadworkId',
-                },
-                'location_map': {
-                    'roadwork_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"roadwork_id": (str,),},
+                "attribute_map": {"roadwork_id": "roadworkId",},
+                "location_map": {"roadwork_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.get_warning_endpoint = _Endpoint(
             settings={
-                'response_type': (Warning,),
-                'auth': [],
-                'endpoint_path': '/details/warning/{warningId}',
-                'operation_id': 'get_warning',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Warning,),
+                "auth": [],
+                "endpoint_path": "/details/warning/{warningId}",
+                "operation_id": "get_warning",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'warning_id',
-                ],
-                'required': [
-                    'warning_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["warning_id",],
+                "required": ["warning_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'warning_id':
-                        (str,),
-                },
-                'attribute_map': {
-                    'warning_id': 'warningId',
-                },
-                'location_map': {
-                    'warning_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"warning_id": (str,),},
+                "attribute_map": {"warning_id": "warningId",},
+                "location_map": {"warning_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.get_webcam_endpoint = _Endpoint(
             settings={
-                'response_type': (Webcam,),
-                'auth': [],
-                'endpoint_path': '/details/webcam/{webcamId}',
-                'operation_id': 'get_webcam',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Webcam,),
+                "auth": [],
+                "endpoint_path": "/details/webcam/{webcamId}",
+                "operation_id": "get_webcam",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'webcam_id',
-                ],
-                'required': [
-                    'webcam_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["webcam_id",],
+                "required": ["webcam_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'webcam_id':
-                        (str,),
-                },
-                'attribute_map': {
-                    'webcam_id': 'webcamId',
-                },
-                'location_map': {
-                    'webcam_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"webcam_id": (str,),},
+                "attribute_map": {"webcam_id": "webcamId",},
+                "location_map": {"webcam_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_autobahnen_endpoint = _Endpoint(
             settings={
-                'response_type': (Roads,),
-                'auth': [],
-                'endpoint_path': '/',
-                'operation_id': 'list_autobahnen',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Roads,),
+                "auth": [],
+                "endpoint_path": "/",
+                "operation_id": "list_autobahnen",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                ],
-                'required': [],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": [],
+                "required": [],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {},
+                "attribute_map": {},
+                "location_map": {},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_charging_stations_endpoint = _Endpoint(
             settings={
-                'response_type': (ElectricChargingStations,),
-                'auth': [],
-                'endpoint_path': '/{roadId}/services/electric_charging_station',
-                'operation_id': 'list_charging_stations',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (ElectricChargingStations,),
+                "auth": [],
+                "endpoint_path": "/{roadId}/services/electric_charging_station",
+                "operation_id": "list_charging_stations",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'road_id',
-                ],
-                'required': [
-                    'road_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["road_id",],
+                "required": ["road_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'road_id':
-                        (RoadId,),
-                },
-                'attribute_map': {
-                    'road_id': 'roadId',
-                },
-                'location_map': {
-                    'road_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"road_id": (RoadId,),},
+                "attribute_map": {"road_id": "roadId",},
+                "location_map": {"road_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_closures_endpoint = _Endpoint(
             settings={
-                'response_type': (Closures,),
-                'auth': [],
-                'endpoint_path': '/{roadId}/services/closure',
-                'operation_id': 'list_closures',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Closures,),
+                "auth": [],
+                "endpoint_path": "/{roadId}/services/closure",
+                "operation_id": "list_closures",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'road_id',
-                ],
-                'required': [
-                    'road_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["road_id",],
+                "required": ["road_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'road_id':
-                        (RoadId,),
-                },
-                'attribute_map': {
-                    'road_id': 'roadId',
-                },
-                'location_map': {
-                    'road_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"road_id": (RoadId,),},
+                "attribute_map": {"road_id": "roadId",},
+                "location_map": {"road_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_parking_lorries_endpoint = _Endpoint(
             settings={
-                'response_type': (ParkingLorries,),
-                'auth': [],
-                'endpoint_path': '/{roadId}/services/parking_lorry',
-                'operation_id': 'list_parking_lorries',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (ParkingLorries,),
+                "auth": [],
+                "endpoint_path": "/{roadId}/services/parking_lorry",
+                "operation_id": "list_parking_lorries",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'road_id',
-                ],
-                'required': [
-                    'road_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["road_id",],
+                "required": ["road_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'road_id':
-                        (RoadId,),
-                },
-                'attribute_map': {
-                    'road_id': 'roadId',
-                },
-                'location_map': {
-                    'road_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"road_id": (RoadId,),},
+                "attribute_map": {"road_id": "roadId",},
+                "location_map": {"road_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_roadworks_endpoint = _Endpoint(
             settings={
-                'response_type': (Roadworks,),
-                'auth': [],
-                'endpoint_path': '/{roadId}/services/roadworks',
-                'operation_id': 'list_roadworks',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Roadworks,),
+                "auth": [],
+                "endpoint_path": "/{roadId}/services/roadworks",
+                "operation_id": "list_roadworks",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'road_id',
-                ],
-                'required': [
-                    'road_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["road_id",],
+                "required": ["road_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'road_id':
-                        (RoadId,),
-                },
-                'attribute_map': {
-                    'road_id': 'roadId',
-                },
-                'location_map': {
-                    'road_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"road_id": (RoadId,),},
+                "attribute_map": {"road_id": "roadId",},
+                "location_map": {"road_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_warnings_endpoint = _Endpoint(
             settings={
-                'response_type': (Warnings,),
-                'auth': [],
-                'endpoint_path': '/{roadId}/services/warning',
-                'operation_id': 'list_warnings',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Warnings,),
+                "auth": [],
+                "endpoint_path": "/{roadId}/services/warning",
+                "operation_id": "list_warnings",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'road_id',
-                ],
-                'required': [
-                    'road_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["road_id",],
+                "required": ["road_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'road_id':
-                        (RoadId,),
-                },
-                'attribute_map': {
-                    'road_id': 'roadId',
-                },
-                'location_map': {
-                    'road_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"road_id": (RoadId,),},
+                "attribute_map": {"road_id": "roadId",},
+                "location_map": {"road_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
         self.list_webcams_endpoint = _Endpoint(
             settings={
-                'response_type': (Webcams,),
-                'auth': [],
-                'endpoint_path': '/{roadId}/services/webcam',
-                'operation_id': 'list_webcams',
-                'http_method': 'GET',
-                'servers': None,
+                "response_type": (Webcams,),
+                "auth": [],
+                "endpoint_path": "/{roadId}/services/webcam",
+                "operation_id": "list_webcams",
+                "http_method": "GET",
+                "servers": None,
             },
             params_map={
-                'all': [
-                    'road_id',
-                ],
-                'required': [
-                    'road_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
+                "all": ["road_id",],
+                "required": ["road_id",],
+                "nullable": [],
+                "enum": [],
+                "validation": [],
             },
             root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'road_id':
-                        (RoadId,),
-                },
-                'attribute_map': {
-                    'road_id': 'roadId',
-                },
-                'location_map': {
-                    'road_id': 'path',
-                },
-                'collection_format_map': {
-                }
+                "validations": {},
+                "allowed_values": {},
+                "openapi_types": {"road_id": (RoadId,),},
+                "attribute_map": {"road_id": "roadId",},
+                "location_map": {"road_id": "path",},
+                "collection_format_map": {},
             },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
+            headers_map={"accept": ["application/json"], "content_type": [],},
+            api_client=api_client,
         )
 
-    def get_charging_station(
-        self,
-        station_id,
-        **kwargs
-    ):
+    def get_charging_station(self, station_id, **kwargs):
         """Details zu einer Ladestation  # noqa: E501
 
         Gibt Details zu einer konkreten Ladestation zurück.  # noqa: E501
@@ -722,34 +441,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['station_id'] = \
-            station_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["station_id"] = station_id
         return self.get_charging_station_endpoint.call_with_http_info(**kwargs)
 
-    def get_closure(
-        self,
-        closure_id,
-        **kwargs
-    ):
+    def get_closure(self, closure_id, **kwargs):
         """Details zu einer Sperrung  # noqa: E501
 
         Gibt Details zu einer konkreten Sperrung zurück.  # noqa: E501
@@ -788,34 +490,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['closure_id'] = \
-            closure_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["closure_id"] = closure_id
         return self.get_closure_endpoint.call_with_http_info(**kwargs)
 
-    def get_parking_lorry(
-        self,
-        lorry_id,
-        **kwargs
-    ):
+    def get_parking_lorry(self, lorry_id, **kwargs):
         """Details eines Rastplatzes  # noqa: E501
 
         Gibt Details eines konkreten Rastplatzes zurück.  # noqa: E501
@@ -854,34 +539,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['lorry_id'] = \
-            lorry_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["lorry_id"] = lorry_id
         return self.get_parking_lorry_endpoint.call_with_http_info(**kwargs)
 
-    def get_roadwork(
-        self,
-        roadwork_id,
-        **kwargs
-    ):
+    def get_roadwork(self, roadwork_id, **kwargs):
         """Details einer Baustelle  # noqa: E501
 
         Gibt Details zu einer konkreten Baustelle zurück.  # noqa: E501
@@ -920,34 +588,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['roadwork_id'] = \
-            roadwork_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["roadwork_id"] = roadwork_id
         return self.get_roadwork_endpoint.call_with_http_info(**kwargs)
 
-    def get_warning(
-        self,
-        warning_id,
-        **kwargs
-    ):
+    def get_warning(self, warning_id, **kwargs):
         """Details zu einer Verkehrsmeldung  # noqa: E501
 
         Gibt Details zu einer konkreten Verkehrsmeldung zurück.  # noqa: E501
@@ -986,34 +637,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['warning_id'] = \
-            warning_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["warning_id"] = warning_id
         return self.get_warning_endpoint.call_with_http_info(**kwargs)
 
-    def get_webcam(
-        self,
-        webcam_id,
-        **kwargs
-    ):
+    def get_webcam(self, webcam_id, **kwargs):
         """Details einer Webcam  # noqa: E501
 
         Gibt Details einer konkreten Webcam zurück.  # noqa: E501
@@ -1052,33 +686,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['webcam_id'] = \
-            webcam_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["webcam_id"] = webcam_id
         return self.get_webcam_endpoint.call_with_http_info(**kwargs)
 
-    def list_autobahnen(
-        self,
-        **kwargs
-    ):
+    def list_autobahnen(self, **kwargs):
         """Liste verfügbarer Autobahnen  # noqa: E501
 
         Gibt eine Liste der verfügbaren Autobahnen zurück.  # noqa: E501
@@ -1115,32 +733,16 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
         return self.list_autobahnen_endpoint.call_with_http_info(**kwargs)
 
-    def list_charging_stations(
-        self,
-        road_id,
-        **kwargs
-    ):
+    def list_charging_stations(self, road_id, **kwargs):
         """Liste aktueller Ladestationen  # noqa: E501
 
         Gibt eine Liste der Ladestationen zu einer Autobahn zurück.  # noqa: E501
@@ -1179,34 +781,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['road_id'] = \
-            road_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["road_id"] = road_id
         return self.list_charging_stations_endpoint.call_with_http_info(**kwargs)
 
-    def list_closures(
-        self,
-        road_id,
-        **kwargs
-    ):
+    def list_closures(self, road_id, **kwargs):
         """Liste aktueller Sperrungen  # noqa: E501
 
         Gibt eine Liste der Sperrungen zu einer Autobahn zurück.  # noqa: E501
@@ -1245,34 +830,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['road_id'] = \
-            road_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["road_id"] = road_id
         return self.list_closures_endpoint.call_with_http_info(**kwargs)
 
-    def list_parking_lorries(
-        self,
-        road_id,
-        **kwargs
-    ):
+    def list_parking_lorries(self, road_id, **kwargs):
         """Liste verfügbarer Rastplätze  # noqa: E501
 
         Gibt eine Liste der Rastplätze zu einer Autobahn zurück.  # noqa: E501
@@ -1311,34 +879,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['road_id'] = \
-            road_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["road_id"] = road_id
         return self.list_parking_lorries_endpoint.call_with_http_info(**kwargs)
 
-    def list_roadworks(
-        self,
-        road_id,
-        **kwargs
-    ):
+    def list_roadworks(self, road_id, **kwargs):
         """Liste aktueller Baustellen  # noqa: E501
 
         Gibt eine Liste der aktuellen Baustellen zu einer Autobahn zurück.  # noqa: E501
@@ -1377,34 +928,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['road_id'] = \
-            road_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["road_id"] = road_id
         return self.list_roadworks_endpoint.call_with_http_info(**kwargs)
 
-    def list_warnings(
-        self,
-        road_id,
-        **kwargs
-    ):
+    def list_warnings(self, road_id, **kwargs):
         """Liste aktueller Verkehrsmeldungen  # noqa: E501
 
         Gibt eine Liste der Verkehrsmeldungen zu einer Autobahn zurück.  # noqa: E501
@@ -1443,34 +977,17 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['road_id'] = \
-            road_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["road_id"] = road_id
         return self.list_warnings_endpoint.call_with_http_info(**kwargs)
 
-    def list_webcams(
-        self,
-        road_id,
-        **kwargs
-    ):
+    def list_webcams(self, road_id, **kwargs):
         """Liste verfügbarer Webcams  # noqa: E501
 
         Gibt eine Liste der Webcams zu einer Autobahn zurück.  # noqa: E501
@@ -1509,26 +1026,12 @@ class DefaultApi(object):
                 If the method is called asynchronously, returns the request
                 thread.
         """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['road_id'] = \
-            road_id
+        kwargs["async_req"] = kwargs.get("async_req", False)
+        kwargs["_return_http_data_only"] = kwargs.get("_return_http_data_only", True)
+        kwargs["_preload_content"] = kwargs.get("_preload_content", True)
+        kwargs["_request_timeout"] = kwargs.get("_request_timeout", None)
+        kwargs["_check_input_type"] = kwargs.get("_check_input_type", True)
+        kwargs["_check_return_type"] = kwargs.get("_check_return_type", True)
+        kwargs["_host_index"] = kwargs.get("_host_index")
+        kwargs["road_id"] = road_id
         return self.list_webcams_endpoint.call_with_http_info(**kwargs)
-

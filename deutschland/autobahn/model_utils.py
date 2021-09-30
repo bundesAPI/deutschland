@@ -1782,15 +1782,17 @@ def type_error_message(
     msg = (
         "Invalid type for variable '{0}'. Required {1} type {2} and "
         "passed type was {3}".format(
-            var_name, key_or_value, valid_classes_phrase, type(var_value).__name__,
+            var_name,
+            key_or_value,
+            valid_classes_phrase,
+            type(var_value).__name__,
         )
     )
     return msg
 
 
 def get_valid_classes_phrase(input_classes):
-    """Returns a string phrase describing what types are allowed
-    """
+    """Returns a string phrase describing what types are allowed"""
     all_classes = list(input_classes)
     all_classes = sorted(all_classes, key=lambda cls: cls.__name__)
     all_class_names = [cls.__name__ for cls in all_classes]

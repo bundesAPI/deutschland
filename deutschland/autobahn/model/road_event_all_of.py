@@ -153,7 +153,10 @@ class RoadEventAllOf(ModelNormal):
         if args:
             raise ApiTypeError(
                 "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments."
-                % (args, self.__class__.__name__,),
+                % (
+                    args,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )
@@ -235,7 +238,10 @@ class RoadEventAllOf(ModelNormal):
         if args:
             raise ApiTypeError(
                 "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments."
-                % (args, self.__class__.__name__,),
+                % (
+                    args,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )

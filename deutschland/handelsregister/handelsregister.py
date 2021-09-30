@@ -221,9 +221,14 @@ class Handelsregister:
             )
 
         reg_code = (
-            {"HRA": "A", "HRB": "B", "GnR": "G", "VR": "V", "PR": "P", "AR": "AR",}[
-                registration_type
-            ]
+            {
+                "HRA": "A",
+                "HRB": "B",
+                "GnR": "G",
+                "VR": "V",
+                "PR": "P",
+                "AR": "AR",
+            }[registration_type]
             if registration_type
             else None
         )

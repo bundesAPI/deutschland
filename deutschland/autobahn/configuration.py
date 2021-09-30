@@ -104,8 +104,7 @@ class Configuration(object):
         server_operation_variables=None,
         ssl_ca_cert=None,
     ):
-        """Constructor
-        """
+        """Constructor"""
         self._base_path = (
             "https://verkehr.autobahn.de/o/autobahn" if host is None else host
         )

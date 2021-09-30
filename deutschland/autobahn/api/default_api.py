@@ -60,8 +60,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["station_id",],
-                "required": ["station_id",],
+                "all": [
+                    "station_id",
+                ],
+                "required": [
+                    "station_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -69,12 +73,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"station_id": (str,),},
-                "attribute_map": {"station_id": "stationId",},
-                "location_map": {"station_id": "path",},
+                "openapi_types": {
+                    "station_id": (str,),
+                },
+                "attribute_map": {
+                    "station_id": "stationId",
+                },
+                "location_map": {
+                    "station_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.get_closure_endpoint = _Endpoint(
@@ -87,8 +100,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["closure_id",],
-                "required": ["closure_id",],
+                "all": [
+                    "closure_id",
+                ],
+                "required": [
+                    "closure_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -96,12 +113,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"closure_id": (str,),},
-                "attribute_map": {"closure_id": "closureId",},
-                "location_map": {"closure_id": "path",},
+                "openapi_types": {
+                    "closure_id": (str,),
+                },
+                "attribute_map": {
+                    "closure_id": "closureId",
+                },
+                "location_map": {
+                    "closure_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.get_parking_lorry_endpoint = _Endpoint(
@@ -114,8 +140,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["lorry_id",],
-                "required": ["lorry_id",],
+                "all": [
+                    "lorry_id",
+                ],
+                "required": [
+                    "lorry_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -123,12 +153,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"lorry_id": (str,),},
-                "attribute_map": {"lorry_id": "lorryId",},
-                "location_map": {"lorry_id": "path",},
+                "openapi_types": {
+                    "lorry_id": (str,),
+                },
+                "attribute_map": {
+                    "lorry_id": "lorryId",
+                },
+                "location_map": {
+                    "lorry_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.get_roadwork_endpoint = _Endpoint(
@@ -141,8 +180,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["roadwork_id",],
-                "required": ["roadwork_id",],
+                "all": [
+                    "roadwork_id",
+                ],
+                "required": [
+                    "roadwork_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -150,12 +193,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"roadwork_id": (str,),},
-                "attribute_map": {"roadwork_id": "roadworkId",},
-                "location_map": {"roadwork_id": "path",},
+                "openapi_types": {
+                    "roadwork_id": (str,),
+                },
+                "attribute_map": {
+                    "roadwork_id": "roadworkId",
+                },
+                "location_map": {
+                    "roadwork_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.get_warning_endpoint = _Endpoint(
@@ -168,8 +220,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["warning_id",],
-                "required": ["warning_id",],
+                "all": [
+                    "warning_id",
+                ],
+                "required": [
+                    "warning_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -177,12 +233,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"warning_id": (str,),},
-                "attribute_map": {"warning_id": "warningId",},
-                "location_map": {"warning_id": "path",},
+                "openapi_types": {
+                    "warning_id": (str,),
+                },
+                "attribute_map": {
+                    "warning_id": "warningId",
+                },
+                "location_map": {
+                    "warning_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.get_webcam_endpoint = _Endpoint(
@@ -195,8 +260,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["webcam_id",],
-                "required": ["webcam_id",],
+                "all": [
+                    "webcam_id",
+                ],
+                "required": [
+                    "webcam_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -204,12 +273,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"webcam_id": (str,),},
-                "attribute_map": {"webcam_id": "webcamId",},
-                "location_map": {"webcam_id": "path",},
+                "openapi_types": {
+                    "webcam_id": (str,),
+                },
+                "attribute_map": {
+                    "webcam_id": "webcamId",
+                },
+                "location_map": {
+                    "webcam_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_autobahnen_endpoint = _Endpoint(
@@ -236,7 +314,10 @@ class DefaultApi(object):
                 "location_map": {},
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_charging_stations_endpoint = _Endpoint(
@@ -249,8 +330,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["road_id",],
-                "required": ["road_id",],
+                "all": [
+                    "road_id",
+                ],
+                "required": [
+                    "road_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -258,12 +343,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"road_id": (RoadId,),},
-                "attribute_map": {"road_id": "roadId",},
-                "location_map": {"road_id": "path",},
+                "openapi_types": {
+                    "road_id": (RoadId,),
+                },
+                "attribute_map": {
+                    "road_id": "roadId",
+                },
+                "location_map": {
+                    "road_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_closures_endpoint = _Endpoint(
@@ -276,8 +370,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["road_id",],
-                "required": ["road_id",],
+                "all": [
+                    "road_id",
+                ],
+                "required": [
+                    "road_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -285,12 +383,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"road_id": (RoadId,),},
-                "attribute_map": {"road_id": "roadId",},
-                "location_map": {"road_id": "path",},
+                "openapi_types": {
+                    "road_id": (RoadId,),
+                },
+                "attribute_map": {
+                    "road_id": "roadId",
+                },
+                "location_map": {
+                    "road_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_parking_lorries_endpoint = _Endpoint(
@@ -303,8 +410,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["road_id",],
-                "required": ["road_id",],
+                "all": [
+                    "road_id",
+                ],
+                "required": [
+                    "road_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -312,12 +423,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"road_id": (RoadId,),},
-                "attribute_map": {"road_id": "roadId",},
-                "location_map": {"road_id": "path",},
+                "openapi_types": {
+                    "road_id": (RoadId,),
+                },
+                "attribute_map": {
+                    "road_id": "roadId",
+                },
+                "location_map": {
+                    "road_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_roadworks_endpoint = _Endpoint(
@@ -330,8 +450,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["road_id",],
-                "required": ["road_id",],
+                "all": [
+                    "road_id",
+                ],
+                "required": [
+                    "road_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -339,12 +463,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"road_id": (RoadId,),},
-                "attribute_map": {"road_id": "roadId",},
-                "location_map": {"road_id": "path",},
+                "openapi_types": {
+                    "road_id": (RoadId,),
+                },
+                "attribute_map": {
+                    "road_id": "roadId",
+                },
+                "location_map": {
+                    "road_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_warnings_endpoint = _Endpoint(
@@ -357,8 +490,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["road_id",],
-                "required": ["road_id",],
+                "all": [
+                    "road_id",
+                ],
+                "required": [
+                    "road_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -366,12 +503,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"road_id": (RoadId,),},
-                "attribute_map": {"road_id": "roadId",},
-                "location_map": {"road_id": "path",},
+                "openapi_types": {
+                    "road_id": (RoadId,),
+                },
+                "attribute_map": {
+                    "road_id": "roadId",
+                },
+                "location_map": {
+                    "road_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
         self.list_webcams_endpoint = _Endpoint(
@@ -384,8 +530,12 @@ class DefaultApi(object):
                 "servers": None,
             },
             params_map={
-                "all": ["road_id",],
-                "required": ["road_id",],
+                "all": [
+                    "road_id",
+                ],
+                "required": [
+                    "road_id",
+                ],
                 "nullable": [],
                 "enum": [],
                 "validation": [],
@@ -393,12 +543,21 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {},
-                "openapi_types": {"road_id": (RoadId,),},
-                "attribute_map": {"road_id": "roadId",},
-                "location_map": {"road_id": "path",},
+                "openapi_types": {
+                    "road_id": (RoadId,),
+                },
+                "attribute_map": {
+                    "road_id": "roadId",
+                },
+                "location_map": {
+                    "road_id": "path",
+                },
                 "collection_format_map": {},
             },
-            headers_map={"accept": ["application/json"], "content_type": [],},
+            headers_map={
+                "accept": ["application/json"],
+                "content_type": [],
+            },
             api_client=api_client,
         )
 

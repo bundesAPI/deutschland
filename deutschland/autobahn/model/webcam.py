@@ -225,7 +225,10 @@ class Webcam(ModelComposed):
         if args:
             raise ApiTypeError(
                 "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments."
-                % (args, self.__class__.__name__,),
+                % (
+                    args,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )
@@ -340,7 +343,10 @@ class Webcam(ModelComposed):
         if args:
             raise ApiTypeError(
                 "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments."
-                % (args, self.__class__.__name__,),
+                % (
+                    args,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )
@@ -393,6 +399,9 @@ class Webcam(ModelComposed):
         lazy_import()
         return {
             "anyOf": [],
-            "allOf": [RoadItem, WebcamAllOf,],
+            "allOf": [
+                RoadItem,
+                WebcamAllOf,
+            ],
             "oneOf": [],
         }

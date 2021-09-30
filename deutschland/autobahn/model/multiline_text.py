@@ -173,7 +173,10 @@ class MultilineText(ModelSimple):
         if args:
             raise ApiTypeError(
                 "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments."
-                % (args, self.__class__.__name__,),
+                % (
+                    args,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )
@@ -188,7 +191,10 @@ class MultilineText(ModelSimple):
         if kwargs:
             raise ApiTypeError(
                 "Invalid named arguments=%s passed to %s. Remove those invalid named arguments."
-                % (kwargs, self.__class__.__name__,),
+                % (
+                    kwargs,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )
@@ -261,7 +267,10 @@ class MultilineText(ModelSimple):
         if args:
             raise ApiTypeError(
                 "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments."
-                % (args, self.__class__.__name__,),
+                % (
+                    args,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )
@@ -276,7 +285,10 @@ class MultilineText(ModelSimple):
         if kwargs:
             raise ApiTypeError(
                 "Invalid named arguments=%s passed to %s. Remove those invalid named arguments."
-                % (kwargs, self.__class__.__name__,),
+                % (
+                    kwargs,
+                    self.__class__.__name__,
+                ),
                 path_to_item=_path_to_item,
                 valid_classes=(self.__class__,),
             )

@@ -14,7 +14,7 @@ class OpenApiException(Exception):
 
 class ApiTypeError(OpenApiException, TypeError):
     def __init__(self, msg, path_to_item=None, valid_classes=None, key_type=None):
-        """ Raises an exception for TypeErrors
+        """Raises an exception for TypeErrors
 
         Args:
             msg (str): the exception message

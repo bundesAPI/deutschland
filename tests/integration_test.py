@@ -1,6 +1,7 @@
 import datetime
 from deutschland import Bundesanzeiger
 from deutschland import Handelsregister
+from deutschland import Rufzeichen
 
 from deutschland.handelsregister.registrations import Registrations
 
@@ -68,3 +69,9 @@ def test_no_data_for_publication_detail():
     hr = Handelsregister()
     data = hr.get_publication_detail(publication_id="9999999999999", county_code="bw")
     assert data is None
+
+
+def test_callsign():
+    rz = Rufzeichen()
+    data = rz.get("DL*MIC")
+    assert data["klasse"] == "A", "No valid callsign data returned"

@@ -77,6 +77,7 @@ def test_callsign():
     data = rz.get("DL*MIC")
     assert data["klasse"] == "A", "No valid callsign data returned"
 
+
 def test_bundeswahlleiter():
     bwl = Bundeswahlleiter()
     results1998 = bwl.load_results(1998)

@@ -74,8 +74,6 @@ print(data)
 # [{'id': 19601, 'guid': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/19601', 'pubDate': 'Fri, 10 Feb 2017 12:28:45 +0000', 'imgSrc': 'https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/attachment/979f8cd3-969e-4a6c-9a8e-4bdd61586cd4/data.jpg', 'title': 'Sidroga Bio Säuglings- und Kindertee', 'manufacturer': 'Lebensmittel', 'warning': 'Pyrrolizidinalkaloide', 'affectedStates': ['Baden-Württemberg', '...']}]
 ```
 
-
-
 ## Autobahn
 
 Get data from the Autobahn.
@@ -102,3 +100,15 @@ except autobahn.ApiException as e:
     print("Exception when calling DefaultApi->get_charging_station: %s\n" % e)
 ```
 
+
+## Presseportal
+
+For further information see: https://github.com/tcmetzger/pypresseportal
+
+```python
+from deutschland.presseportal import PresseportalApi
+
+presseportal = PresseportalApi("YOUR_KEY_HERE")
+
+stories = presseportal.get_stories()    
+```

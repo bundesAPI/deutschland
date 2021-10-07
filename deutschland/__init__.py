@@ -8,3 +8,4 @@ from .handelsregister.handelsregister import Handelsregister
 from .lebensmittelwarnung.lebensmittelwarnung import Lebensmittelwarnung
 from .verena.verena import Verena
 from .bundesnetzagentur import *
+from .bundeswahlleiter.bundeswahlleiter import Bundeswahlleiter

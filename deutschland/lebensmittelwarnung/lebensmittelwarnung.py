@@ -177,6 +177,5 @@ class Lebensmittelwarnung:
 
 if __name__ == "__main__":
     lw = Lebensmittelwarnung()
-    # res = hr.search(keywords="Deutsche Bahn Aktiengesellschaft", keyword_match_option=3)
     res = lw.get()
     print(res)

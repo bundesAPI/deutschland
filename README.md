@@ -87,7 +87,7 @@ data = v.get()
 print(data)
 # a full example data can be found at deutschland/verena/example.md
 # [{ "school_id": "99999", "desc": "Eine Schule\nSchule der Sekundarstufe II\ndes Landkreis Schuling\n9999 Schulingen", "replacement_job_title": "Lehrkraft", "subjects": [ "Fach 1", "Fach 2" ], "comments": "Bemerkung zur Stelle: Testbemerkung", "duration": "01.01.2021 - 01.01.2022", ...} ...]
-
+```
 
 ## Autobahn
 

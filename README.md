@@ -114,6 +114,7 @@ try:
 except autobahn.ApiException as e:
     print("Exception when calling DefaultApi->get_charging_station: %s\n" % e)
 ```
+For the detailed documentation of this API see [here](./docs/autobahn/README.md)
 
 
 ## Presseportal
@@ -127,3 +128,34 @@ presseportal = PresseportalApi("YOUR_KEY_HERE")
 
 stories = presseportal.get_stories()    
 ```
+
+### bundesrat
+For the detailed documentation of this API see [here](./docs/bundesrat/README.md)
+### bundestag
+For the detailed documentation of this API see [here](./docs/bundestag/README.md)
+### destatis
+For the detailed documentation of this API see [here](./docs/destatis/README.md)
+### dwd
+For the detailed documentation of this API see [here](./docs/dwd/README.md)
+### interpol
+For the detailed documentation of this API see [here](./docs/interpol/README.md)
+### jobsuche
+For the detailed documentation of this API see [here](./docs/jobsuche/README.md)
+### ladestationen
+For the detailed documentation of this API see [here](./docs/ladestationen/README.md)
+### mudab
+For the detailed documentation of this API see [here](./docs/mudab/README.md)
+### nina
+For the detailed documentation of this API see [here](./docs/nina/README.md)
+### polizei_brandenburg
+For the detailed documentation of this API see [here](./docs/polizei_brandenburg/README.md)
+### risikogebiete
+For the detailed documentation of this API see [here](./docs/risikogebiete/README.md)
+### smard
+For the detailed documentation of this API see [here](./docs/smard/README.md)
+### strahlenschutz
+For the detailed documentation of this API see [here](./docs/strahlenschutz/README.md)
+### travelwarning
+For the detailed documentation of this API see [here](./docs/travelwarning/README.md)
+### zoll
+For the detailed documentation of this API see [here](./docs/zoll/README.md)

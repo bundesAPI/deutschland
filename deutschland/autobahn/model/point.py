@@ -54,9 +54,9 @@ class Point(ModelSimple):
     validations = {
         ("value",): {
             "regex": {
-                "pattern": r"",
+                "pattern": r"",  # noqa: E501
             },
-        },  # noqa: E501
+        },
     }
 
     @cached_property

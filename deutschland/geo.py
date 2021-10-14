@@ -79,8 +79,8 @@ class Geo:
 
         parsed = {}
 
-        for x in range(tr[0], bl[0]):
-            for y in range(bl[1], tr[1]):
+        for x in range(bl[0], tr[0]):
+            for y in range(tr[1], bl[1]):
                 url = f"{self.URL}{self.LEVEL}/{x}/{y}.pbf"
                 try:
 
@@ -163,8 +163,8 @@ class Geo:
 if __name__ == "__main__":
     geo = Geo()
     data = geo.fetch(
-        [52.50876180448243, 13.359631043007212],
         [52.530116236589244, 13.426532801586827],
+        [52.50876180448243, 13.359631043007212],
     )
     print(data.keys())
     print(data["Adresse"][0])

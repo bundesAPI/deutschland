@@ -10,4 +10,4 @@ jobs:
       - uses: actions/setup-python@v2
       - uses: psf/black@stable
         with:
-          options: "--check --ignore --extend-exclude docs-sphinx"
+          options: "--check --extend-exclude docs-sphinx"

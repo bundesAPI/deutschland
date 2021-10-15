@@ -129,6 +129,8 @@ presseportal = PresseportalApi("YOUR_KEY_HERE")
 stories = presseportal.get_stories()    
 ```
 
+## Auto-Generated API-Clients
+
 ### bundesrat
 For the detailed documentation of this API see [here](./docs/bundesrat/README.md)
 ### bundestag

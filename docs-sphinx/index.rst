@@ -10,6 +10,8 @@ Welcome to deutschland's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   README.md
+
 
 
 Indices and tables

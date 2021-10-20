@@ -3,12 +3,12 @@ name: Run Python 🐍 tests
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v2

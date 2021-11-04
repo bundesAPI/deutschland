@@ -16,17 +16,7 @@ APIs
 
 .. toctree::
 
-   source/apis/index
-
-
-README
-------
-
-.. toctree::
-   :maxdepth: 2
-
-   source/readme_link
-
+   source/modules
 
 
 

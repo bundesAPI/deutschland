@@ -10,7 +10,7 @@ include = ["assets/model.h5"]
 
 [tool.poetry.dependencies]
 python = "^3.7.1"
-Shapely = "^1.7.1"
+Shapely = "^1.8.0"
 mapbox-vector-tile = "^1.2.1"
 requests = "^2.26.0"
 dateparser = "^1.0.0"

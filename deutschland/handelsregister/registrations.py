@@ -202,8 +202,9 @@ class Registrations:
 
     def __extract_history(self, row):
         tds = row.find_all("td")
-        [position, historical_name] = tds[1].text.strip().split(".) ", 1)
-        historical_location = tds[2].text.strip().split(".) ", 1)[1]
+        position = tds[1].text.strip().split(".) ", 1)[0]
+        historical_name = tds[1].text.strip().split(".) ", 1)[1:]
+        historical_location = tds[2].text.strip().split(".) ", 1)[1:]
 
         return {
             "position": position,

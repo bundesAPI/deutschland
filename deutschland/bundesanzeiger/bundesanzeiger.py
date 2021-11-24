@@ -9,14 +9,15 @@ from deutschland import Config, module_config
 
 
 class Report:
-    __slots__ = ["date", "name", "content_url", "company", "report"]
+    __slots__ = ["date", "name", "content_url", "company", "report", "html"]
 
-    def __init__(self, date, name, content_url, company, report=None):
+    def __init__(self, date, name, content_url, company, report=None, html=None):
         self.date = date
         self.name = name
         self.content_url = content_url
         self.company = company
         self.report = report
+        self.html = html
 
     def to_dict(self):
         return {
@@ -24,6 +25,7 @@ class Report:
             "name": self.name,
             "company": self.company,
             "report": self.report,
+            "html": self.html,
         }
 
 
@@ -121,6 +123,7 @@ class Bundesanzeiger:
                 continue
 
             element.report = content_element.text
+            element.html = get_element_response.text
             result[element.name] = element.to_dict()
 
         return result

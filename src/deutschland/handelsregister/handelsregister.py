@@ -1,6 +1,6 @@
 from datetime import date
 
-from deutschland import module_config, Config
+from deutschland.config import module_config, Config
 from deutschland.handelsregister.registrations import Registrations
 from deutschland.handelsregister.publications import Publications
 from deutschland.handelsregister.publication_detail import PublicationDetail

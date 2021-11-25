@@ -5,7 +5,7 @@ import dateparser
 
 from bs4 import BeautifulSoup
 
-from deutschland import Config, module_config
+from deutschland.config import Config, module_config
 
 
 class Report:

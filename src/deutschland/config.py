@@ -12,3 +12,6 @@ class Config:
         if self.proxy_config is None:
             self.proxy_config = {}
         self.proxy_config.update({"http": http_proxy, "https": https_proxy})
+
+
+module_config = Config()

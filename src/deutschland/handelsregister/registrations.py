@@ -3,7 +3,7 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from deutschland import module_config, Config
+from deutschland.config import module_config, Config
 
 
 class Registrations:

@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import dateparser
 import requests
 
-from deutschland import module_config, Config
+from deutschland.config import module_config, Config
 
 
 class PublicationDetail:

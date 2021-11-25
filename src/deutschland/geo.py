@@ -3,7 +3,7 @@ from typing import List, Dict
 import requests
 import mapbox_vector_tile
 
-from deutschland import Config, module_config
+from deutschland.config import Config, module_config
 
 
 class Geo:

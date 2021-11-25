@@ -1,9 +1,9 @@
 import datetime
+
 from deutschland.bundesanzeiger import Bundesanzeiger
-from deutschland.handelsregister import Handelsregister
 from deutschland.bundesnetzagentur import Rufzeichen
 from deutschland.bundeswahlleiter import Bundeswahlleiter
-
+from deutschland.handelsregister import Handelsregister
 from deutschland.handelsregister.registrations import Registrations
 
 

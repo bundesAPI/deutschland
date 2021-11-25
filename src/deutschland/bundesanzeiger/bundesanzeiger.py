@@ -1,8 +1,7 @@
 from io import BytesIO
-import requests
 
 import dateparser
-
+import requests
 from bs4 import BeautifulSoup
 
 from deutschland.config import Config, module_config

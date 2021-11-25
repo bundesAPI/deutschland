@@ -19,9 +19,11 @@ from deutschland.jobsuche.api_client import ApiClient
 from deutschland.jobsuche.configuration import Configuration
 
 # import exceptions
-from deutschland.jobsuche.exceptions import OpenApiException
-from deutschland.jobsuche.exceptions import ApiAttributeError
-from deutschland.jobsuche.exceptions import ApiTypeError
-from deutschland.jobsuche.exceptions import ApiValueError
-from deutschland.jobsuche.exceptions import ApiKeyError
-from deutschland.jobsuche.exceptions import ApiException
+from deutschland.jobsuche.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

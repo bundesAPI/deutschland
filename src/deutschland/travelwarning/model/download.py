@@ -11,6 +11,7 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
+from deutschland.travelwarning.exceptions import ApiAttributeError
 from deutschland.travelwarning.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
@@ -25,8 +26,8 @@ from deutschland.travelwarning.model_utils import (  # noqa: F401
     none_type,
     validate_get_composed_info,
 )
+
 from ..model_utils import OpenApiModel
-from deutschland.travelwarning.exceptions import ApiAttributeError
 
 
 class Download(ModelNormal):

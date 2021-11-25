@@ -19,9 +19,11 @@ from deutschland.risikogebiete.api_client import ApiClient
 from deutschland.risikogebiete.configuration import Configuration
 
 # import exceptions
-from deutschland.risikogebiete.exceptions import OpenApiException
-from deutschland.risikogebiete.exceptions import ApiAttributeError
-from deutschland.risikogebiete.exceptions import ApiTypeError
-from deutschland.risikogebiete.exceptions import ApiValueError
-from deutschland.risikogebiete.exceptions import ApiKeyError
-from deutschland.risikogebiete.exceptions import ApiException
+from deutschland.risikogebiete.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

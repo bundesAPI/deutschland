@@ -19,9 +19,11 @@ from deutschland.strahlenschutz.api_client import ApiClient
 from deutschland.strahlenschutz.configuration import Configuration
 
 # import exceptions
-from deutschland.strahlenschutz.exceptions import OpenApiException
-from deutschland.strahlenschutz.exceptions import ApiAttributeError
-from deutschland.strahlenschutz.exceptions import ApiTypeError
-from deutschland.strahlenschutz.exceptions import ApiValueError
-from deutschland.strahlenschutz.exceptions import ApiKeyError
-from deutschland.strahlenschutz.exceptions import ApiException
+from deutschland.strahlenschutz.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

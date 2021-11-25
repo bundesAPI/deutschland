@@ -1,6 +1,7 @@
-from bs4 import BeautifulSoup, element
-from typing import Tuple
 import re
+from typing import Tuple
+
+from bs4 import BeautifulSoup, element
 
 
 class VerenaExtractor:

@@ -8,25 +8,25 @@
 """
 
 
-import json
 import atexit
-import mimetypes
-from multiprocessing.pool import ThreadPool
 import io
+import json
+import mimetypes
 import os
 import re
 import typing
+from multiprocessing.pool import ThreadPool
 from urllib.parse import quote
-from urllib3.fields import RequestField
 
+from urllib3.fields import RequestField
 
 from deutschland.destatis import rest
 from deutschland.destatis.configuration import Configuration
-from deutschland.destatis.exceptions import ApiTypeError, ApiValueError, ApiException
+from deutschland.destatis.exceptions import ApiException, ApiTypeError, ApiValueError
 from deutschland.destatis.model_utils import (
+    ModelComposed,
     ModelNormal,
     ModelSimple,
-    ModelComposed,
     check_allowed_values,
     check_validations,
     date,

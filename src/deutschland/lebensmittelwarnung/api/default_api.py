@@ -11,7 +11,10 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.lebensmittelwarnung.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.lebensmittelwarnung.api_client import ApiClient
+from deutschland.lebensmittelwarnung.api_client import Endpoint as _Endpoint
+from deutschland.lebensmittelwarnung.model.inline_object import InlineObject
+from deutschland.lebensmittelwarnung.model.response import Response
 from deutschland.lebensmittelwarnung.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -21,8 +24,6 @@ from deutschland.lebensmittelwarnung.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
-from deutschland.lebensmittelwarnung.model.inline_object import InlineObject
-from deutschland.lebensmittelwarnung.model.response import Response
 
 
 class DefaultApi(object):

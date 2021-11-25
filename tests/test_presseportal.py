@@ -1,5 +1,4 @@
-from deutschland.presseportal import PresseportalApi
-from deutschland.presseportal import Company, Entity, Story
+from deutschland.presseportal import Company, Entity, PresseportalApi, Story
 
 presseportal = PresseportalApi("YOUR_KEY_HERE")
 

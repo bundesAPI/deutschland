@@ -1,6 +1,7 @@
+import json
+
 from deutschland.verena.verenadownloader import VerenaDownloader
 from deutschland.verena.verenaextractor import VerenaExtractor
-import json
 
 
 class Verena:

@@ -19,9 +19,11 @@ from deutschland.zoll.api_client import ApiClient
 from deutschland.zoll.configuration import Configuration
 
 # import exceptions
-from deutschland.zoll.exceptions import OpenApiException
-from deutschland.zoll.exceptions import ApiAttributeError
-from deutschland.zoll.exceptions import ApiTypeError
-from deutschland.zoll.exceptions import ApiValueError
-from deutschland.zoll.exceptions import ApiKeyError
-from deutschland.zoll.exceptions import ApiException
+from deutschland.zoll.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

@@ -1,11 +1,12 @@
-import requests
 import csv
 import io
 import zipfile
-import pandas
-import numpy as np
 from itertools import repeat, zip_longest
-from more_itertools import take, consume
+
+import numpy as np
+import pandas
+import requests
+from more_itertools import consume, take
 
 
 class Bundeswahlleiter:

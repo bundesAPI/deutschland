@@ -11,7 +11,13 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.polizei_brandenburg.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.polizei_brandenburg.api_client import ApiClient
+from deutschland.polizei_brandenburg.api_client import Endpoint as _Endpoint
+from deutschland.polizei_brandenburg.model.news import News
+from deutschland.polizei_brandenburg.model.pegel import Pegel
+from deutschland.polizei_brandenburg.model.reviere import Reviere
+from deutschland.polizei_brandenburg.model.verkehr import Verkehr
+from deutschland.polizei_brandenburg.model.waldbrand import Waldbrand
 from deutschland.polizei_brandenburg.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -21,11 +27,6 @@ from deutschland.polizei_brandenburg.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
-from deutschland.polizei_brandenburg.model.news import News
-from deutschland.polizei_brandenburg.model.pegel import Pegel
-from deutschland.polizei_brandenburg.model.reviere import Reviere
-from deutschland.polizei_brandenburg.model.verkehr import Verkehr
-from deutschland.polizei_brandenburg.model.waldbrand import Waldbrand
 
 
 class DefaultApi(object):

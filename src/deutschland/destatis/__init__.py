@@ -19,9 +19,11 @@ from deutschland.destatis.api_client import ApiClient
 from deutschland.destatis.configuration import Configuration
 
 # import exceptions
-from deutschland.destatis.exceptions import OpenApiException
-from deutschland.destatis.exceptions import ApiAttributeError
-from deutschland.destatis.exceptions import ApiTypeError
-from deutschland.destatis.exceptions import ApiValueError
-from deutschland.destatis.exceptions import ApiKeyError
-from deutschland.destatis.exceptions import ApiException
+from deutschland.destatis.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

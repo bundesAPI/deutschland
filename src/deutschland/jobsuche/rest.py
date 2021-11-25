@@ -19,13 +19,12 @@ import urllib3
 
 from deutschland.jobsuche.exceptions import (
     ApiException,
-    UnauthorizedException,
+    ApiValueError,
     ForbiddenException,
     NotFoundException,
     ServiceException,
-    ApiValueError,
+    UnauthorizedException,
 )
-
 
 logger = logging.getLogger(__name__)
 

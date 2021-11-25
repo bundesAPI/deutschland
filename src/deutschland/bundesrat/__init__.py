@@ -19,9 +19,11 @@ from deutschland.bundesrat.api_client import ApiClient
 from deutschland.bundesrat.configuration import Configuration
 
 # import exceptions
-from deutschland.bundesrat.exceptions import OpenApiException
-from deutschland.bundesrat.exceptions import ApiAttributeError
-from deutschland.bundesrat.exceptions import ApiTypeError
-from deutschland.bundesrat.exceptions import ApiValueError
-from deutschland.bundesrat.exceptions import ApiKeyError
-from deutschland.bundesrat.exceptions import ApiException
+from deutschland.bundesrat.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

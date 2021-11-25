@@ -1,11 +1,11 @@
 from datetime import datetime
 from typing import Dict
 
-from bs4 import BeautifulSoup
 import dateparser
 import requests
+from bs4 import BeautifulSoup
 
-from deutschland.config import module_config, Config
+from deutschland.config import Config, module_config
 
 
 class PublicationDetail:

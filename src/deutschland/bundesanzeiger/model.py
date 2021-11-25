@@ -1,9 +1,7 @@
-from tensorflow import keras
-
-import tensorflow.keras.backend as K
-
 import numpy as np
+import tensorflow.keras.backend as K
 from PIL import Image
+from tensorflow import keras
 
 
 def load_image_arr(fp):

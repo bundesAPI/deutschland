@@ -19,9 +19,11 @@ from deutschland.dwd.api_client import ApiClient
 from deutschland.dwd.configuration import Configuration
 
 # import exceptions
-from deutschland.dwd.exceptions import OpenApiException
-from deutschland.dwd.exceptions import ApiAttributeError
-from deutschland.dwd.exceptions import ApiTypeError
-from deutschland.dwd.exceptions import ApiValueError
-from deutschland.dwd.exceptions import ApiKeyError
-from deutschland.dwd.exceptions import ApiException
+from deutschland.dwd.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

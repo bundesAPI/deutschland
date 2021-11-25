@@ -1,7 +1,7 @@
+from pprint import pprint
+
 from deutschland import autobahn
 from deutschland.autobahn.api import default_api
-
-from pprint import pprint
 
 autobahn_api_instance = default_api.DefaultApi()
 

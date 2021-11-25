@@ -8,25 +8,25 @@
 """
 
 
-import json
 import atexit
-import mimetypes
-from multiprocessing.pool import ThreadPool
 import io
+import json
+import mimetypes
 import os
 import re
 import typing
+from multiprocessing.pool import ThreadPool
 from urllib.parse import quote
-from urllib3.fields import RequestField
 
+from urllib3.fields import RequestField
 
 from deutschland.nina import rest
 from deutschland.nina.configuration import Configuration
-from deutschland.nina.exceptions import ApiTypeError, ApiValueError, ApiException
+from deutschland.nina.exceptions import ApiException, ApiTypeError, ApiValueError
 from deutschland.nina.model_utils import (
+    ModelComposed,
     ModelNormal,
     ModelSimple,
-    ModelComposed,
     check_allowed_values,
     check_validations,
     date,

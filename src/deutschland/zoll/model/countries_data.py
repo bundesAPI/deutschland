@@ -11,8 +11,9 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.zoll.model_utils import (  # noqa: F401
-    ApiTypeError,
+from deutschland.zoll.exceptions import ApiAttributeError
+from deutschland.zoll.model_utils import ApiTypeError  # noqa: F401
+from deutschland.zoll.model_utils import (
     ModelComposed,
     ModelNormal,
     ModelSimple,
@@ -25,8 +26,8 @@ from deutschland.zoll.model_utils import (  # noqa: F401
     none_type,
     validate_get_composed_info,
 )
+
 from ..model_utils import OpenApiModel
-from deutschland.zoll.exceptions import ApiAttributeError
 
 
 def lazy_import():

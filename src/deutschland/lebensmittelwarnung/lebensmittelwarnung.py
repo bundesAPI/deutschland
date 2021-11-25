@@ -1,7 +1,8 @@
-from bs4.element import PageElement
+from typing import Dict, List
+
 import requests
 from bs4 import BeautifulSoup
-from typing import List, Dict
+from bs4.element import PageElement
 
 
 class WarningFeedUrl:

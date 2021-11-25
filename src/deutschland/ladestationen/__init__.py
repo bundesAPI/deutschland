@@ -19,9 +19,11 @@ from deutschland.ladestationen.api_client import ApiClient
 from deutschland.ladestationen.configuration import Configuration
 
 # import exceptions
-from deutschland.ladestationen.exceptions import OpenApiException
-from deutschland.ladestationen.exceptions import ApiAttributeError
-from deutschland.ladestationen.exceptions import ApiTypeError
-from deutschland.ladestationen.exceptions import ApiValueError
-from deutschland.ladestationen.exceptions import ApiKeyError
-from deutschland.ladestationen.exceptions import ApiException
+from deutschland.ladestationen.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

@@ -8,25 +8,25 @@
 """
 
 
-import json
 import atexit
-import mimetypes
-from multiprocessing.pool import ThreadPool
 import io
+import json
+import mimetypes
 import os
 import re
 import typing
+from multiprocessing.pool import ThreadPool
 from urllib.parse import quote
-from urllib3.fields import RequestField
 
+from urllib3.fields import RequestField
 
 from deutschland.smard import rest
 from deutschland.smard.configuration import Configuration
-from deutschland.smard.exceptions import ApiTypeError, ApiValueError, ApiException
+from deutschland.smard.exceptions import ApiException, ApiTypeError, ApiValueError
 from deutschland.smard.model_utils import (
+    ModelComposed,
     ModelNormal,
     ModelSimple,
-    ModelComposed,
     check_allowed_values,
     check_validations,
     date,

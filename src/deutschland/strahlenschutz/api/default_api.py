@@ -11,7 +11,12 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.strahlenschutz.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.strahlenschutz.api_client import ApiClient
+from deutschland.strahlenschutz.api_client import Endpoint as _Endpoint
+from deutschland.strahlenschutz.model.inline_response200 import InlineResponse200
+from deutschland.strahlenschutz.model.inline_response2001 import InlineResponse2001
+from deutschland.strahlenschutz.model.inline_response2002 import InlineResponse2002
+from deutschland.strahlenschutz.model.statistics import Statistics
 from deutschland.strahlenschutz.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -21,10 +26,6 @@ from deutschland.strahlenschutz.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
-from deutschland.strahlenschutz.model.inline_response200 import InlineResponse200
-from deutschland.strahlenschutz.model.inline_response2001 import InlineResponse2001
-from deutschland.strahlenschutz.model.inline_response2002 import InlineResponse2002
-from deutschland.strahlenschutz.model.statistics import Statistics
 
 
 class DefaultApi(object):

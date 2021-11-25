@@ -1,9 +1,9 @@
 from datetime import date
 
-from deutschland.config import module_config, Config
-from deutschland.handelsregister.registrations import Registrations
-from deutschland.handelsregister.publications import Publications
+from deutschland.config import Config, module_config
 from deutschland.handelsregister.publication_detail import PublicationDetail
+from deutschland.handelsregister.publications import Publications
+from deutschland.handelsregister.registrations import Registrations
 
 
 class Handelsregister:

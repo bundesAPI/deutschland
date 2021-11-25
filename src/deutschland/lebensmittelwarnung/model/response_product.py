@@ -11,6 +11,7 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
+from deutschland.lebensmittelwarnung.exceptions import ApiAttributeError
 from deutschland.lebensmittelwarnung.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
@@ -25,8 +26,8 @@ from deutschland.lebensmittelwarnung.model_utils import (  # noqa: F401
     none_type,
     validate_get_composed_info,
 )
+
 from ..model_utils import OpenApiModel
-from deutschland.lebensmittelwarnung.exceptions import ApiAttributeError
 
 
 class ResponseProduct(ModelNormal):

@@ -11,7 +11,11 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.jobsuche.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.jobsuche.api_client import ApiClient
+from deutschland.jobsuche.api_client import Endpoint as _Endpoint
+from deutschland.jobsuche.model.job_application_details import JobApplicationDetails
+from deutschland.jobsuche.model.job_details import JobDetails
+from deutschland.jobsuche.model.job_search_response import JobSearchResponse
 from deutschland.jobsuche.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -21,9 +25,6 @@ from deutschland.jobsuche.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
-from deutschland.jobsuche.model.job_application_details import JobApplicationDetails
-from deutschland.jobsuche.model.job_details import JobDetails
-from deutschland.jobsuche.model.job_search_response import JobSearchResponse
 
 
 class DefaultApi(object):

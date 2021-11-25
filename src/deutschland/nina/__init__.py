@@ -19,9 +19,11 @@ from deutschland.nina.api_client import ApiClient
 from deutschland.nina.configuration import Configuration
 
 # import exceptions
-from deutschland.nina.exceptions import OpenApiException
-from deutschland.nina.exceptions import ApiAttributeError
-from deutschland.nina.exceptions import ApiTypeError
-from deutschland.nina.exceptions import ApiValueError
-from deutschland.nina.exceptions import ApiKeyError
-from deutschland.nina.exceptions import ApiException
+from deutschland.nina.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

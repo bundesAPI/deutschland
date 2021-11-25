@@ -11,16 +11,8 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.mudab.api_client import ApiClient, Endpoint as _Endpoint
-from deutschland.mudab.model_utils import (  # noqa: F401
-    check_allowed_values,
-    check_validations,
-    date,
-    datetime,
-    file_type,
-    none_type,
-    validate_and_convert_types,
-)
+from deutschland.mudab.api_client import ApiClient
+from deutschland.mudab.api_client import Endpoint as _Endpoint
 from deutschland.mudab.model.filter_request import FilterRequest
 from deutschland.mudab.model.inline_response200 import InlineResponse200
 from deutschland.mudab.model.inline_response2001 import InlineResponse2001
@@ -31,6 +23,15 @@ from deutschland.mudab.model.inline_response2005 import InlineResponse2005
 from deutschland.mudab.model.inline_response2006 import InlineResponse2006
 from deutschland.mudab.model.inline_response2007 import InlineResponse2007
 from deutschland.mudab.model.inline_response2008 import InlineResponse2008
+from deutschland.mudab.model_utils import check_allowed_values  # noqa: F401
+from deutschland.mudab.model_utils import (
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types,
+)
 
 
 class DefaultApi(object):

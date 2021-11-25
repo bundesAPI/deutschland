@@ -11,7 +11,12 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.travelwarning.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.travelwarning.api_client import ApiClient
+from deutschland.travelwarning.api_client import Endpoint as _Endpoint
+from deutschland.travelwarning.model.response_address import ResponseAddress
+from deutschland.travelwarning.model.response_download import ResponseDownload
+from deutschland.travelwarning.model.response_warning import ResponseWarning
+from deutschland.travelwarning.model.response_warnings import ResponseWarnings
 from deutschland.travelwarning.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -21,10 +26,6 @@ from deutschland.travelwarning.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
-from deutschland.travelwarning.model.response_address import ResponseAddress
-from deutschland.travelwarning.model.response_download import ResponseDownload
-from deutschland.travelwarning.model.response_warning import ResponseWarning
-from deutschland.travelwarning.model.response_warnings import ResponseWarnings
 
 
 class DefaultApi(object):

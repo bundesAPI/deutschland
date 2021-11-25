@@ -11,7 +11,8 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.bundesrat.api_client import ApiClient, Endpoint as _Endpoint
+from deutschland.bundesrat.api_client import ApiClient
+from deutschland.bundesrat.api_client import Endpoint as _Endpoint
 from deutschland.bundesrat.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,

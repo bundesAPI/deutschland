@@ -1,9 +1,9 @@
 from typing import Dict
-import requests
 
+import requests
 from bs4 import BeautifulSoup
 
-from deutschland.config import module_config, Config
+from deutschland.config import Config, module_config
 
 
 class Registrations:

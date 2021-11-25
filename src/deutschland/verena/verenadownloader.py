@@ -1,7 +1,8 @@
-import requests
 import math
+from typing import List, Tuple
+
+import requests
 from bs4 import BeautifulSoup
-from typing import Tuple, List
 
 
 class VerenaDownloader:

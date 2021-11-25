@@ -11,9 +11,13 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from deutschland.nina.api_client import ApiClient, Endpoint as _Endpoint
-from deutschland.nina.model_utils import (  # noqa: F401
-    check_allowed_values,
+from deutschland.nina.api_client import ApiClient
+from deutschland.nina.api_client import Endpoint as _Endpoint
+from deutschland.nina.model.ags_covid_rules import AGSCovidRules
+from deutschland.nina.model.ags_overview_result import AGSOverviewResult
+from deutschland.nina.model.map_warnings import MapWarnings
+from deutschland.nina.model_utils import check_allowed_values  # noqa: F401
+from deutschland.nina.model_utils import (
     check_validations,
     date,
     datetime,
@@ -21,9 +25,6 @@ from deutschland.nina.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
-from deutschland.nina.model.ags_covid_rules import AGSCovidRules
-from deutschland.nina.model.ags_overview_result import AGSOverviewResult
-from deutschland.nina.model.map_warnings import MapWarnings
 
 
 class DefaultApi(object):

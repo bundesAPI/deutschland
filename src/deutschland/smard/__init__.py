@@ -19,9 +19,11 @@ from deutschland.smard.api_client import ApiClient
 from deutschland.smard.configuration import Configuration
 
 # import exceptions
-from deutschland.smard.exceptions import OpenApiException
-from deutschland.smard.exceptions import ApiAttributeError
-from deutschland.smard.exceptions import ApiTypeError
-from deutschland.smard.exceptions import ApiValueError
-from deutschland.smard.exceptions import ApiKeyError
-from deutschland.smard.exceptions import ApiException
+from deutschland.smard.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

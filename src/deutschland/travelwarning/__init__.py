@@ -19,9 +19,11 @@ from deutschland.travelwarning.api_client import ApiClient
 from deutschland.travelwarning.configuration import Configuration
 
 # import exceptions
-from deutschland.travelwarning.exceptions import OpenApiException
-from deutschland.travelwarning.exceptions import ApiAttributeError
-from deutschland.travelwarning.exceptions import ApiTypeError
-from deutschland.travelwarning.exceptions import ApiValueError
-from deutschland.travelwarning.exceptions import ApiKeyError
-from deutschland.travelwarning.exceptions import ApiException
+from deutschland.travelwarning.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

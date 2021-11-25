@@ -1,7 +1,8 @@
 import math
-from typing import List, Dict
-import requests
+from typing import Dict, List
+
 import mapbox_vector_tile
+import requests
 
 from deutschland.config import Config, module_config
 

@@ -8,25 +8,25 @@
 """
 
 
-import json
 import atexit
-import mimetypes
-from multiprocessing.pool import ThreadPool
 import io
+import json
+import mimetypes
 import os
 import re
 import typing
+from multiprocessing.pool import ThreadPool
 from urllib.parse import quote
-from urllib3.fields import RequestField
 
+from urllib3.fields import RequestField
 
 from deutschland.bundesrat import rest
 from deutschland.bundesrat.configuration import Configuration
-from deutschland.bundesrat.exceptions import ApiTypeError, ApiValueError, ApiException
+from deutschland.bundesrat.exceptions import ApiException, ApiTypeError, ApiValueError
 from deutschland.bundesrat.model_utils import (
+    ModelComposed,
     ModelNormal,
     ModelSimple,
-    ModelComposed,
     check_allowed_values,
     check_validations,
     date,

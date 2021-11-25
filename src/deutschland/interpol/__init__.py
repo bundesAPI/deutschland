@@ -19,9 +19,11 @@ from deutschland.interpol.api_client import ApiClient
 from deutschland.interpol.configuration import Configuration
 
 # import exceptions
-from deutschland.interpol.exceptions import OpenApiException
-from deutschland.interpol.exceptions import ApiAttributeError
-from deutschland.interpol.exceptions import ApiTypeError
-from deutschland.interpol.exceptions import ApiValueError
-from deutschland.interpol.exceptions import ApiKeyError
-from deutschland.interpol.exceptions import ApiException
+from deutschland.interpol.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

@@ -19,9 +19,11 @@ from deutschland.mudab.api_client import ApiClient
 from deutschland.mudab.configuration import Configuration
 
 # import exceptions
-from deutschland.mudab.exceptions import OpenApiException
-from deutschland.mudab.exceptions import ApiAttributeError
-from deutschland.mudab.exceptions import ApiTypeError
-from deutschland.mudab.exceptions import ApiValueError
-from deutschland.mudab.exceptions import ApiKeyError
-from deutschland.mudab.exceptions import ApiException
+from deutschland.mudab.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

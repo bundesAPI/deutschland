@@ -19,9 +19,11 @@ from deutschland.polizei_brandenburg.api_client import ApiClient
 from deutschland.polizei_brandenburg.configuration import Configuration
 
 # import exceptions
-from deutschland.polizei_brandenburg.exceptions import OpenApiException
-from deutschland.polizei_brandenburg.exceptions import ApiAttributeError
-from deutschland.polizei_brandenburg.exceptions import ApiTypeError
-from deutschland.polizei_brandenburg.exceptions import ApiValueError
-from deutschland.polizei_brandenburg.exceptions import ApiKeyError
-from deutschland.polizei_brandenburg.exceptions import ApiException
+from deutschland.polizei_brandenburg.exceptions import (
+    ApiAttributeError,
+    ApiException,
+    ApiKeyError,
+    ApiTypeError,
+    ApiValueError,
+    OpenApiException,
+)

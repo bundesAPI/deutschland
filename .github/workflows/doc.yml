@@ -1,0 +1,23 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+
+      - name: "generate sphinx-documentation"
+        run: |
+          pip install sphinx m2r2
+          cd docs-sphinx
+          sphinx-apidoc -o source/ ../src/deutschland
+          make html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: "documentation"
+          path: ${{ github.workspace }}/sphinx-docs/_build
+# TODO: maybe commit source-files

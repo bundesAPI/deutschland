@@ -35,6 +35,7 @@ extensions = ['m2r2', 'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.a
 
 source_extensions = ['.rst', '.md']
 
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 

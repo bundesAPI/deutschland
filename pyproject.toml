@@ -28,6 +28,7 @@ more-itertools = "^8.10.0"
 de-autobahn = {version = "^1.0.4", optional = true}
 de-dwd = {version = "^1.0.1", optional = true}
 pypresseportal = {version= "^0.1", optional = true}
+de-nina = {version= "^1.0.1", optional = true}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
@@ -40,6 +41,7 @@ pytest = "^6.2.4"
 autobahn = ["de-autobahn"]
 dwd = ["de-dwd"]
 presseportal = ["pypresseportal"]
+nina = ["de-nina"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

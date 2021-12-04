@@ -23,10 +23,13 @@ tensorflow = "^2.5.0"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
 lxml = "^4.6.3"
-pypresseportal = "^0.1"
 pandas = "^1.3.3"
 more-itertools = "^8.10.0"
 de-autobahn = {version = "^1.0.4", optional = true}
+de-dwd = {version = "^1.0.1", optional = true}
+pypresseportal = {version= "^0.1", optional = true}
+de-nina = {version= "^1.0.1", optional = true}
+de-ladestationen = {version= "^1.0.4", optional = true}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
@@ -37,6 +40,10 @@ pytest = "^6.2.4"
 
 [tool.poetry.extras]
 autobahn = ["de-autobahn"]
+dwd = ["de-dwd"]
+presseportal = ["pypresseportal"]
+nina = ["de-nina"]
+ladestationen = ["de-ladestationen"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -11,7 +11,7 @@ packages = [
     { include = "deutschland", from = "src" },
 ]
 [tool.poetry.dependencies]
-python = "^3.7.1"
+python = ">=3.6.1,<3.10"
 Shapely = "^1.8.0"
 mapbox-vector-tile = "^1.2.1"
 requests = "^2.26.0"
@@ -19,17 +19,32 @@ dateparser = "^1.0.0"
 gql = "^2.0.0"
 boto3 = "^1.18.9"
 slugify = "^0.0.1"
-tensorflow = "^2.5.0"
+tensorflow = ">= 2.5.0"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
 lxml = "^4.6.3"
-pandas = "^1.3.3"
 more-itertools = "^8.10.0"
+pandas = ">= 1.0.0"
 de-autobahn = {version = "^1.0.4", optional = true}
 de-dwd = {version = "^1.0.1", optional = true}
-pypresseportal = {version= "^0.1", optional = true}
+pypresseportal = {version= "^0.1"}
 de-nina = {version= "^1.0.1", optional = true}
-de-ladestationen = {version= "^1.0.4", optional = true}
+de-bundesrat = {version="^0.1.0",optional=true}
+de-bundestag = {version="^0.1.0",optional=true}
+de-jobsuche = {version="^0.1.0",optional=true}
+de-interpol = {version="^0.1.0",optional=true}
+de-ladestationen = {version="^1.0.5",optional=true}
+de-mudab = {version="^0.1.0",optional=true}
+de-risikogebiete = {version= "^0.1.0", optional = true}
+de-smard = {version= "^0.1.0", optional = true}
+de-strahlenschutz = {version= "^1.0.0", optional = true}
+de-travelwarning= {version= "^0.1.0", optional = true}
+de-zoll= {version= "^0.1.0", optional = true}
+de-polizei-brandenburg= {version= "^0.1.0", optional = true}
+de-pegel-online = {version= "^0.1.0", optional = true}
+de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
+# Tests are for non openapi version of this package. Leave out for now.
+#de-lebensmittelwarnung = {version="^0.1.0",optional=true}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
@@ -44,7 +59,43 @@ dwd = ["de-dwd"]
 presseportal = ["pypresseportal"]
 nina = ["de-nina"]
 ladestationen = ["de-ladestationen"]
+bundesrat =  ["de-bundesrat"]
+bundestag =  ["de-bundestag"]
+jobsuche =  ["de-jobsuche"]
+interpol =  ["de-interpol"]
+mudab =  ["de-mudab"]
+risikogebiete =  ["de-risikogebiete"]
+smard =  ["de-smard"]
+strahlenschutz =  ["de-strahlenschutz"]
+travelwarning=  ["de-travelwarning"]
+polizei_brandenburg=  ["de-polizei-brandenburg"]
+bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
+pegel_online=  ["de-pegel-online"]
+zoll=  ["de-zoll"]
+all = ["de-autobahn","de-dwd",
+    "pypresseportal","de-nina","de-ladestationen","de-bundesrat","de-bundestag","de-jobsuche","de-interpol",
+    "de-ladestationen","de-mudab","de-risikogebiete","de-smard","de-strahlenschutz","de-travelwarning",
+    "de-polizei-brandenburg", "de-pegel-online","de-zoll","de-bundestag-lobbyregister"]
+#lebensmittelwarnung =  ["de-lebensmittelwarnung"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py37
+isolated_build = True
+
+[tox:.package]
+basepython = python3
+
+[testenv]
+deps = pytest
+usedevelop = true
+extras =
+    all
+commands =
+    pytest
+"""

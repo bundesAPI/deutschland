@@ -23,3 +23,5 @@ def test_all_imports():
     from deutschland.travelwarning.apis import DefaultApi
     from deutschland.verena import Verena
     from deutschland.zoll.apis import DefaultApi
+    from deutschland.pegel_online.apis import WaterApi
+    from deutschland.bundestag_lobbyregister.apis import DefaultApi

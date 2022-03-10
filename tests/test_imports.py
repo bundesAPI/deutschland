@@ -4,6 +4,7 @@ def test_all_imports():
     from deutschland.bundesnetzagentur import Rufzeichen
     from deutschland.bundesrat.apis import DefaultApi
     from deutschland.bundestag.apis import DefaultApi
+    from deutschland.bundestag_lobbyregister.apis import DefaultApi
     from deutschland.bundeswahlleiter import Bundeswahlleiter
     from deutschland.destatis.apis import DefaultApi
     from deutschland.dwd.apis import DefaultApi
@@ -15,6 +16,7 @@ def test_all_imports():
     from deutschland.lebensmittelwarnung.apis import DefaultApi
     from deutschland.mudab.apis import DefaultApi
     from deutschland.nina.apis import DefaultApi
+    from deutschland.pegel_online.apis import WaterApi
     from deutschland.polizei_brandenburg.apis import DefaultApi
     from deutschland.presseportal import PresseportalApi
     from deutschland.risikogebiete.apis import DefaultApi
@@ -23,5 +25,3 @@ def test_all_imports():
     from deutschland.travelwarning.apis import DefaultApi
     from deutschland.verena import Verena
     from deutschland.zoll.apis import DefaultApi
-    from deutschland.pegel_online.apis import WaterApi
-    from deutschland.bundestag_lobbyregister.apis import DefaultApi

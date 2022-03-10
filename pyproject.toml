@@ -99,3 +99,6 @@ extras =
 commands =
     pytest
 """
+
+[tool.isort]
+profile = "black"

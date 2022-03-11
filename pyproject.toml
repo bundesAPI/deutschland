@@ -10,6 +10,7 @@ include = ["assets/model.h5"]
 packages = [
     { include = "deutschland", from = "src" },
 ]
+
 [tool.poetry.dependencies]
 python = ">=3.6.2,<3.10"
 Shapely = "^1.8.0"

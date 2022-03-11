@@ -7,6 +7,7 @@ def test_all_imports():
     from deutschland.bundestag_lobbyregister.apis import DefaultApi
     from deutschland.bundeswahlleiter import Bundeswahlleiter
     from deutschland.destatis.apis import DefaultApi
+    from deutschland.dip_bundestag.apis import DefaultApi
     from deutschland.dwd.apis import DefaultApi
     from deutschland.handelsregister import Handelsregister
     from deutschland.handelsregister.registrations import Registrations

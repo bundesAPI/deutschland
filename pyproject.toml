@@ -43,6 +43,7 @@ de-zoll= {version= "^0.1.0", optional = true}
 de-polizei-brandenburg= {version= "^0.1.0", optional = true}
 de-pegel-online = {version= "^0.1.0", optional = true}
 de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
+de-dip-bundestag = {version= "^0.1.0", optional = true}
 # Tests are for non openapi version of this package. Leave out for now.
 #de-lebensmittelwarnung = {version="^0.1.0",optional=true}
 
@@ -70,12 +71,13 @@ strahlenschutz =  ["de-strahlenschutz"]
 travelwarning=  ["de-travelwarning"]
 polizei_brandenburg=  ["de-polizei-brandenburg"]
 bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
+dip_bundestag = ["de-dip-bundestag"]
 pegel_online=  ["de-pegel-online"]
 zoll=  ["de-zoll"]
 all = ["de-autobahn","de-dwd",
     "pypresseportal","de-nina","de-ladestationen","de-bundesrat","de-bundestag","de-jobsuche","de-interpol",
     "de-ladestationen","de-mudab","de-risikogebiete","de-smard","de-strahlenschutz","de-travelwarning",
-    "de-polizei-brandenburg", "de-pegel-online","de-zoll","de-bundestag-lobbyregister"]
+    "de-polizei-brandenburg", "de-pegel-online","de-zoll","de-bundestag-lobbyregister","de-dip-bundestag"]
 #lebensmittelwarnung =  ["de-lebensmittelwarnung"]
 
 [build-system]

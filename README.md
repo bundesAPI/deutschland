@@ -20,7 +20,7 @@ Fetch information about streets, house numbers, building outlines, …
 from deutschland import Geo
 geo = Geo()
 # top_right and bottom_left coordinates
-data = geo.fetch([52.530116236589244, 13.426532801586827], 
+data = geo.fetch([52.530116236589244, 13.426532801586827],
                  [52.50876180448243, 13.359631043007212])
 print(data.keys())
 # dict_keys(['Adresse', 'Barrierenlinie', 'Bauwerksflaeche', 'Bauwerkslinie', 'Bauwerkspunkt', 'Besondere_Flaeche', 'Besondere_Linie', 'Besonderer_Punkt', 'Gebaeudeflaeche', 'Gebaeudepunkt', 'Gewaesserflaeche', 'Gewaesserlinie', 'Grenze_Linie', 'Historischer_Punkt', 'Siedlungsflaeche', 'Vegetationslinie', 'Verkehrsflaeche', 'Verkehrslinie', 'Verkehrspunkt', 'Hintergrund'])
@@ -63,7 +63,7 @@ print(hr)
 ## Consumer Protection Data
 
 ### Lebensmittelwarnung
-Get current product warnings provided by the german federal portal lebensmittelwarnung.de. 
+Get current product warnings provided by the german federal portal lebensmittelwarnung.de.
 
 ```python
 from deutschland import Lebensmittelwarnung
@@ -126,7 +126,7 @@ from deutschland.presseportal import PresseportalApi
 
 presseportal = PresseportalApi("YOUR_KEY_HERE")
 
-stories = presseportal.get_stories()    
+stories = presseportal.get_stories()
 ```
 
 ## Auto-Generated API-Clients

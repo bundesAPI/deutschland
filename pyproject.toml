@@ -6,7 +6,7 @@ license = "Apache-2.0"
 authors = ["Lilith Wittmann <mail@lilithwittmann.de>"]
 readme = "README.md"
 repository = "https://github.com/bundesAPI/deutschland"
-include = ["assets/model.h5"]
+include = ["src/deutschland/bundesanzeiger/assets/model.onnx"]
 packages = [
     { include = "deutschland", from = "src" },
 ]

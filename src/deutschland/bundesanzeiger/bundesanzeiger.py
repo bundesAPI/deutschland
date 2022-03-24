@@ -52,11 +52,9 @@ class Bundesanzeiger:
 
         image = BytesIO(image_data)
         image_arr = deutschland.bundesanzeiger.model.load_image_arr(image)
-        image_arr = image_arr.reshape((1, 50, 250, 1))
+        image_arr = image_arr.reshape((1, 50, 250, 1)).astype(np.float32)
 
-        prediction = self.model.run(None, {"captcha": image_arr.astype(np.float32)})[0][
-            0
-        ]
+        prediction = self.model.run(None, {"captcha": image_arr})[0][0]
         prediction_str = deutschland.bundesanzeiger.model.prediction_to_str(prediction)
 
         return prediction_str

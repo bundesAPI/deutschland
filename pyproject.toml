@@ -30,6 +30,7 @@ pypresseportal = {version= "^0.1", optional = true}
 de-nina = {version= "^1.0.1", optional = true}
 de-ladestationen = {version= "^1.0.4", optional = true}
 onnxruntime = "^1.10.0"
+numpy = "~1.21.0"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"

@@ -1,8 +1,8 @@
 from io import BytesIO
 
 import dateparser
-import requests
 import numpy as np
+import requests
 from bs4 import BeautifulSoup
 
 from deutschland.config import Config, module_config
@@ -54,7 +54,9 @@ class Bundesanzeiger:
         image_arr = deutschland.bundesanzeiger.model.load_image_arr(image)
         image_arr = image_arr.reshape((1, 50, 250, 1))
 
-        prediction = self.model.run(None, {"captcha": image_arr.astype(np.float32)})[0][0]
+        prediction = self.model.run(None, {"captcha": image_arr.astype(np.float32)})[0][
+            0
+        ]
         prediction_str = deutschland.bundesanzeiger.model.prediction_to_str(prediction)
 
         return prediction_str

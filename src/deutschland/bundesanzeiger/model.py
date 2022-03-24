@@ -1,7 +1,8 @@
 from pathlib import Path
+
 import numpy as np
-from PIL import Image
 from onnxruntime import InferenceSession
+from PIL import Image
 
 
 def load_image_arr(fp):

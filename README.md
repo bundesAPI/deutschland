@@ -20,7 +20,7 @@ Fetch information about streets, house numbers, building outlines, …
 from deutschland import Geo
 geo = Geo()
 # top_right and bottom_left coordinates
-data = geo.fetch([52.530116236589244, 13.426532801586827], 
+data = geo.fetch([52.530116236589244, 13.426532801586827],
                  [52.50876180448243, 13.359631043007212])
 print(data.keys())
 # dict_keys(['Adresse', 'Barrierenlinie', 'Bauwerksflaeche', 'Bauwerkslinie', 'Bauwerkspunkt', 'Besondere_Flaeche', 'Besondere_Linie', 'Besonderer_Punkt', 'Gebaeudeflaeche', 'Gebaeudepunkt', 'Gewaesserflaeche', 'Gewaesserlinie', 'Grenze_Linie', 'Historischer_Punkt', 'Siedlungsflaeche', 'Vegetationslinie', 'Verkehrsflaeche', 'Verkehrslinie', 'Verkehrspunkt', 'Hintergrund'])
@@ -63,7 +63,7 @@ print(hr)
 ## Consumer Protection Data
 
 ### Lebensmittelwarnung
-Get current product warnings provided by the german federal portal lebensmittelwarnung.de. 
+Get current product warnings provided by the german federal portal lebensmittelwarnung.de.
 
 ```python
 from deutschland import Lebensmittelwarnung
@@ -114,7 +114,7 @@ try:
 except autobahn.ApiException as e:
     print("Exception when calling DefaultApi->get_charging_station: %s\n" % e)
 ```
-For the detailed documentation of this API see [here](./docs/autobahn/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/autobahn/README.md)
 
 
 ## Presseportal
@@ -126,38 +126,38 @@ from deutschland.presseportal import PresseportalApi
 
 presseportal = PresseportalApi("YOUR_KEY_HERE")
 
-stories = presseportal.get_stories()    
+stories = presseportal.get_stories()
 ```
 
 ## Auto-Generated API-Clients
 
 ### bundesrat
-For the detailed documentation of this API see [here](./docs/bundesrat/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/bundesrat/README.md)
 ### bundestag
-For the detailed documentation of this API see [here](./docs/bundestag/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/bundestag/README.md)
 ### destatis
-For the detailed documentation of this API see [here](./docs/destatis/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/destatis/README.md)
 ### dwd
-For the detailed documentation of this API see [here](./docs/dwd/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/dwd/README.md)
 ### interpol
-For the detailed documentation of this API see [here](./docs/interpol/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/interpol/README.md)
 ### jobsuche
-For the detailed documentation of this API see [here](./docs/jobsuche/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/jobsuche/README.md)
 ### ladestationen
-For the detailed documentation of this API see [here](./docs/ladestationen/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/ladestationen/README.md)
 ### mudab
-For the detailed documentation of this API see [here](./docs/mudab/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/mudab/README.md)
 ### nina
-For the detailed documentation of this API see [here](./docs/nina/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/nina/README.md)
 ### polizei_brandenburg
-For the detailed documentation of this API see [here](./docs/polizei_brandenburg/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/polizei_brandenburg/README.md)
 ### risikogebiete
-For the detailed documentation of this API see [here](./docs/risikogebiete/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/risikogebiete/README.md)
 ### smard
-For the detailed documentation of this API see [here](./docs/smard/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/smard/README.md)
 ### strahlenschutz
-For the detailed documentation of this API see [here](./docs/strahlenschutz/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/strahlenschutz/README.md)
 ### travelwarning
-For the detailed documentation of this API see [here](./docs/travelwarning/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/travelwarning/README.md)
 ### zoll
-For the detailed documentation of this API see [here](./docs/zoll/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/zoll/README.md)

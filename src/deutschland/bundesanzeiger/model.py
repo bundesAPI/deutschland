@@ -1,7 +1,8 @@
+from pathlib import Path
+
 import numpy as np
-import tensorflow.keras.backend as K
+from onnxruntime import InferenceSession
 from PIL import Image
-from tensorflow import keras
 
 
 def load_image_arr(fp):
@@ -23,14 +24,6 @@ def prediction_to_str(label):
     return character_indexes_to_str(character_indexes)
 
 
-def my_accuracy(y_true, y_pred):
-    return K.cast(
-        K.all(K.equal(K.argmax(y_true, axis=2), K.argmax(y_pred, axis=2)), axis=1),
-        K.floatx(),
-    )
-
-
 def load_model():
-    return keras.models.load_model(
-        "assets/model.h5", custom_objects={"my_accuracy": my_accuracy}
-    )
+    filepath = Path(__file__).parent / "assets" / "model.onnx"
+    return InferenceSession(str(filepath))

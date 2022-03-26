@@ -6,13 +6,12 @@ license = "Apache-2.0"
 authors = ["Lilith Wittmann <mail@lilithwittmann.de>"]
 readme = "README.md"
 repository = "https://github.com/bundesAPI/deutschland"
-include = ["assets/model.h5"]
+include = ["src/deutschland/bundesanzeiger/assets/model.onnx"]
 packages = [
     { include = "deutschland", from = "src" },
 ]
-
 [tool.poetry.dependencies]
-python = ">=3.6.2,<3.10"
+python = "^3.7.1"
 Shapely = "^1.8.0"
 mapbox-vector-tile = "^1.2.1"
 requests = "^2.26.0"
@@ -20,15 +19,14 @@ dateparser = "^1.0.0"
 gql = "^2.0.0"
 boto3 = "^1.18.9"
 slugify = "^0.0.1"
-tensorflow = ">= 2.5.0"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
 lxml = "^4.6.3"
+pandas = "^1.3.3"
 more-itertools = "^8.10.0"
-pandas = ">= 1.0.0"
 de-autobahn = {version = "^1.0.4", optional = true}
 de-dwd = {version = "^1.0.1", optional = true}
-pypresseportal = {version= "^0.1"}
+pypresseportal = {version= "^0.1", optional = true}
 de-nina = {version= "^1.0.1", optional = true}
 de-bundesrat = {version="^0.1.0",optional=true}
 de-bundestag = {version="^0.1.0",optional=true}
@@ -45,6 +43,8 @@ de-polizei-brandenburg= {version= "^0.1.0", optional = true}
 de-pegel-online = {version= "^0.1.0", optional = true}
 de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
 de-dip-bundestag = {version= "^0.1.0", optional = true}
+onnxruntime = "^1.10.0"
+numpy = "~1.21.0"
 # Tests are for non openapi version of this package. Leave out for now.
 #de-lebensmittelwarnung = {version="^0.1.0",optional=true}
 

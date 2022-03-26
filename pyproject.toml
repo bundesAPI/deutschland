@@ -6,7 +6,7 @@ license = "Apache-2.0"
 authors = ["Lilith Wittmann <mail@lilithwittmann.de>"]
 readme = "README.md"
 repository = "https://github.com/bundesAPI/deutschland"
-include = ["assets/model.h5"]
+include = ["src/deutschland/bundesanzeiger/assets/model.onnx"]
 packages = [
     { include = "deutschland", from = "src" },
 ]
@@ -19,7 +19,6 @@ dateparser = "^1.0.0"
 gql = "^2.0.0"
 boto3 = "^1.18.9"
 slugify = "^0.0.1"
-tensorflow = "^2.5.0"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
 lxml = "^4.6.3"
@@ -30,6 +29,8 @@ de-dwd = {version = "^1.0.1", optional = true}
 pypresseportal = {version= "^0.1", optional = true}
 de-nina = {version= "^1.0.1", optional = true}
 de-ladestationen = {version= "^1.0.4", optional = true}
+onnxruntime = "^1.10.0"
+numpy = "~1.21.0"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"

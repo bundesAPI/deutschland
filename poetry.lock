@@ -33,7 +33,7 @@ tzdata = ["tzdata"]
 
 [[package]]
 name = "beautifulsoup4"
-version = "4.11.0"
+version = "4.11.1"
 description = "Screen-scraping library"
 category = "main"
 optional = false
@@ -75,14 +75,14 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "boto3"
-version = "1.21.36"
+version = "1.21.37"
 description = "The AWS SDK for Python"
 category = "main"
 optional = false
 python-versions = ">= 3.6"
 
 [package.dependencies]
-botocore = ">=1.24.36,<1.25.0"
+botocore = ">=1.24.37,<1.25.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.5.0,<0.6.0"
 
@@ -91,7 +91,7 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.24.36"
+version = "1.24.37"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = false
@@ -325,18 +325,6 @@ version = "1.0.5"
 description = "Bundesnetzagentur: Ladesäulenregister"
 category = "main"
 optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-python-dateutil = "*"
-urllib3 = ">=1.25.3"
-
-[[package]]
-name = "de-lebensmittelwarnung"
-version = "0.1.0"
-description = "Lebensmittelwarnungen API"
-category = "main"
-optional = true
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -1012,7 +1000,7 @@ docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
 
 [extras]
-all = ["de-bundestag-lobbyregister", "de-dip-bundestag", "de-pegel-online", "de-ausbildungssuche", "de-berufssprachkurssuche", "de-coachingangebote", "de-dip-bundestag", "de-entgeltatlas", "de-hochwasserzentralen", "de-lebensmittelwarnung", "de-pflanzenschutzmittelzulassung", "de-studiensuche", "de-tagesschau", "de-weiterbildungssuche"]
+all = ["de-bundestag-lobbyregister", "de-dip-bundestag", "de-pegel-online", "de-ausbildungssuche", "de-berufssprachkurssuche", "de-coachingangebote", "de-dip-bundestag", "de-entgeltatlas", "de-hochwasserzentralen", "de-pflanzenschutzmittelzulassung", "de-studiensuche", "de-tagesschau", "de-weiterbildungssuche"]
 ausbildungssuche = ["de-ausbildungssuche"]
 berufssprachkurssuche = ["de-berufssprachkurssuche"]
 bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
@@ -1020,7 +1008,6 @@ coachingangebote = ["de-coachingangebote"]
 dip_bundestag = ["de-dip-bundestag"]
 entgeltatlas = ["de-entgeltatlas"]
 hochwasserzentralen = ["de-hochwasserzentralen"]
-lebensmittelwarnung = ["de-lebensmittelwarnung"]
 pegel_online = ["de-pegel-online"]
 pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
 studiensuche = ["de-studiensuche"]
@@ -1030,7 +1017,7 @@ weiterbildungssuche = ["de-weiterbildungssuche"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "6127aa89f95798dd93dec435de8c7e8907753ae863d57bf9f802dbebd24690c9"
+content-hash = "ea2ce01b0426b5462fad7f77cc4f299674aab5ac81b90618eedb206b42c0c308"
 
 [metadata.files]
 atomicwrites = [
@@ -1060,20 +1047,20 @@ attrs = [
     {file = "backports.zoneinfo-0.2.1.tar.gz", hash = "sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2"},
 ]
 beautifulsoup4 = [
-    {file = "beautifulsoup4-4.11.0-py3-none-any.whl", hash = "sha256:577b9e1c36d2ada780d807c5622e889d43172466658c2eb239e97296965cdddb"},
-    {file = "beautifulsoup4-4.11.0.tar.gz", hash = "sha256:ac98f868e1cb8eb9932a61be75b4f7018a118a490e7fdb424a74a982430cfcbd"},
+    {file = "beautifulsoup4-4.11.1-py3-none-any.whl", hash = "sha256:58d5c3d29f5a36ffeb94f02f0d786cd53014cf9b3b3951d42e0080d8a9498d30"},
+    {file = "beautifulsoup4-4.11.1.tar.gz", hash = "sha256:ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"},
 ]
 black = [
     {file = "black-21.12b0-py3-none-any.whl", hash = "sha256:a615e69ae185e08fdd73e4715e260e2479c861b5740057fde6e8b4e3b7dd589f"},
     {file = "black-21.12b0.tar.gz", hash = "sha256:77b80f693a569e2e527958459634f18df9b0ba2625ba4e0c2d5da5be42e6f2b3"},
 ]
 boto3 = [
-    {file = "boto3-1.21.36-py3-none-any.whl", hash = "sha256:727e5ec31692620d9de2f88d6c0438fb84002b1a1ad474cc4bd21fc07b2135e9"},
-    {file = "boto3-1.21.36.tar.gz", hash = "sha256:990a4639869313c8bed54a5845088a3dd9f4a0c715ec10a60e57de61879bfd1e"},
+    {file = "boto3-1.21.37-py3-none-any.whl", hash = "sha256:1e845aa92b3ad70b954329b98835135c28b3000e322ff8d3fc46a956bdb6e94b"},
+    {file = "boto3-1.21.37.tar.gz", hash = "sha256:013ba57295f05da141e364191dd46f4086e8fe3eb83a3cd09730eeb684ffbab3"},
 ]
 botocore = [
-    {file = "botocore-1.24.36-py3-none-any.whl", hash = "sha256:391d31768acafea59209a975a698f59f620e01f3bafd6a2a356203eba204bba8"},
-    {file = "botocore-1.24.36.tar.gz", hash = "sha256:a02e3487dc77ac662b417fca0786309b01202494f0679025fc7b0ed4129da04a"},
+    {file = "botocore-1.24.37-py3-none-any.whl", hash = "sha256:21e164a213beca36033c46026bffa62f2ee2cd2600777271f9a551fb34dba006"},
+    {file = "botocore-1.24.37.tar.gz", hash = "sha256:70c48c4ae3c2b9ec0ca025385979d01f4c7dae4d9a61c82758d4cf7caa7082cd"},
 ]
 certifi = [
     {file = "certifi-2021.10.8-py2.py3-none-any.whl", hash = "sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569"},
@@ -1150,10 +1137,6 @@ de-jobsuche = [
 de-ladestationen = [
     {file = "de-ladestationen-1.0.5.tar.gz", hash = "sha256:24ba8446e61ef8c9fb9a62b36d98bf24df41f0703381e165aa3a14f0a9483d11"},
     {file = "de_ladestationen-1.0.5-py3-none-any.whl", hash = "sha256:8594aeb792bf48b3a339f8c9e59d221468cc837eb4cbdf2e73de6167b9e29a23"},
-]
-de-lebensmittelwarnung = [
-    {file = "de-lebensmittelwarnung-0.1.0.tar.gz", hash = "sha256:790f1abc86187ed51ae969c713fd4a07d430a4146af116d8ac36543a70143ac5"},
-    {file = "de_lebensmittelwarnung-0.1.0-py3-none-any.whl", hash = "sha256:566c5c444c16dd68b9310c07e55a9d1af9eaf531b383b7390f390f0e6d19edf1"},
 ]
 de-mudab = [
     {file = "de-mudab-0.1.0.tar.gz", hash = "sha256:54310b918816d32ab46204f99d40be2e3410ad24e8dd31d3cbfb550b92348ff8"},

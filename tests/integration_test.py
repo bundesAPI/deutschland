@@ -4,7 +4,6 @@ from deutschland.bundeswahlleiter import Bundeswahlleiter
 from deutschland.handelsregister import Handelsregister
 
 
-
 def test_fetching_publications_for_deutsche_bank():
     hr = Handelsregister()
     data = hr.search_publications(

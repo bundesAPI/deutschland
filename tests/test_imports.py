@@ -26,4 +26,4 @@ def test_all_imports():
     from deutschland.travelwarning.apis import DefaultApi
     from deutschland.verena import Verena
     from deutschland.zoll.apis import DefaultApi
-    from deutschland.feiertage.apis import DefaultApi
+    from deutschland.feiertage.apis import FeiertageApi

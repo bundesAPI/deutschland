@@ -64,7 +64,7 @@ class VerenaExtractor:
         result_elems = []
         for desc_elems in content.contents[6:-1]:
             if type(desc_elems) == element.NavigableString:
-                result_elems.append(desc_elems.strip().replace(u"\xa0", u" "))
+                result_elems.append(desc_elems.strip().replace("\xa0", " "))
         desc = "\n".join(result_elems)
         return school_id, desc
 

@@ -28,7 +28,7 @@ print(data.keys())
 print(data["Adresse"][0])
 # {'geometry': {'type': 'Point', 'coordinates': (13.422642946243286, 52.51500157651358)}, 'properties': {'postleitzahl': '10179', 'ort': 'Berlin', 'ortsteil': 'Mitte', 'strasse': 'Holzmarktstraße', 'hausnummer': '55'}, 'id': 0, 'type': 'Feature'}
 ```
-
+The data is provided by the [AdV SmartMapping](https://adv-smart.de/index_en.html). The team consists of participants from the German state surveying offices, the Federal Agency for Cartography and Geodesy (BKG), the German Federal Armed Forces (Bundeswehr ZGeoBW) and third parties from research and education.
 
 
 

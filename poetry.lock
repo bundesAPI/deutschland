@@ -176,6 +176,18 @@ fasttext = ["fasttext"]
 langdetect = ["langdetect"]
 
 [[package]]
+name = "de-abfallnavi"
+version = "0.1.0"
+description = "Abfallnavi API"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
 name = "de-ausbildungssuche"
 version = "0.1.0"
 description = "Arbeitsagentur Ausbildungssuche API"
@@ -203,6 +215,18 @@ urllib3 = ">=1.25.3"
 name = "de-berufssprachkurssuche"
 version = "0.1.0"
 description = "Arbeitsagentur Berufssprachkurssuche API"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
+name = "de-bundeshaushalt"
+version = "1.0.0"
+description = "Bundeshaushalt API"
 category = "main"
 optional = true
 python-versions = ">=3.6"
@@ -260,6 +284,18 @@ python-dateutil = "*"
 urllib3 = ">=1.25.3"
 
 [[package]]
+name = "de-dashboarddeutschland"
+version = "0.1.0"
+description = "Dashboard Deutschland API"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
 name = "de-dip-bundestag"
 version = "0.1.0"
 description = "Bundestag: Dokumentations- und Informationssystem für Parlamentsmaterialien"
@@ -277,6 +313,18 @@ version = "1.0.1"
 description = "Deutscher Wetterdienst: API"
 category = "main"
 optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
+name = "de-ecovisio"
+version = "0.1.0"
+description = "Eco-Counter: Eco-Visio-API"
+category = "main"
+optional = true
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -349,6 +397,18 @@ version = "1.0.5"
 description = "Bundesnetzagentur: Ladesäulenregister"
 category = "main"
 optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
+name = "de-marktstammdaten"
+version = "0.1.0"
+description = "Marktdatenstammregister API"
+category = "main"
+optional = true
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -481,6 +541,18 @@ version = "0.1.0"
 description = "Auswärtiges Amt: Reisewarnungen OpenData Schnittstelle"
 category = "main"
 optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
+name = "de-vag"
+version = "0.1.0"
+description = "VAG API"
+category = "main"
+optional = true
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -1042,25 +1114,31 @@ docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
 [extras]
-all = ["de-bundestag-lobbyregister", "de-dip-bundestag", "de-pegel-online", "de-ausbildungssuche", "de-berufssprachkurssuche", "de-coachingangebote", "de-dip-bundestag", "de-entgeltatlas", "de-hochwasserzentralen", "de-pflanzenschutzmittelzulassung", "de-studiensuche", "de-tagesschau", "de-weiterbildungssuche", "de-feiertage"]
+abfallnavi = ["de-abfallnavi"]
+all = ["de-bundestag-lobbyregister", "de-dip-bundestag", "de-pegel-online", "de-ausbildungssuche", "de-berufssprachkurssuche", "de-coachingangebote", "de-dip-bundestag", "de-entgeltatlas", "de-hochwasserzentralen", "de-pflanzenschutzmittelzulassung", "de-studiensuche", "de-tagesschau", "de-weiterbildungssuche", "de-feiertage", "de-marktstammdaten", "de-vag", "de-abfallnavi", "de-bundeshaushalt", "de-ecovisio", "de-dashboarddeutschland"]
 ausbildungssuche = ["de-ausbildungssuche"]
 berufssprachkurssuche = ["de-berufssprachkurssuche"]
+bundeshaushalt = ["de-bundeshaushalt"]
 bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
 coachingangebote = ["de-coachingangebote"]
+dashboarddeutschland = ["de-dashboarddeutschland"]
 dip_bundestag = ["de-dip-bundestag"]
+ecovisio = ["de-ecovisio"]
 entgeltatlas = ["de-entgeltatlas"]
 feiertage = ["de-feiertage"]
 hochwasserzentralen = ["de-hochwasserzentralen"]
+marktstammdaten = ["de-marktstammdaten"]
 pegel_online = ["de-pegel-online"]
 pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
 studiensuche = ["de-studiensuche"]
 tagesschau = ["de-tagesschau"]
+vag = ["de-vag"]
 weiterbildungssuche = ["de-weiterbildungssuche"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.2"
-content-hash = "e56585b15af0de7740dfb348fd4b2aa0d8196804d992ec0aee5f2255d2d81f6c"
+content-hash = "193daaf8bf9df00619847e9273ebb19c8962d62b52c6a5d8eb061dcd8ae1b19b"
 
 [metadata.files]
 atomicwrites = []
@@ -1088,21 +1166,26 @@ dataclasses = [
     {file = "dataclasses-0.8.tar.gz", hash = "sha256:8479067f342acf957dc82ec415d355ab5edb7e7646b90dc6e2fd1d96ad084c97"},
 ]
 dateparser = []
+de-abfallnavi = []
 de-ausbildungssuche = []
 de-autobahn = []
 de-berufssprachkurssuche = []
+de-bundeshaushalt = []
 de-bundesrat = []
 de-bundestag = []
 de-bundestag-lobbyregister = []
 de-coachingangebote = []
+de-dashboarddeutschland = []
 de-dip-bundestag = []
 de-dwd = []
+de-ecovisio = []
 de-entgeltatlas = []
 de-feiertage = []
 de-hochwasserzentralen = []
 de-interpol = []
 de-jobsuche = []
 de-ladestationen = []
+de-marktstammdaten = []
 de-mudab = []
 de-nina = []
 de-pegel-online = []
@@ -1114,6 +1197,7 @@ de-strahlenschutz = []
 de-studiensuche = []
 de-tagesschau = []
 de-travelwarning = []
+de-vag = []
 de-weiterbildungssuche = []
 de-zoll = []
 flatbuffers = []

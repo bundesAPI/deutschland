@@ -27,3 +27,13 @@ def test_all_imports():
     from deutschland.verena import Verena
     from deutschland.zoll.apis import DefaultApi
     from deutschland.feiertage.apis import DefaultApi
+    from deutschland.marktstammdaten.apis import DatenApi
+    from deutschland.marktstammdaten.apis import FilterApi
+    from deutschland.vag.api.abfahrten_api import AbfahrtenApi
+    from deutschland.vag.api.fahrten_api import FahrtenApi
+    from deutschland.vag.api.haltestellen_api import HaltestellenApi
+    from deutschland.bundeshaushalt.api.budget_data_api import BudgetDataApi
+    from deutschland.abfallnavi.api.abholpunkte_api import AbholpunkteApi
+    from deutschland.abfallnavi.api.fraktionen_api import FraktionenApi
+    from deutschland.abfallnavi.api.termine_api import TermineApi
+    from deutschland.EcoVisio.api.default_api import DefaultApi

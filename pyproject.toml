@@ -59,6 +59,12 @@ de-studiensuche  = {version= "^0.1.0", optional = true}
 de-tagesschau = {version= "^0.1.0", optional = true}
 de-weiterbildungssuche  = {version= "^0.1.0", optional = true}
 de-feiertage  = {version= "^1.0.1", optional = true}
+de-marktstammdaten  = {version= "^0.1.0", optional = true}
+de-vag  = {version= "^0.1.0", optional = true}
+de-abfallnavi  = {version= "^0.1.0", optional = true}
+de-bundeshaushalt  = {version= "^1.0.0", optional = true}
+de-ecovisio  = {version= "^0.1.0", optional = true}
+de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
 # Tests are for non openapi version of this package. Leave out for now.
 #de-lebensmittelwarnung = {version="^0.1.0",optional=true}
 
@@ -82,11 +88,18 @@ pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
 studiensuche  = ["de-studiensuche"]
 tagesschau = ["de-tagesschau"]
 feiertage = ["de-feiertage"]
+marktstammdaten = ["de-marktstammdaten"]
 weiterbildungssuche  =["de-weiterbildungssuche"]
+vag  =["de-vag"]
+abfallnavi  =["de-abfallnavi"]
+bundeshaushalt  =["de-bundeshaushalt"]
+ecovisio  =["de-ecovisio"]
+dashboarddeutschland=["de-dashboarddeutschland"]
 all = ["de-bundestag-lobbyregister","de-dip-bundestag","de-pegel-online","de-ausbildungssuche",
     "de-berufssprachkurssuche","de-coachingangebote","de-dip-bundestag","de-entgeltatlas",
     "de-hochwasserzentralen","de-pflanzenschutzmittelzulassung","de-studiensuche",
-    "de-tagesschau", "de-weiterbildungssuche","de-feiertage"]
+    "de-tagesschau", "de-weiterbildungssuche","de-feiertage","de-marktstammdaten","de-vag","de-abfallnavi","de-bundeshaushalt",
+    "de-ecovisio","de-dashboarddeutschland"]
 #lebensmittelwarnung =  ["de-lebensmittelwarnung"]
 
 [build-system]

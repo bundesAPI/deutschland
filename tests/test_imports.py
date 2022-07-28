@@ -1,3 +1,5 @@
+import pytest
+
 def test_all_imports():
     from deutschland.autobahn.apis import DefaultApi
     from deutschland.bundesanzeiger import Bundesanzeiger

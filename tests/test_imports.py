@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_all_imports():
     from deutschland.autobahn.apis import DefaultApi
     from deutschland.bundesanzeiger import Bundesanzeiger
@@ -34,6 +35,7 @@ def test_all_imports():
     from deutschland.abfallnavi.api.fraktionen_api import FraktionenApi
     from deutschland.abfallnavi.api.termine_api import TermineApi
     from deutschland.EcoVisio.api.default_api import DefaultApi
+
 
 def test_package_imports():
     from deutschland.bundesanzeiger import Bundesanzeiger

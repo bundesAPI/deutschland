@@ -5,16 +5,12 @@ def test_all_imports():
     from deutschland.bundesrat.apis import DefaultApi
     from deutschland.bundestag.apis import DefaultApi
     from deutschland.bundestag_lobbyregister.apis import DefaultApi
-    from deutschland.bundeswahlleiter import Bundeswahlleiter
     from deutschland.destatis.apis import DefaultApi
     from deutschland.dip_bundestag.apis import DefaultApi
     from deutschland.dwd.apis import DefaultApi
-    from deutschland.handelsregister import Handelsregister
-    from deutschland.handelsregister.registrations import Registrations
     from deutschland.interpol.apis import DefaultApi
     from deutschland.jobsuche.apis import DefaultApi
     from deutschland.ladestationen.apis import DefaultApi
-    from deutschland.lebensmittelwarnung import Lebensmittelwarnung
     from deutschland.mudab.apis import DefaultApi
     from deutschland.nina.apis import DefaultApi
     from deutschland.pegel_online.apis import WaterApi
@@ -24,7 +20,6 @@ def test_all_imports():
     from deutschland.smard.apis import DefaultApi
     from deutschland.strahlenschutz.apis import DefaultApi
     from deutschland.travelwarning.apis import DefaultApi
-    from deutschland.verena import Verena
     from deutschland.zoll.apis import DefaultApi
     from deutschland.feiertage.apis import DefaultApi
     from deutschland.marktstammdaten.apis import DatenApi
@@ -37,3 +32,17 @@ def test_all_imports():
     from deutschland.abfallnavi.api.fraktionen_api import FraktionenApi
     from deutschland.abfallnavi.api.termine_api import TermineApi
     from deutschland.EcoVisio.api.default_api import DefaultApi
+
+def test_package_imports():
+    from deutschland.bundesanzeiger import Bundesanzeiger
+    from deutschland.bundesnetzagentur.rufzeichen import Rufzeichen
+    from deutschland.bundeswahlleiter import Bundeswahlleiter
+    from deutschland.handelsregister import Handelsregister
+    from deutschland.handelsregister.registrations import Registrations
+    from deutschland.lebensmittelwarnung import Lebensmittelwarnung
+    from deutschland.verena import Verena
+
+
+def test_failing_imports():
+    with pytest.raises(ImportError, match="cannot import name 'GibtsJaGarNicht'"):
+        from deutschland.bundesanzeiger import GibtsJaGarNicht

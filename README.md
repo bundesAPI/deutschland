@@ -17,7 +17,7 @@ pip install deutschland
 Fetch information about streets, house numbers, building outlines, …
 
 ```python
-from deutschland import Geo
+from deutschland.geo import Geo
 geo = Geo()
 # top_right and bottom_left coordinates
 data = geo.fetch([52.530116236589244, 13.426532801586827],
@@ -38,7 +38,7 @@ The data is provided by the [AdV SmartMapping](https://adv-smart.de/index_en.htm
 Get financial reports for all german companies that are reporting to Bundesanzeiger.
 
 ```python
-from deutschland import Bundesanzeiger
+from deutschland.bundesanzeiger import Bundesanzeiger
 ba = Bundesanzeiger()
 # search term
 data = ba.get_reports("Deutsche Bahn AG")
@@ -52,7 +52,7 @@ print(data.keys())
 Fetch general company information about any company in the Handelsregister.
 
 ```python
-from deutschland import Handelsregister
+from deutschland.handeslregister import Handelsregister
 hr = Handelsregister()
 # search by keywords, see documentation for all available params
 hr.search(keywords="Deutsche Bahn Aktiengesellschaft")
@@ -66,7 +66,7 @@ print(hr)
 Get current product warnings provided by the german federal portal lebensmittelwarnung.de.
 
 ```python
-from deutschland import Lebensmittelwarnung
+from deutschland.lebensmittelwarnung import Lebensmittelwarnung
 lw = Lebensmittelwarnung()
 # search by content type and region, see documetation for all available params
 data = lw.get("lebensmittel", "berlin")
@@ -81,7 +81,7 @@ print(data)
 #### VERENA
 Get open substitute teaching positions in NRW from https://www.schulministerium.nrw.de/BiPo/Verena/angebote
 ```python
-from deutschland import Verena
+from deutschland.verena import Verena
 v = Verena()
 data = v.get()
 print(data)

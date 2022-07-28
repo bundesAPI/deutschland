@@ -81,7 +81,7 @@ print(data)
 #### VERENA
 Get open substitute teaching positions in NRW from https://www.schulministerium.nrw.de/BiPo/Verena/angebote
 ```python
-from deutschland import Verena
+from deutschland.verena import Verena
 v = Verena()
 data = v.get()
 print(data)

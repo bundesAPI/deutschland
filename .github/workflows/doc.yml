@@ -1,4 +1,4 @@
-name: Lint
+name: Generate Docs
 
 on: [push, pull_request]
 

@@ -26,6 +26,7 @@ pandas = "1.1.5"
 more-itertools = "^8.10.0"
 onnxruntime = "^1.10.0"
 numpy = "1.19.0"
+protobuf= ">=3.0,<4.0"
 
 # Those are packages which were included in previous release so not optional
 de-autobahn = {version = "^1.0.4"}
@@ -116,6 +117,7 @@ isolated_build = True
 basepython = python3
 
 [testenv]
+poetry_experimental_add_locked_dependencies = True
 deps = pytest
 usedevelop = true
 extras =
@@ -123,6 +125,7 @@ extras =
 commands =
     pytest
 """
+
 
 [tool.isort]
 profile = "black"

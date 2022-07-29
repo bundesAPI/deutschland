@@ -714,7 +714,7 @@ python-versions = "*"
 
 [package.dependencies]
 future = "*"
-protobuf = ">=3.0,<4.0"
+protobuf = "*"
 pyclipper = "*"
 shapely = "*"
 

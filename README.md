@@ -52,7 +52,7 @@ print(data.keys())
 Fetch general company information about any company in the Handelsregister.
 
 ```python
-from deutschland.handeslregister import Handelsregister
+from deutschland.handelsregister import Handelsregister
 hr = Handelsregister()
 # search by keywords, see documentation for all available params
 hr.search(keywords="Deutsche Bahn Aktiengesellschaft")

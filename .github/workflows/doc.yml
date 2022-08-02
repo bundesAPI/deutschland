@@ -11,7 +11,7 @@ jobs:
 
       - name: "generate sphinx-documentation"
         run: |
-          pip install sphinx m2r2
+          pip install 'docutils<0.19' sphinx m2r2 # temp. fix issue #67
           cd docs-sphinx
           sphinx-apidoc -o source/ ../src/deutschland
           make html

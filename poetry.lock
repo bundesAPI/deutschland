@@ -584,6 +584,14 @@ python-dateutil = "*"
 urllib3 = ">=1.25.3"
 
 [[package]]
+name = "docutils"
+version = "0.18.1"
+description = "Docutils -- Python Documentation Utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
 name = "flatbuffers"
 version = "2.0"
 description = "The FlatBuffers serialization format for Python"
@@ -1049,14 +1057,6 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "typing-extensions"
-version = "4.1.1"
-description = "Backported and Experimental Type Hints for Python 3.6+"
-category = "dev"
-optional = false
-python-versions = ">=3.6"
-
-[[package]]
-name = "typing-extensions"
 version = "4.3.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
 category = "dev"
@@ -1138,7 +1138,7 @@ weiterbildungssuche = ["de-weiterbildungssuche"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.2"
-content-hash = "96ba1fa9dcb5033dc24eeb7ce9859190a13e705188478733010579a0ca9d8bb0"
+content-hash = "727f9401c55a1a07a9738c08595c98921cd52b008d6bf17dbee7914fbc1f3d20"
 
 [metadata.files]
 atomicwrites = []
@@ -1197,6 +1197,7 @@ de-travelwarning = []
 de-vag = []
 de-weiterbildungssuche = []
 de-zoll = []
+docutils = []
 flatbuffers = []
 future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},

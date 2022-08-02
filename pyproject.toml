@@ -27,7 +27,7 @@ more-itertools = "^8.10.0"
 onnxruntime = "^1.10.0"
 numpy = "1.19.0"
 protobuf= ">=3.0,<4.0"
-docutils = "0.18.1" # Hotfix: Issue #67
+docutils= "<0.19" # Hotfix: Issue #67
 
 # Those are packages which were included in previous release so not optional
 de-autobahn = {version = "^1.0.4"}

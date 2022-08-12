@@ -7,11 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
       - name: "generate sphinx-documentation"
         run: |
-          pip install 'docutils<0.19' sphinx m2r2 # temp. fix issue #67
+          pip install sphinx m2r2
           cd docs-sphinx
           sphinx-apidoc -o source/ ../src/deutschland
           make html

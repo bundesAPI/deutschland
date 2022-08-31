@@ -13,6 +13,9 @@ A python package that gives you easy access to the most valuable datasets of Ger
 pip install deutschland
 ```
 
+### Development
+For development poetry version `>=1.2.0` is required.
+
 ## Geographic data
 Fetch information about streets, house numbers, building outlines, …
 

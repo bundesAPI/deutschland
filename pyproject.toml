@@ -22,10 +22,10 @@ slugify = "^0.0.1"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
 lxml = "^4.6.3"
-pandas = "1.1.5"
+pandas = "^1.1.5"
 more-itertools = "^8.10.0"
 onnxruntime = "^1.10.0"
-numpy = "1.19.0"
+numpy = "^1.19.0"
 protobuf= ">=3.0,<4.0"
 
 # Those are packages which were included in previous release so not optional
@@ -110,7 +110,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py36,py37,py38
+envlist = py37,py38,py39,py310
 isolated_build = True
 
 [tox:.package]

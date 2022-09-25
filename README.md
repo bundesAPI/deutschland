@@ -13,14 +13,17 @@ A python package that gives you easy access to the most valuable datasets of Ger
 pip install deutschland
 ```
 
+### Development
+For development poetry version `>=1.2.0` is required.
+
 ## Geographic data
 Fetch information about streets, house numbers, building outlines, …
 
 ```python
-from deutschland import Geo
+from deutschland.geo import Geo
 geo = Geo()
 # top_right and bottom_left coordinates
-data = geo.fetch([52.530116236589244, 13.426532801586827], 
+data = geo.fetch([52.530116236589244, 13.426532801586827],
                  [52.50876180448243, 13.359631043007212])
 print(data.keys())
 # dict_keys(['Adresse', 'Barrierenlinie', 'Bauwerksflaeche', 'Bauwerkslinie', 'Bauwerkspunkt', 'Besondere_Flaeche', 'Besondere_Linie', 'Besonderer_Punkt', 'Gebaeudeflaeche', 'Gebaeudepunkt', 'Gewaesserflaeche', 'Gewaesserlinie', 'Grenze_Linie', 'Historischer_Punkt', 'Siedlungsflaeche', 'Vegetationslinie', 'Verkehrsflaeche', 'Verkehrslinie', 'Verkehrspunkt', 'Hintergrund'])
@@ -28,17 +31,18 @@ print(data.keys())
 print(data["Adresse"][0])
 # {'geometry': {'type': 'Point', 'coordinates': (13.422642946243286, 52.51500157651358)}, 'properties': {'postleitzahl': '10179', 'ort': 'Berlin', 'ortsteil': 'Mitte', 'strasse': 'Holzmarktstraße', 'hausnummer': '55'}, 'id': 0, 'type': 'Feature'}
 ```
-
 For the detailed documentation of this API see [here](https://adv-smart.de/docs/dokumentation/web_vektor_datenmodell.html)
+
+The data is provided by the [AdV SmartMapping](https://adv-smart.de/index_en.html). The team consists of participants from the German state surveying offices, the Federal Agency for Cartography and Geodesy (BKG), the German Federal Armed Forces (Bundeswehr ZGeoBW) and third parties from research and education.
 
 
 ## Company Data
 
 ### Bundesanzeiger
 Get financial reports for all german companies that are reporting to Bundesanzeiger.
-
+More
 ```python
-from deutschland import Bundesanzeiger
+from deutschland.bundesanzeiger import Bundesanzeiger
 ba = Bundesanzeiger()
 # search term
 data = ba.get_reports("Deutsche Bahn AG")
@@ -52,7 +56,7 @@ print(data.keys())
 Fetch general company information about any company in the Handelsregister.
 
 ```python
-from deutschland import Handelsregister
+from deutschland.handelsregister import Handelsregister
 hr = Handelsregister()
 # search by keywords, see documentation for all available params
 hr.search(keywords="Deutsche Bahn Aktiengesellschaft")
@@ -63,10 +67,10 @@ print(hr)
 ## Consumer Protection Data
 
 ### Lebensmittelwarnung
-Get current product warnings provided by the german federal portal lebensmittelwarnung.de. 
+Get current product warnings provided by the german federal portal lebensmittelwarnung.de.
 
 ```python
-from deutschland import Lebensmittelwarnung
+from deutschland.lebensmittelwarnung import Lebensmittelwarnung
 lw = Lebensmittelwarnung()
 # search by content type and region, see documetation for all available params
 data = lw.get("lebensmittel", "berlin")
@@ -81,7 +85,7 @@ print(data)
 #### VERENA
 Get open substitute teaching positions in NRW from https://www.schulministerium.nrw.de/BiPo/Verena/angebote
 ```python
-from deutschland import Verena
+from deutschland.verena import Verena
 v = Verena()
 data = v.get()
 print(data)
@@ -114,7 +118,7 @@ try:
 except autobahn.ApiException as e:
     print("Exception when calling DefaultApi->get_charging_station: %s\n" % e)
 ```
-For the detailed documentation of this API see [here](./docs/autobahn/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/autobahn/README.md)
 
 
 ## Presseportal
@@ -126,38 +130,38 @@ from deutschland.presseportal import PresseportalApi
 
 presseportal = PresseportalApi("YOUR_KEY_HERE")
 
-stories = presseportal.get_stories()    
+stories = presseportal.get_stories()
 ```
 
 ## Auto-Generated API-Clients
 
 ### bundesrat
-For the detailed documentation of this API see [here](./docs/bundesrat/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/bundesrat/README.md)
 ### bundestag
-For the detailed documentation of this API see [here](./docs/bundestag/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/bundestag/README.md)
 ### destatis
-For the detailed documentation of this API see [here](./docs/destatis/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/destatis/README.md)
 ### dwd
-For the detailed documentation of this API see [here](./docs/dwd/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/dwd/README.md)
 ### interpol
-For the detailed documentation of this API see [here](./docs/interpol/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/interpol/README.md)
 ### jobsuche
-For the detailed documentation of this API see [here](./docs/jobsuche/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/jobsuche/README.md)
 ### ladestationen
-For the detailed documentation of this API see [here](./docs/ladestationen/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/ladestationen/README.md)
 ### mudab
-For the detailed documentation of this API see [here](./docs/mudab/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/mudab/README.md)
 ### nina
-For the detailed documentation of this API see [here](./docs/nina/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/nina/README.md)
 ### polizei_brandenburg
-For the detailed documentation of this API see [here](./docs/polizei_brandenburg/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/polizei_brandenburg/README.md)
 ### risikogebiete
-For the detailed documentation of this API see [here](./docs/risikogebiete/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/risikogebiete/README.md)
 ### smard
-For the detailed documentation of this API see [here](./docs/smard/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/smard/README.md)
 ### strahlenschutz
-For the detailed documentation of this API see [here](./docs/strahlenschutz/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/strahlenschutz/README.md)
 ### travelwarning
-For the detailed documentation of this API see [here](./docs/travelwarning/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/travelwarning/README.md)
 ### zoll
-For the detailed documentation of this API see [here](./docs/zoll/README.md)
+For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/zoll/README.md)

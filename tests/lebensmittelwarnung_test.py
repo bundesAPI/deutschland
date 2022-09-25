@@ -1,7 +1,7 @@
 import pytest
 from bs4 import BeautifulSoup
 
-from deutschland.lebensmittelwarnung.lebensmittelwarnung import (
+from deutschland.lebensmittelwarnung import (
     Lebensmittelwarnung,
     Warning,
     WarningFeed,

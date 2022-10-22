@@ -25,6 +25,6 @@
     "geolocation": {
         "coord_system": "epsg:25832",
         "coordinates": [1111111, 1111111],
-        "post_adress": "Eine Stra\u00dfe 1\n99999 Schulingen"
+        "post_adress": "Eine Straße 1\n99999 Schulingen"
     }
 }

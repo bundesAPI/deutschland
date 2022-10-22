@@ -5,7 +5,7 @@ from deutschland.verena.verenaextractor import VerenaExtractor
 
 def test_extractor_content():
     with open("tests/verena/ausschreibung_test_input.html", "r") as f:
-        with open("tests/verena/ausschreibung_correct_result.json", "r",encoding="utf-16") as correct:
+        with open("tests/verena/ausschreibung_correct_result.json", "r") as correct:
             content = "<html><body>" + f.read() + "</body></html>"
             ve = VerenaExtractor(content)
             res = ve.extract()

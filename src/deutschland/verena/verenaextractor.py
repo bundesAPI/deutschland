@@ -153,8 +153,10 @@ class VerenaExtractor:
             elif "Homepage" in link.text:
                 homepage = link["href"]
         content_arr = content.contents
+        print(content_arr)
         for x in content_arr:
             if type(x) == element.NavigableString:
+                print(x)
                 if "☎" in x:
                     phone = x.replace("☎", "").strip()
                 elif "Fax" in x:

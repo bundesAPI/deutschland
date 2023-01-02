@@ -4,6 +4,8 @@ import dateparser
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
+import hashlib
+import json
 
 from deutschland.config import Config, module_config
 
@@ -25,6 +27,23 @@ class Report:
             "company": self.company,
             "report": self.report,
         }
+
+    def to_hash(self):
+            """MD5 hash of a the report."""
+
+            dhash = hashlib.md5()
+
+            entry = {
+                "date": self.date.isoformat(),
+                "name": self.name,
+                "company": self.company,
+                "report": self.report,
+            }
+
+            encoded = json.dumps(entry, sort_keys=True).encode('utf-8')
+            dhash.update(encoded)
+
+            return dhash.hexdigest()
 
 
 class Bundesanzeiger:
@@ -121,7 +140,10 @@ class Bundesanzeiger:
                 continue
 
             element.report = content_element.text
-            result[element.name] = element.to_dict()
+
+
+            result[element.to_hash()] = element.to_dict()
+
 
         return result
 

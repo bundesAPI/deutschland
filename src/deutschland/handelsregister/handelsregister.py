@@ -21,7 +21,7 @@ class Handelsregister:
         head_office_location: str = None,
         include_deleted: bool = False,
         include_new_second_branches: bool = False,
-        registration_type: int = None,
+        registration_type: str = None,
         registration_number: str = None,
         court: str = None,
         legal_form: str = None,

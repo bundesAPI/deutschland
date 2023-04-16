@@ -295,55 +295,6 @@ class Bundesanzeiger:
             response.text, company_name, show_progress_bar, disable_manual_input
         )
 
-    def get_reports_by_date_range(
-        self,
-        company_name: str,
-        start_date: str,
-        end_date: str,
-        deduplicate: bool = False,
-        show_progress_bar: bool = True,
-        disable_manual_input: bool = False,
-    ):
-        """
-        Fetches financial reports for a given company within a specified date range from the Bundesanzeiger website.
-
-        Args:
-            company_name (str): The name of the company for which to fetch reports.
-            start_date (str): The start date of the date range in the format 'YYYY-MM-DD'.
-            end_date (str): The end date of the date range in the format 'YYYY-MM-DD'.
-            show_progress_bar (bool, optional): Whether to display a progress bar during the process. Defaults to True.
-            disable_manual_input (bool, optional): Whether to disable manual input for selecting the correct company if multiple companies are found for the given company name.
-
-        Returns:
-            dict: A dictionary containing the fetched reports, with their hash as keys and report details as values.
-        """
-        # Set up session cookies and headers
-        self.session.cookies["cc"] = "1628606977-805e172265bfdbde-10"
-        self.session.headers.update(
-            # ... (headers)
-        )
-        # Get the jsessionid cookie
-        response = self.session.get("https://www.bundesanzeiger.de")
-        # Go to the start page
-        response = self.session.get("https://www.bundesanzeiger.de/pub/de/start?0")
-        # Perform the search within the specified date range
-        response = self.session.get(
-            f"https://www.bundesanzeiger.de/pub/de/start?0-2.-top%7Econtent%7Epanel-left%7Ecard-form=&fulltext={company_name}&area_select=&search_button=Suchen&date_start={start_date}&date_end={end_date}"
-        )
-        if response.status_code != 200:
-            raise Exception("Could not fetch reports")
-
-        if deduplicate:
-            return self.__deduplicate_reports(
-                self.__generate_result(
-                    response.text, company_name, show_progress_bar, disable_manual_input
-                )
-            )
-
-        return self.__generate_result(
-            response.text, company_name, show_progress_bar, disable_manual_input
-        )
-
 
 def extract_kpis(reports: dict) -> dict:
     """
@@ -453,8 +404,6 @@ if __name__ == "__main__":
     reports = ba.get_reports(
         "Siemke & Co. Brücken- und Ingenieurbau GmbH",
         deduplicate=True,
-        show_progress_bar=True,
-        disable_manual_input=True,
     )
     end_time = time.time()
     elapsed_time = end_time - start_time

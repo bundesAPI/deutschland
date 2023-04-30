@@ -84,7 +84,6 @@ class Geo:
             for y in range(tr[1], bl[1]):
                 url = f"{self.URL}{self.LEVEL}/{x}/{y}.pbf"
                 try:
-
                     result = requests.get(url, headers=headers, proxies=proxies)
                     geojson = mapbox_vector_tile.decode(result.content)
                     if geojson:

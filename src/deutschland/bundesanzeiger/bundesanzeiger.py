@@ -29,21 +29,21 @@ class Report:
         }
 
     def to_hash(self):
-            """MD5 hash of a the report."""
+        """MD5 hash of a the report."""
 
-            dhash = hashlib.md5()
+        dhash = hashlib.md5()
 
-            entry = {
-                "date": self.date.isoformat(),
-                "name": self.name,
-                "company": self.company,
-                "report": self.report,
-            }
+        entry = {
+            "date": self.date.isoformat(),
+            "name": self.name,
+            "company": self.company,
+            "report": self.report,
+        }
 
-            encoded = json.dumps(entry, sort_keys=True).encode('utf-8')
-            dhash.update(encoded)
+        encoded = json.dumps(entry, sort_keys=True).encode("utf-8")
+        dhash.update(encoded)
 
-            return dhash.hexdigest()
+        return dhash.hexdigest()
 
 
 class Bundesanzeiger:
@@ -141,9 +141,7 @@ class Bundesanzeiger:
 
             element.report = content_element.text
 
-
             result[element.to_hash()] = element.to_dict()
-
 
         return result
 

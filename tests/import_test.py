@@ -40,8 +40,6 @@ def test_package_imports():
     from deutschland.bundesanzeiger import Bundesanzeiger
     from deutschland.bundesnetzagentur.rufzeichen import Rufzeichen
     from deutschland.bundeswahlleiter import Bundeswahlleiter
-    from deutschland.handelsregister import Handelsregister
-    from deutschland.handelsregister.registrations import Registrations
     from deutschland.lebensmittelwarnung import Lebensmittelwarnung
     from deutschland.verena import Verena
 

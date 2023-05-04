@@ -9,7 +9,7 @@ from deutschland.config import Config, module_config
 
 class Geo:
     LEVEL = 15
-    URL = "https://adv-smart.de/tiles/smarttiles_de_public_v1/"
+    URL = "https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v1/bm_web_de_3857/"
     MVT_EXTENT = 4096
 
     def __init__(self, config: Config = None):

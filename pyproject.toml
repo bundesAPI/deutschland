@@ -39,7 +39,6 @@ de-ladestationen = {version="^1.0.5"}
 de-mudab = {version="^0.1.0"}
 de-nina = {version= "^1.0.1"}
 de-polizei-brandenburg= {version= "^0.1.0"}
-pypresseportal = {version= "^0.1"}
 de-risikogebiete = {version= "^0.1.0"}
 de-smard = {version= "^0.1.0"}
 de-strahlenschutz = {version= "^1.0.0"}

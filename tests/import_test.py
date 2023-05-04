@@ -18,7 +18,6 @@ def test_all_imports():
     from deutschland.nina.apis import DefaultApi
     from deutschland.pegel_online.apis import WaterApi
     from deutschland.polizei_brandenburg.apis import DefaultApi
-    from deutschland.presseportal import PresseportalApi
     from deutschland.risikogebiete.apis import DefaultApi
     from deutschland.smard.apis import DefaultApi
     from deutschland.strahlenschutz.apis import DefaultApi

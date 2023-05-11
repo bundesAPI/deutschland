@@ -11,3 +11,4 @@ jobs:
       - uses: psf/black@stable
         with:
           options: "--check --extend-exclude docs-sphinx"
+          version: "21.12b0"

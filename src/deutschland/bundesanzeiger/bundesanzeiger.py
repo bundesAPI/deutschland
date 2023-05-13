@@ -19,7 +19,7 @@ class Report:
         self.content_url = content_url
         self.company = company
         self.report = report
-        self.raw_report= raw_report
+        self.raw_report = raw_report
 
     def to_dict(self):
         return {
@@ -27,7 +27,7 @@ class Report:
             "name": self.name,
             "company": self.company,
             "report": self.report,
-            "raw_report": self.raw_report
+            "raw_report": self.raw_report,
         }
 
     def to_hash(self):

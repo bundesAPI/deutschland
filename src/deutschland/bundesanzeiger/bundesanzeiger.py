@@ -11,14 +11,15 @@ from deutschland.config import Config, module_config
 
 
 class Report:
-    __slots__ = ["date", "name", "content_url", "company", "report"]
+    __slots__ = ["date", "name", "content_url", "company", "report", "raw_report"]
 
-    def __init__(self, date, name, content_url, company, report=None):
+    def __init__(self, date, name, content_url, company, report=None, raw_report=None):
         self.date = date
         self.name = name
         self.content_url = content_url
         self.company = company
         self.report = report
+        self.raw_report = raw_report
 
     def to_dict(self):
         return {
@@ -26,6 +27,7 @@ class Report:
             "name": self.name,
             "company": self.company,
             "report": self.report,
+            "raw_report": self.raw_report,
         }
 
     def to_hash(self):
@@ -140,6 +142,7 @@ class Bundesanzeiger:
                 continue
 
             element.report = content_element.text
+            element.raw_report = content_element.prettify()
 
             result[element.to_hash()] = element.to_dict()
 

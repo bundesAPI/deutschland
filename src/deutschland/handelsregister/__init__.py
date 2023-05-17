@@ -1,1 +1,0 @@
-from .handelsregister import Handelsregister

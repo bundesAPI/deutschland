@@ -53,16 +53,8 @@ print(data.keys())
 *Big thanks to Nico Duldhardt and Friedrich Schöne, who [supported this implementation with their machine learning model](https://av.tib.eu/media/52366).*
 
 ### Handelsregister
-Fetch general company information about any company in the Handelsregister.
 
-```python
-from deutschland.handelsregister import Handelsregister
-hr = Handelsregister()
-# search by keywords, see documentation for all available params
-hr.search(keywords="Deutsche Bahn Aktiengesellschaft")
-print(hr)
-```
-
+The code for the Handelsregister moved to this [repo](https://github.com/bundesAPI/handelsregister).
 
 ## Consumer Protection Data
 
@@ -120,18 +112,9 @@ except autobahn.ApiException as e:
 ```
 For the detailed documentation of this API see [here](https://github.com/bundesAPI/deutschland/blob/main/docs/autobahn/README.md)
 
+### Presseportal
 
-## Presseportal
-
-For further information see: https://github.com/tcmetzger/pypresseportal
-
-```python
-from deutschland.presseportal import PresseportalApi
-
-presseportal = PresseportalApi("YOUR_KEY_HERE")
-
-stories = presseportal.get_stories()
-```
+Not available for now due to changes in the API.
 
 ## Auto-Generated API-Clients
 

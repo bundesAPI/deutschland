@@ -1,11 +1,11 @@
+import hashlib
+import json
 from io import BytesIO
 
 import dateparser
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
-import hashlib
-import json
 
 from deutschland.config import Config, module_config
 

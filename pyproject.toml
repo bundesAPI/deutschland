@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "deutschland"
-version = "0.3.1"
+version = "0.3.2"
 description = ""
 license = "Apache-2.0"
 authors = ["Lilith Wittmann <mail@lilithwittmann.de>"]
@@ -11,13 +11,12 @@ packages = [
     { include = "deutschland", from = "src" },
 ]
 [tool.poetry.dependencies]
-python = "^3.6.2"
+python = ">=3.8,<4.0.0"
 Shapely = "^1.8.0"
 mapbox-vector-tile = "^1.2.1"
 requests = "^2.26.0"
 dateparser = "^1.0.0"
 gql = "^2.0.0"
-boto3 = "^1.18.9"
 slugify = "^0.0.1"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
@@ -43,7 +42,6 @@ de-ladestationen = {version="^1.0.5"}
 de-mudab = {version="^0.1.0"}
 de-nina = {version= "^1.0.1"}
 de-polizei-brandenburg= {version= "^0.1.0"}
-pypresseportal = {version= "^0.1"}
 de-risikogebiete = {version= "^0.1.0"}
 de-smard = {version= "^0.1.0"}
 de-strahlenschutz = {version= "^1.0.0"}
@@ -77,8 +75,10 @@ de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
 
 [tool.poetry.dev-dependencies]
-black = "^21.7b0"
 pytest = "^6.2.4"
+isort = "5.10.1"
+black = "22.8.0"
+
 
 [tool.poetry.extras]
 bundestag_lobbyregister = ["de-bundestag-lobbyregister"]

@@ -9,7 +9,7 @@ from deutschland.config import Config, module_config
 
 class Geo:
     LEVEL = 15
-    URL = "https://adv-smart.de/tiles/smarttiles_de_public_v1/"
+    URL = "https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/tiles/v1/bm_web_de_3857/"
     MVT_EXTENT = 4096
 
     def __init__(self, config: Config = None):
@@ -84,7 +84,6 @@ class Geo:
             for y in range(tr[1], bl[1]):
                 url = f"{self.URL}{self.LEVEL}/{x}/{y}.pbf"
                 try:
-
                     result = requests.get(url, headers=headers, proxies=proxies)
                     geojson = mapbox_vector_tile.decode(result.content)
                     if geojson:

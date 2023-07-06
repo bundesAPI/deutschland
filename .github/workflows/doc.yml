@@ -6,7 +6,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
@@ -18,7 +18,7 @@ jobs:
           sphinx-apidoc -o source/ ../src/deutschland
           make html
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: "documentation"
           path: ${{ github.workspace }}/sphinx-docs/_build

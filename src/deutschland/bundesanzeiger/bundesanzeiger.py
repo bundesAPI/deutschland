@@ -1,10 +1,3 @@
-import hashlib
-import json
-import logging
-import re
-import time
-from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime
 from io import BytesIO
 from typing import Optional
 
@@ -14,10 +7,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
-from model import Model
+import hashlib
+import json
+import logging
+from datetime import datetime
+
 from tqdm import tqdm
+from concurrent.futures import ThreadPoolExecutor
 
 from deutschland.config import Config, module_config
+from deutschland.bundesanzeiger.model import Model
 
 # Get logger
 logger = logging.getLogger(__name__)
@@ -32,20 +31,21 @@ coloredlogs.install(
 
 class Report:
     def __init__(
-        self, report_date: datetime, name: str, content_url: str, company: str
+        self, report_date: datetime, name: str, content_url: str, company: str, raw_report: str
     ):
         self.report_date = report_date
         self.name = name
         self.content_url = content_url
         self.company = company
         self.report_content: Optional[str] = None
+        self.raw_report = raw_report
 
-    def to_dict(self) -> dict:
+    def to_dict(self):
         return {
             "report_date": self.report_date.isoformat(),
             "name": self.name,
             "company": self.company,
-            "report_content": self.report_content,
+            "raw_report": self.raw_report,
         }
 
     def to_hash(self) -> str:
@@ -76,6 +76,7 @@ class Bundesanzeiger:
         image = BytesIO(image_data)
         image_arr = Model.load_image_arr(image)
         image_arr = image_arr.reshape((1, 50, 250, 1)).astype(np.float32)
+
         prediction = self.model.run(None, {"captcha": image_arr})[0][0]
         prediction_str = Model.prediction_to_str(prediction)
         return prediction_str
@@ -111,8 +112,10 @@ class Bundesanzeiger:
                 continue
 
             company_name = company_name_element.contents[0].strip()
+            raw_report = row.prettify()
 
-            yield Report(date, entry_name, entry_link, company_name)  # type: ignore
+
+            yield Report(date, entry_name, entry_link, company_name,raw_report)  # type: ignore
 
     def __generate_result(
         self,
@@ -197,6 +200,7 @@ class Bundesanzeiger:
             return None, None
 
         element.set_content(content_element.text)
+        element.raw_report = content_element.prettify()
 
         return element.to_hash(), element.to_dict()
 
@@ -204,8 +208,6 @@ class Bundesanzeiger:
         """
         Deduplicates financial reports based on report name and company name, keeping the latest report.
 
-        Args:
-            reports (dict): A dictionary containing the fetched reports, with their hash as keys and report details as values.
 
         Returns:
             dict: A dictionary containing the deduplicated reports, with their hash as keys and report details as values.

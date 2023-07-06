@@ -575,14 +575,14 @@ urllib3 = ">=1.25.3"
 
 [[package]]
 name = "de-pegel-online"
-version = "0.1.0"
-description = "Wasserstraßen- und Schifffahrtsverwaltung: Pegel-Online API"
+version = "0.1.1"
+description = "Pegel-Online API"
 category = "main"
 optional = true
 python-versions = ">=3.6"
 files = [
-    {file = "de-pegel-online-0.1.0.tar.gz", hash = "sha256:e873ac7051c1bdc72d11f20f447c57bcb4ab222a419b40e3e0ce0d2f7b64736b"},
-    {file = "de_pegel_online-0.1.0-py3-none-any.whl", hash = "sha256:e0d0e01d2b1344815ec3bfbcd8ae53ec45b68bf6d3a0f655009168eea9643c18"},
+    {file = "de_pegel_online-0.1.1-py3-none-any.whl", hash = "sha256:a76a793664a923cca3300d0d41056ca2ca2ae2aa3b88bb73d00b2fabc212bbd4"},
+    {file = "de_pegel_online-0.1.1.tar.gz", hash = "sha256:4ccde42f8287156563302fe13a0cbdb6bb99081880e2c30515d6e865157827d1"},
 ]
 
 [package.dependencies]

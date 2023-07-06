@@ -18,7 +18,7 @@ dateparser = "^1.0.0"
 Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
 # Used through beautifulsoup to parse html
-lxml = "^4.6.3"git s
+lxml = "^4.6.3"
 pandas = "^1.1.5"
 more-itertools = "^8.10.0"
 onnxruntime = "^1.10.0"

@@ -55,7 +55,9 @@ class Report:
     def to_hash(self) -> str:
         entry = self.to_dict()
         encoded = json.dumps(entry, sort_keys=True).encode("utf-8")
-        dhash = hashlib.new("md5",encoded, usedforsecurity=False) #If 3.8 support is dropped, use hashlib.md5()
+        dhash = hashlib.new(
+            "md5", encoded, usedforsecurity=False
+        )  # If 3.8 support is dropped, use hashlib.md5()
         return dhash.hexdigest()
 
     def set_content(self, content: str) -> None:

@@ -1,3 +1,8 @@
+import hashlib
+import json
+import logging
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
 from io import BytesIO
 from typing import Optional
 
@@ -7,16 +12,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
-import hashlib
-import json
-import logging
-from datetime import datetime
-
 from tqdm import tqdm
-from concurrent.futures import ThreadPoolExecutor
 
-from deutschland.config import Config, module_config
 from deutschland.bundesanzeiger.model import Model
+from deutschland.config import Config, module_config
 
 # Get logger
 logger = logging.getLogger(__name__)
@@ -31,7 +30,12 @@ coloredlogs.install(
 
 class Report:
     def __init__(
-        self, report_date: datetime, name: str, content_url: str, company: str, raw_report: str
+        self,
+        report_date: datetime,
+        name: str,
+        content_url: str,
+        company: str,
+        raw_report: str,
     ):
         self.report_date = report_date
         self.name = name
@@ -114,8 +118,7 @@ class Bundesanzeiger:
             company_name = company_name_element.contents[0].strip()
             raw_report = row.prettify()
 
-
-            yield Report(date, entry_name, entry_link, company_name,raw_report)  # type: ignore
+            yield Report(date, entry_name, entry_link, company_name, raw_report)  # type: ignore
 
     def __generate_result(
         self,

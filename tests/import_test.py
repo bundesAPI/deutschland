@@ -13,7 +13,7 @@ def test_all_imports():
     from deutschland.bundestag.apis import DefaultApi
     from deutschland.bundestag_lobbyregister.apis import DefaultApi
     from deutschland.destatis.apis import DefaultApi
-    from deutschland.dip_bundestag.apis import DefaultApi
+    from deutschland.dip_bundestag.apis import PlenarprotokolleApi
     from deutschland.dwd.apis import DefaultApi
     from deutschland.EcoVisio.api.default_api import DefaultApi
     from deutschland.feiertage.apis import DefaultApi

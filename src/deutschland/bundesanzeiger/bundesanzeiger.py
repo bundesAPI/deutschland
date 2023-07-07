@@ -1,83 +1,90 @@
 import hashlib
 import json
+import logging
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
 from io import BytesIO
+from typing import Optional
 
+import coloredlogs
 import dateparser
+import matplotlib.pyplot as plt
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
+from deutschland.bundesanzeiger.model import Model
 from deutschland.config import Config, module_config
+
+# Get logger
+logger = logging.getLogger(__name__)
+
+# Install coloredlogs
+coloredlogs.install(
+    level="WARNING",
+    logger=logger,
+    fmt="%(levelname)s - %(message)s",
+)
 
 
 class Report:
-    __slots__ = ["date", "name", "content_url", "company", "report", "raw_report"]
-
-    def __init__(self, date, name, content_url, company, report=None, raw_report=None):
-        self.date = date
+    def __init__(
+        self,
+        report_date: datetime,
+        name: str,
+        content_url: str,
+        company: str,
+        raw_report: str,
+    ):
+        self.report_date = report_date
         self.name = name
         self.content_url = content_url
         self.company = company
-        self.report = report
+        self.report_content: Optional[str] = None
         self.raw_report = raw_report
 
     def to_dict(self):
         return {
-            "date": self.date,
+            "report_date": self.report_date.isoformat(),
             "name": self.name,
             "company": self.company,
-            "report": self.report,
             "raw_report": self.raw_report,
         }
 
-    def to_hash(self):
-        """MD5 hash of a the report."""
-
-        dhash = hashlib.md5()
-
-        entry = {
-            "date": self.date.isoformat(),
-            "name": self.name,
-            "company": self.company,
-            "report": self.report,
-        }
-
+    def to_hash(self) -> str:
+        entry = self.to_dict()
         encoded = json.dumps(entry, sort_keys=True).encode("utf-8")
-        dhash.update(encoded)
-
+        dhash = hashlib.new(
+            "md5", encoded, usedforsecurity=False
+        )  # If 3.8 support is dropped, use hashlib.md5()
         return dhash.hexdigest()
+
+    def set_content(self, content: str) -> None:
+        self.report_content = content
 
 
 class Bundesanzeiger:
     __slots__ = ["session", "model", "captcha_callback", "_config"]
 
-    def __init__(self, on_captach_callback=None, config: Config = None):
-        if config is None:
-            self._config = module_config
-        else:
-            self._config = config
-
+    def __init__(self, on_captcha_callback=None, config: Optional[Config] = None):
+        self._config = config or module_config
         self.session = requests.Session()
         if self._config.proxy_config is not None:
             self.session.proxies.update(self._config.proxy_config)
-        if on_captach_callback:
-            self.callback = on_captach_callback
+        if on_captcha_callback:
+            self.captcha_callback = on_captcha_callback
         else:
-            import deutschland.bundesanzeiger.model
-
-            self.model = deutschland.bundesanzeiger.model.load_model()
+            self.model = Model().session
             self.captcha_callback = self.__solve_captcha
 
     def __solve_captcha(self, image_data: bytes):
-        import deutschland.bundesanzeiger.model
-
         image = BytesIO(image_data)
-        image_arr = deutschland.bundesanzeiger.model.load_image_arr(image)
+        image_arr = Model.load_image_arr(image)
         image_arr = image_arr.reshape((1, 50, 250, 1)).astype(np.float32)
 
         prediction = self.model.run(None, {"captcha": image_arr})[0][0]
-        prediction_str = deutschland.bundesanzeiger.model.prediction_to_str(prediction)
-
+        prediction_str = Model.prediction_to_str(prediction)
         return prediction_str
 
     def __is_captcha_needed(self, entry_content: str):
@@ -111,20 +118,78 @@ class Bundesanzeiger:
                 continue
 
             company_name = company_name_element.contents[0].strip()
+            raw_report = row.prettify()
 
-            yield Report(date, entry_name, entry_link, company_name)
+            yield Report(date, entry_name, entry_link, company_name, raw_report)  # type: ignore
 
-    def __generate_result(self, content: str):
-        """iterate trough all results and try to fetch single reports"""
+    def __generate_result(
+        self,
+        content: str,
+        company_name: str,
+        show_progress_bar: bool,
+        disable_manual_input: bool = False,
+    ):
         result = {}
-        for element in self.__find_all_entries_on_page(content):
-            get_element_response = self.session.get(element.content_url)
+        entries = list(self.__find_all_entries_on_page(content))
+        found_companies = set()
+        for entry in entries:
+            found_companies.add(entry.company)
 
-            if self.__is_captcha_needed(get_element_response.text):
-                soup = BeautifulSoup(get_element_response.text, "html.parser")
-                captcha_image_src = soup.find("div", {"class": "captcha_wrapper"}).find(
-                    "img"
-                )["src"]
+        selected_company_name = company_name
+        selected_option = len(found_companies) + 1
+
+        if len(found_companies) > 1 and not disable_manual_input:
+            logger.warning(
+                f"Found {len(found_companies)} companies for {company_name}:"
+            )
+            for idx, company in enumerate(found_companies, start=1):
+                print(f"{idx}. {company}")
+            print(f"{len(found_companies) + 1}. All")
+
+            selected_option = 0
+            while selected_option < 1 or selected_option > len(found_companies) + 1:
+                try:
+                    selected_option = int(
+                        input("Please select the correct company (enter the number): ")
+                    )
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+
+            if selected_option != len(found_companies) + 1:
+                selected_company_name = list(found_companies)[selected_option - 1]
+
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            futures = []
+            for element in entries:
+                # Filter entries based on the selected company name
+                if (
+                    element.company == selected_company_name
+                    or selected_option == len(found_companies) + 1
+                ):
+                    futures.append(executor.submit(self.__process_entry, element))
+
+            for future in tqdm(
+                futures,
+                desc="Processing entries",
+                unit="entry",
+                colour="green",
+                disable=not show_progress_bar,
+            ):
+                entry_hash, entry_dict = future.result()
+                if entry_hash and entry_dict:
+                    result[entry_hash] = entry_dict
+
+        return result
+
+    def __process_entry(self, element: Report):
+        get_element_response = self.session.get(element.content_url)
+
+        if self.__is_captcha_needed(get_element_response.text):
+            soup = BeautifulSoup(get_element_response.text, "lxml")
+            captcha_wrapper = soup.find("div", {"class": "captcha_wrapper"})
+
+            if captcha_wrapper is not None:
+                captcha_image_src = captcha_wrapper.find("img")["src"]
                 img_response = self.session.get(captcha_image_src)
                 captcha_result = self.captcha_callback(img_response.content)
                 captcha_endpoint_url = soup.find_all("form")[1]["action"]
@@ -133,26 +198,66 @@ class Bundesanzeiger:
                     data={"solution": captcha_result, "confirm-button": "OK"},
                 )
 
-            content_soup = BeautifulSoup(get_element_response.text, "html.parser")
-            content_element = content_soup.find(
-                "div", {"class": "publication_container"}
-            )
+        content_soup = BeautifulSoup(get_element_response.text, "lxml")
+        content_element = content_soup.find("div", {"class": "publication_container"})
 
-            if not content_element:
-                continue
+        if not content_element:
+            return None, None
 
-            element.report = content_element.text
-            element.raw_report = content_element.prettify()
+        element.set_content(content_element.text)
+        element.raw_report = content_element.prettify()
 
-            result[element.to_hash()] = element.to_dict()
+        return element.to_hash(), element.to_dict()
 
-        return result
-
-    def get_reports(self, company_name: str):
+    def __deduplicate_reports(self, reports: dict) -> dict:
         """
-        fetch all reports for this company name
-        :param company_name:
-        :return" : "Dict of all reports
+        Deduplicates financial reports based on report name and company name, keeping the latest report.
+
+
+        Returns:
+            dict: A dictionary containing the deduplicated reports, with their hash as keys and report details as values.
+        """
+        unique_reports = {}
+        for report_hash, report in reports.items():
+            key = (report["name"], report["company"])
+            if key not in unique_reports:
+                unique_reports[key] = report
+            else:
+                existing_report = unique_reports[key]
+                if dateparser.parse(report["report_date"]) > dateparser.parse(  # type: ignore
+                    existing_report["report_date"]
+                ):
+                    unique_reports[key] = report
+
+        # Convert back to the original format with hash as keys
+        deduplicated_reports = {
+            hashlib.md5(
+                json.dumps(report, sort_keys=True).encode("utf-8"),
+                usedforsecurity=False,
+            ).hexdigest(): report
+            for report in unique_reports.values()
+        }
+        return deduplicated_reports
+
+    def get_reports(
+        self,
+        company_name: str,
+        deduplicate: bool = False,
+        show_progress_bar: bool = True,
+        disable_manual_input: bool = False,
+    ):
+        """
+        Fetches financial reports for a given company from the Bundesanzeiger website.
+
+        Args:
+            company_name (str): The name of the company for which to fetch reports.
+            deduplicate (bool, optional): Whether to deduplicate the reports based on the report_name and report_date, keeping only the most recent report.
+                Defaults to False.
+            disable_manual_input (bool, optional): Whether to disable manual input for selecting the correct company if multiple companies are found for the given company name.
+            show_progress_bar (bool, optional): Whether to display a progress bar during the process. Defaults to True.
+
+        Returns:
+            dict: A dictionary containing the fetched reports, with their hash as keys and report details as values.
         """
         self.session.cookies["cc"] = "1628606977-805e172265bfdbde-10"
         self.session.headers.update(
@@ -183,10 +288,146 @@ class Bundesanzeiger:
         response = self.session.get(
             f"https://www.bundesanzeiger.de/pub/de/start?0-2.-top%7Econtent%7Epanel-left%7Ecard-form=&fulltext={company_name}&area_select=&search_button=Suchen"
         )
-        return self.__generate_result(response.text)
+        if response.status_code != 200:
+            raise Exception("Could not fetch reports")
+
+        if deduplicate:
+            return self.__deduplicate_reports(
+                self.__generate_result(
+                    response.text, company_name, show_progress_bar, disable_manual_input
+                )
+            )
+
+        return self.__generate_result(
+            response.text, company_name, show_progress_bar, disable_manual_input
+        )
+
+
+def extract_kpis(reports: dict) -> dict:
+    """
+    Extracts Key Performance Indicators (KPIs) from the financial reports.
+
+    Args:
+        reports (dict): A dictionary containing the financial reports with their hash as keys and report details as values.
+
+    Returns:
+        dict: A dictionary containing the extracted KPIs with their report hash as keys and KPIs as values.
+    """
+
+    kpis = {}
+
+    # Define KPI patterns to search for
+    kpi_patterns = {
+        "revenue": r"(?:revenue|umsatz|erlöse)[:\s]*([\d,.]+[mmb]?)",
+        "net_income": r"(?:net income|jahresüberschuss|nettoeinkommen)[:\s]*([\d,.]+[mmb]?)",
+        "ebit": r"(?:ebit|operating income)[:\s]*([\d,.]+[mmb]?)",
+        "ebitda": r"(?:ebitda)[:\s]*([\d,.]+[mmb]?)",
+        "gross_profit": r"(?:gross profit|bruttogewinn)[:\s]*([\d,.]+[mmb]?)",
+        "operating_profit": r"(?:operating profit|betriebsgewinn)[:\s]*([\d,.]+[mmb]?)",
+        "assets": r"(?:total assets|bilanzsumme)[:\s]*([\d,.]+[mmb]?)",
+        "liabilities": r"(?:total liabilities|gesamtverbindlichkeiten)[:\s]*([\d,.]+[mmb]?)",
+        "equity": r"(?:shareholders'? equity|eigenkapital)[:\s]*([\d,.]+[mmb]?)",
+        "current_assets": r"(?:current assets|umlaufvermögen)[:\s]*([\d,.]+[mmb]?)",
+        "current_liabilities": r"(?:current liabilities|kurzfristige verbindlichkeiten)[:\s]*([\d,.]+[mmb]?)",
+        "long_term_debt": r"(?:long[-\s]?term debt|langfristige verbindlichkeiten)[:\s]*([\d,.]+[mmb]?)",
+        "short_term_debt": r"(?:short[-\s]?term debt|kurzfristige verbindlichkeiten)[:\s]*([\d,.]+[mmb]?)",
+        "cash_and_cash_equivalents": r"(?:cash (?:and cash equivalents)?|barmittel)[:\s]*([\d,.]+[mmb]?)",
+        "dividends": r"(?:dividends?|dividende)[:\s]*([\d,.]+[mmb]?)",
+        "cash_flow": r"(?:cash flow|cashflow|cash flow from operating activities)[:\s]*([\d,.]+[mmb]?)",
+    }
+
+    for report_hash, report in reports.items():
+        report_kpis = {}
+        report_content = report["report_content"]
+
+        for kpi, pattern in kpi_patterns.items():
+            match = re.search(pattern, report_content, flags=re.IGNORECASE | re.UNICODE)
+            if match:
+                value = match.group(1)
+
+                # Clean and validate the extracted number
+                try:
+                    if not value:  # Check if value is empty
+                        cleaned_value = None
+                    else:
+                        multiplier = 1
+                        if value[-1].lower() == "m":
+                            value = value[:-1]
+                            multiplier = 1_000_000
+                        elif value[-1].lower() == "b":
+                            value = value[:-1]
+                            multiplier = 1_000_000_000
+
+                        # Remove commas after checking for multipliers
+                        value = value.replace(".", "").replace(",", ".").strip()
+                        cleaned_value = float(value) * multiplier
+                except ValueError:
+                    cleaned_value = None
+
+                if cleaned_value is not None:
+                    report_kpis[kpi] = cleaned_value
+
+        kpis[report_hash] = report_kpis
+
+    return kpis
+
+
+def visualize_kpis(kpis: dict, reports: dict):
+    """
+    Visualizes the extracted KPIs using bar charts.
+
+    Args:
+        kpis (dict): A dictionary containing the extracted KPIs with their report hash as keys and KPIs as values.
+        reports (dict): A dictionary containing the financial reports with their hash as keys and Report objects as values.
+    """
+
+    kpi_data: dict = {}
+    for report_hash, report_kpis in kpis.items():
+        report = reports[report_hash]
+        report_title = report["name"]
+
+        for kpi, value in report_kpis.items():
+            if kpi not in kpi_data:
+                kpi_data[kpi] = {"titles": [], "values": []}
+
+            kpi_data[kpi]["titles"].append(report_title)
+            kpi_data[kpi]["values"].append(value)
+
+    # Create bar charts for each KPI
+    for kpi, data in kpi_data.items():
+        plt.figure()
+        plt.bar(data["titles"], data["values"])
+        plt.title(f"{kpi.capitalize()} over Time")
+        plt.ylabel(kpi.capitalize())
+        plt.xticks(rotation=90)
+        plt.gcf().autofmt_xdate()
+        plt.tight_layout()
+        plt.show()
 
 
 if __name__ == "__main__":
     ba = Bundesanzeiger()
-    reports = ba.get_reports("Deutsche Bahn AG")
-    print(reports.keys(), len(reports))
+    start_time = time.time()
+    reports = ba.get_reports(
+        "Siemke & Co. Brücken- und Ingenieurbau GmbH",
+        deduplicate=True,
+    )
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Time taken to fetch reports: {elapsed_time:.2f} seconds")
+    print(f"Found {len(reports)} reports")
+    print()
+
+    kpis = extract_kpis(reports)
+
+    for i in reports.keys():
+        report = reports[i]
+        kpi = kpis[i]
+        print(f"Report name: {report['name']}")
+        report_date = datetime.strptime(report["report_date"], "%Y-%m-%dT%H:%M:%S")
+        print(
+            f"Company name: {report['company']} (date: {report_date.strftime('%d.%m.%Y')})"
+        )
+        print(f"KPIs: {kpi}")
+        print()
+    visualize_kpis(kpis, {hash_: report for hash_, report in reports.items()})

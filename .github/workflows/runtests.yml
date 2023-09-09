@@ -2,6 +2,9 @@ name: Run Python 🐍 tests
 
 on: [push, pull_request]
 
+env:
+  PYTHONUTF8: 1
+
 jobs:
   test:
     strategy:

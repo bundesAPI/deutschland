@@ -4,12 +4,13 @@ on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
     strategy:
       matrix:
-        python-version: ["3.9.13","3.8.13","3.7.13","3.6.12","3.10"]
+        os: ["macos-latest", "windows-latest","ubuntu-20.04"]
+        python-version: ["3.9.13","3.8.13","3.10","3.11"]
       fail-fast: false
 
+    runs-on: ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}

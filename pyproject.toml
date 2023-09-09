@@ -11,21 +11,13 @@ packages = [
     { include = "deutschland", from = "src" },
 ]
 [tool.poetry.dependencies]
-python = "^3.6.2"
-Shapely = "^1.8.0"
-mapbox-vector-tile = "^1.2.1"
+python = "^3.8"
 requests = "^2.26.0"
 dateparser = "^1.0.0"
-gql = "^2.0.0"
-slugify = "^0.0.1"
-Pillow = "^8.3.1"
 beautifulsoup4 = "^4.9.3"
-lxml = "^4.6.3"
-pandas = "^1.1.5"
 more-itertools = "^8.10.0"
 onnxruntime = "^1.10.0"
 numpy = "^1.19.0"
-protobuf= ">=3.0,<4.0"
 
 # Those are packages which were included in previous release so not optional
 de-autobahn = {version = "^1.0.4"}
@@ -66,12 +58,15 @@ de-ecovisio  = {version= "^0.1.0", optional = true}
 de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
 # Tests are for non openapi version of this package. Leave out for now.
 #de-lebensmittelwarnung = {version="^0.1.0",optional=true}
+pillow = "^10.0.0"
+mapbox-vector-tile = "^2.0.1"
+lxml = "^4.9.3"
+pandas = ">1.0,<2.1"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.4"
 isort = "5.10.1"
 black = "22.8.0"
 
@@ -102,6 +97,9 @@ all = ["de-bundestag-lobbyregister","de-dip-bundestag","de-pegel-online","de-aus
     "de-tagesschau", "de-weiterbildungssuche","de-feiertage","de-marktstammdaten","de-vag","de-abfallnavi","de-bundeshaushalt",
     "de-ecovisio","de-dashboarddeutschland"]
 #lebensmittelwarnung =  ["de-lebensmittelwarnung"]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

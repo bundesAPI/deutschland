@@ -403,6 +403,21 @@ python-dateutil = "*"
 urllib3 = ">=1.25.3"
 
 [[package]]
+name = "de-destatis"
+version = "0.1.0"
+description = "Destatis-API"
+optional = true
+python-versions = ">=3.6"
+files = [
+    {file = "de_destatis-0.1.0-py3-none-any.whl", hash = "sha256:f69024a8dbcbed58dcf63f7f1d0f18d5a12eed81b35657975e34131f9c618f9d"},
+    {file = "de_destatis-0.1.0.tar.gz", hash = "sha256:4637d489b72b2ea198b03a4cb10148dde316c0a999e72f43917da2943a3429d8"},
+]
+
+[package.dependencies]
+python-dateutil = "*"
+urllib3 = ">=1.25.3"
+
+[[package]]
 name = "de-dip-bundestag"
 version = "0.1.1"
 description = "Deutscher Bundestag - DIP"
@@ -1683,13 +1698,14 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [extras]
 abfallnavi = ["de-abfallnavi"]
-all = ["de-abfallnavi", "de-ausbildungssuche", "de-berufssprachkurssuche", "de-bundeshaushalt", "de-bundestag-lobbyregister", "de-coachingangebote", "de-dashboarddeutschland", "de-dip-bundestag", "de-dip-bundestag", "de-ecovisio", "de-entgeltatlas", "de-feiertage", "de-hochwasserzentralen", "de-marktstammdaten", "de-pegel-online", "de-pflanzenschutzmittelzulassung", "de-studiensuche", "de-tagesschau", "de-vag", "de-weiterbildungssuche"]
+all = ["de-abfallnavi", "de-ausbildungssuche", "de-berufssprachkurssuche", "de-bundeshaushalt", "de-bundestag-lobbyregister", "de-coachingangebote", "de-dashboarddeutschland", "de-destatis", "de-dip-bundestag", "de-dip-bundestag", "de-ecovisio", "de-entgeltatlas", "de-feiertage", "de-hochwasserzentralen", "de-marktstammdaten", "de-pegel-online", "de-pflanzenschutzmittelzulassung", "de-studiensuche", "de-tagesschau", "de-vag", "de-weiterbildungssuche"]
 ausbildungssuche = ["de-ausbildungssuche"]
 berufssprachkurssuche = ["de-berufssprachkurssuche"]
 bundeshaushalt = ["de-bundeshaushalt"]
 bundestag-lobbyregister = ["de-bundestag-lobbyregister"]
 coachingangebote = ["de-coachingangebote"]
 dashboarddeutschland = ["de-dashboarddeutschland"]
+destatis = ["de-destatis"]
 dip-bundestag = ["de-dip-bundestag"]
 ecovisio = ["de-ecovisio"]
 entgeltatlas = ["de-entgeltatlas"]
@@ -1706,4 +1722,4 @@ weiterbildungssuche = ["de-weiterbildungssuche"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "8d404f19ef71221454defcfe1649832a1a29782bb5fc64f0fa2f71155c670776"
+content-hash = "aa7a845201291cf1a5a8c64aeea85be0ce15aeefde704b98dded73af1a2efce2"

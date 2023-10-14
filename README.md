@@ -33,7 +33,7 @@ print(data["Adresse"][0])
 ```
 For the detailed documentation of this API see [here](https://adv-smart.de/docs/dokumentation/web_vektor_datenmodell.html)
 
-The data is provided by the [AdV SmartMapping](https://adv-smart.de/index_en.html). The team consists of participants from the German state surveying offices, the Federal Agency for Cartography and Geodesy (BKG), the German Federal Armed Forces (Bundeswehr ZGeoBW) and third parties from research and education.
+The data is provided by the [AdV SmartMapping](https://dev.adv-smart.de/). The team consists of participants from the German state surveying offices, the Federal Agency for Cartography and Geodesy (BKG), the German Federal Armed Forces (Bundeswehr ZGeoBW) and third parties from research and education.
 
 
 ## Company Data

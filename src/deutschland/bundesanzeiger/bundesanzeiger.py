@@ -118,14 +118,14 @@ class Bundesanzeiger:
         """iterate trough all results and try to fetch single reports"""
         result = {}
         for element in self.__find_all_entries_on_page(content):
-            get_element_response = self.session.get(element.content_url)
+            get_element_response = self.__get_response(element.content_url)
 
             if self.__is_captcha_needed(get_element_response.text):
                 soup = BeautifulSoup(get_element_response.text, "html.parser")
                 captcha_image_src = soup.find("div", {"class": "captcha_wrapper"}).find(
                     "img"
                 )["src"]
-                img_response = self.session.get(captcha_image_src)
+                img_response = self.__get_response(captcha_image_src)
                 captcha_result = self.captcha_callback(img_response.content)
                 captcha_endpoint_url = soup.find_all("form")[1]["action"]
                 get_element_response = self.session.post(
@@ -147,6 +147,16 @@ class Bundesanzeiger:
             result[element.to_hash()] = element.to_dict()
 
         return result
+
+    def __get_response(self, url: str) -> requests.Response:
+        """send a request to a URL and validate the response"""
+        response = self.session.get(url)
+        if not response.ok:
+            raise ConnectionError(
+                f"There was an error while connecting to '{response.url}'. Got status code {response.status_code} - {response.reason}"
+            )
+
+        return response
 
     def get_reports(self, company_name: str):
         """
@@ -176,11 +186,11 @@ class Bundesanzeiger:
             }
         )
         # get the jsessionid cookie
-        response = self.session.get("https://www.bundesanzeiger.de")
+        response = self.__get_response("https://www.bundesanzeiger.de")
         # go to the start page
-        response = self.session.get("https://www.bundesanzeiger.de/pub/de/start?0")
+        response = self.__get_response("https://www.bundesanzeiger.de/pub/de/start?0")
         # perform the search
-        response = self.session.get(
+        response = self.__get_response(
             f"https://www.bundesanzeiger.de/pub/de/start?0-2.-top%7Econtent%7Epanel-left%7Ecard-form=&fulltext={company_name}&area_select=&search_button=Suchen"
         )
         return self.__generate_result(response.text)

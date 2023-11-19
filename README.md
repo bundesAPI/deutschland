@@ -13,6 +13,15 @@ A python package that gives you easy access to the most valuable datasets of Ger
 pip install deutschland
 ```
 
+### Supported Python Versions
+```
+3.8 - 3.11
+```
+Tested on Linux, MacOS and Windows 
+
+[![Run Python 🐍 tests](https://github.com/bundesAPI/deutschland/actions/workflows/runtests.yml/badge.svg?branch=main)](https://github.com/bundesAPI/deutschland/actions/workflows/runtests.yml)
+
+
 ### Development
 For development poetry version `>=1.2.0` is required.
 

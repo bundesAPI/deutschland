@@ -152,7 +152,9 @@ class Bundesanzeiger:
         """send a request to a URL and validate the response"""
         response = self.session.get(url)
         if not response.ok:
-            raise ConnectionError(f"There was an error while connecting to '{response.url}'. Got status code {response.status_code} - {response.reason}")
+            raise ConnectionError(
+                f"There was an error while connecting to '{response.url}'. Got status code {response.status_code} - {response.reason}"
+            )
 
         return response
 
@@ -198,5 +200,3 @@ if __name__ == "__main__":
     ba = Bundesanzeiger()
     reports = ba.get_reports("Deutsche Bahn AG")
     print(reports.keys(), len(reports))
-
-

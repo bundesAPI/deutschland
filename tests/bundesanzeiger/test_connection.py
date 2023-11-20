@@ -12,4 +12,7 @@ def test_exception_on_invalid_http_code():
 
 def test_get_response():
     ba = Bundesanzeiger()
-    assert (ba._Bundesanzeiger__get_response("https://mock.httpstatus.io/200").status_code == 200)
+    assert (
+        ba._Bundesanzeiger__get_response("https://mock.httpstatus.io/200").status_code
+        == 200
+    )

@@ -1,5 +1,4 @@
 import pytest
-from requests import Response
 from deutschland.bundesanzeiger import Bundesanzeiger
 
 

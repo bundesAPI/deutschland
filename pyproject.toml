@@ -19,7 +19,7 @@ more-itertools = "^8.10.0"
 numpy = "^1.19.0"
 pillow = "^10.0.0"
 mapbox-vector-tile = "^2.0.1"
-lxml = "^4.9.3"
+lxml = ">=4.9.3,<6.0.0"
 pandas = "*"
 # 1.16.0 problem: https://github.com/microsoft/onnxruntime/issues/17631
 onnxruntime = ">1.10.0,!=1.16.0"

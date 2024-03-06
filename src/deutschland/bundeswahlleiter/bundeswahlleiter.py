@@ -10,8 +10,8 @@ from more_itertools import consume, take
 
 
 class Bundeswahlleiter:
-    HISTORICAL_RESULTS_URL = "https://www.bundeswahlleiter.de/dam/jcr/ce2d2b6a-f211-4355-8eea-355c98cd4e47/btw_kerg.zip"
-    OPEN_DATA_URL = "https://www.bundeswahlleiter.de/bundestagswahlen/2021/ergebnisse/opendata/csv/kerg.csv"
+    HISTORICAL_RESULTS_URL = "https://www.bundeswahlleiterin.de/en/dam/jcr/ce2d2b6a-f211-4355-8eea-355c98cd4e47/btw_kerg.zip"
+    OPEN_DATA_URL = "https://www.bundeswahlleiterin.de/bundestagswahlen/2021/ergebnisse/opendata/btw21/20240211_wdhwahl-vgl2021/csv/kerg.csv"
 
     def load_results(self, year):
         if year < 2021:

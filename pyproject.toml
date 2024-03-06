@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "deutschland"
-version = "0.4.0"
+version = "0.4.1"
 description = ""
 license = "Apache-2.0"
 authors = ["Lilith Wittmann <mail@lilithwittmann.de>"]
@@ -16,11 +16,20 @@ requests = "^2.26.0"
 dateparser = "^1.0.0"
 beautifulsoup4 = "^4.9.3"
 more-itertools = "^8.10.0"
-numpy = "^1.19.0"
+numpy = [
+    {version = "^1.19.0", python = ">=3.8,<3.12"},
+    {version = "^1.26.2", python = ">=3.12"}
+]
+
 pillow = "^10.0.0"
 mapbox-vector-tile = "^2.0.1"
 lxml = "^4.9.3"
-pandas = "*"
+pandas = [
+    {version = "*", python = ">=3.8,<3.12"},
+    {version = ">2.1.2", python = ">=3.12"}
+]
+
+
 # 1.16.0 problem: https://github.com/microsoft/onnxruntime/issues/17631
 onnxruntime = ">1.10.0,!=1.16.0"
 

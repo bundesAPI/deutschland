@@ -7,8 +7,8 @@ def test_results_not_empty():
     assert len(reports) > 0
 
 
-def test_multiple_entries():
+def test_multiple_pages():
     ba = Bundesanzeiger()
-    reports = ba.get_reports("DE000A0TGJ55")
+    reports = ba.get_reports("DE000A0TGJ55", page_limit=2)
 
-    assert len(reports) > 1
+    assert len(reports) == 40

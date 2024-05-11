@@ -166,8 +166,7 @@ class Bundesanzeiger:
         if not next_link:
             return None
 
-        return next_link.attrs.get('href')
-
+        return next_link.attrs.get("href")
 
     def __generate_result(self, url: str, page_limit: int):
         results = dict()

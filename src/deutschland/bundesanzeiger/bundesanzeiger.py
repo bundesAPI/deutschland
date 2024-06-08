@@ -1,6 +1,7 @@
 import hashlib
 import json
 from io import BytesIO
+from urllib.parse import quote_plus
 
 import dateparser
 import numpy as np
@@ -114,7 +115,7 @@ class Bundesanzeiger:
 
             yield Report(date, entry_name, entry_link, company_name)
 
-    def __generate_result(self, content: str):
+    def __generate_result_for_page(self, content: str):
         """iterate trough all results and try to fetch single reports"""
         result = {}
         for element in self.__find_all_entries_on_page(content):
@@ -148,6 +149,36 @@ class Bundesanzeiger:
 
         return result
 
+    def __get_next_page_link(self, content: str):
+        soup = BeautifulSoup(content, "html.parser")
+        active_link = soup.select_one("div.page-item a.active")
+        if not active_link:
+            return None
+
+        active_index = None
+        try:
+            active_index = int(active_link.text.strip())
+        except ValueError:
+            return None
+
+        next_index = active_index + 1
+        next_link = soup.select_one(f'div.page-item a[title="Zur Seite {next_index}"]')
+        if not next_link:
+            return None
+
+        return next_link.attrs.get("href")
+
+    def __generate_result(self, url: str, page_limit: int):
+        results = dict()
+        pages = 0
+        while url is not None and pages < page_limit:
+            content = self.__get_response(url)
+            result_for_page = self.__generate_result_for_page(content.text)
+            results.update(**result_for_page)
+            url = self.__get_next_page_link(content.text)
+            pages += 1
+        return results
+
     def __get_response(self, url: str) -> requests.Response:
         """send a request to a URL and validate the response"""
         response = self.session.get(url)
@@ -158,10 +189,12 @@ class Bundesanzeiger:
 
         return response
 
-    def get_reports(self, company_name: str):
+    def get_reports(self, company_name: str, *, page_limit=1):
         """
         fetch all reports for this company name
         :param company_name:
+        :param page_limit: Maximum number of pages to fetch (default: 1). Normally each page has 20 reports.
+            Pass `float('inf')` to fetch all pages (this might take a while).
         :return" : "Dict of all reports
         """
         self.session.cookies["cc"] = "1628606977-805e172265bfdbde-10"
@@ -190,10 +223,8 @@ class Bundesanzeiger:
         # go to the start page
         response = self.__get_response("https://www.bundesanzeiger.de/pub/de/start?0")
         # perform the search
-        response = self.__get_response(
-            f"https://www.bundesanzeiger.de/pub/de/start?0-2.-top%7Econtent%7Epanel-left%7Ecard-form=&fulltext={company_name}&area_select=&search_button=Suchen"
-        )
-        return self.__generate_result(response.text)
+        search_url = f"https://www.bundesanzeiger.de/pub/de/start?0-2.-top%7Econtent%7Epanel-left%7Ecard-form=&fulltext={quote_plus(company_name)}&area_select=&search_button=Suchen"
+        return self.__generate_result(search_url, page_limit)
 
 
 if __name__ == "__main__":

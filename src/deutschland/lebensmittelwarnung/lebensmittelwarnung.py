@@ -18,7 +18,7 @@ class WarningFeedUrl:
         "kosmetischemittel",
         "bedarfsgegenstaende",
         "mittelzumtaetowieren",
-        "babyundkinderprodukte"
+        "babyundkinderprodukte",
     ]
 
     VALID_REGION_SELECTORS = [
@@ -41,25 +41,22 @@ class WarningFeedUrl:
         "thueringen",
     ]
 
-    SOURCE_STRING = (
-        "https://www.lebensmittelwarnung.de/___LMW-Redaktion/RSSNewsfeed/Functions/RssFeeds/rssnewsfeed_Alle_DE.xml?nn=314268{0}{1}"
-    )
+    SOURCE_STRING = "https://www.lebensmittelwarnung.de/___LMW-Redaktion/RSSNewsfeed/Functions/RssFeeds/rssnewsfeed_Alle_DE.xml?nn=314268{0}{1}"
 
     def __init__(self, content: str, region: str):
         if (
             content in self.VALID_CONTENT_SELECTORS
             and region in self.VALID_REGION_SELECTORS
         ):
-            if content=="alle":
-                content=""
+            if content == "alle":
+                content = ""
             else:
-                content=f"&type={content}"
+                content = f"&type={content}"
 
-            if region=="alle_bundeslaender":
-                region=""
+            if region == "alle_bundeslaender":
+                region = ""
             else:
-                region=f"&state={region}"
-
+                region = f"&state={region}"
 
             self.url = self.SOURCE_STRING.format(content, region)
         else:
@@ -132,8 +129,9 @@ class Warning:
         self.dict["guid"] = guid
         self.dict["pubDate"] = warning_raw.find("pubDate").text
         self.dict["description"] = warning_raw.find("description").text
-        self.dict["link"]=guid
+        self.dict["link"] = guid
         self.dict["title"] = warning_raw.find("title").text
+
     def get_warning(self) -> dict:
         return self.dict
 

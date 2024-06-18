@@ -46,9 +46,7 @@ def test_lebensmittelwarnung_warningfeedurl_create():
     Checks if the WarningFeedUrl() works correctly.
     """
     url = WarningFeedUrl("alle", "berlin").get_url()
-    correct_url = (
-        "https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/feed/alle/berlin.rss"
-    )
+    correct_url = "https://www.lebensmittelwarnung.de/___LMW-Redaktion/RSSNewsfeed/Functions/RssFeeds/rssnewsfeed_Alle_DE.xml?nn=314268&state=berlin"
     assert url == correct_url, "WarningFeedUrl creation failed (result: " + url + ")"
 
 
@@ -56,17 +54,13 @@ def test_lebensmittelwarnung_warning_parsing():
     """
     Checks if the Warning parsing works correctly.
     """
-    warning_raw_string = '<item> <title>TITLE</title> <link>https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/1</link> <description><![CDATA[<img src="IMG_URL" width="100" /><br/> <b>Produktbezeichnung:</b> TITLE<br/> <b>Typ:</b> TYPE<br/> <b>Hersteller (Inverkehrbringer):</b> MANUFACTURER<br/> <b>Grund der Warnung:</b> WARNING<br/> <b>Betroffene Länder:</b> STATE A, STATE B<br/> ]]></description> <content:encoded><![CDATA[<img src="IMG_URL" width="100" /><br/> <b>Produktbezeichnung:</b> TITLE<br/> <b>Typ:</b> TYPE<br/> <b>Hersteller (Inverkehrbringer):</b> MANUFACTURER<br/> <b>Grund der Warnung:</b> WARNING<br/> <b>Betroffene Länder:</b> STATE A, STATE B<br/> ]]></content:encoded> <pubDate>Wed, 08 Sep 2021 10:00:00 +0000</pubDate> <guid>https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/1</guid> </item>'
+    warning_raw_string = "<item><title>Spirit Motors Johnny Bglove Lederhandschuh Kurz</title><link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_10_NW_Handschuhe/240614_NW_Handschuhe_Meldung.html</link><pubDate>Fri, 14 Jun 2024 14:12:17 +0200</pubDate><description/><guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_10_NW_Handschuhe/240614_NW_Handschuhe_Meldung.html</guid></item>"
     warning_correct = {
-        "id": 1,
-        "guid": "https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/1",
-        "pubDate": "Wed, 08 Sep 2021 10:00:00 +0000",
-        "imgSrc": "IMG_URL",
-        "title": "TITLE",
-        "type": "TYPE",
-        "manufacturer": "MANUFACTURER",
-        "warning": "WARNING",
-        "affectedStates": ["STATE A", "STATE B"],
+        "guid": "https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_10_NW_Handschuhe/240614_NW_Handschuhe_Meldung.html",
+        "pubDate": "Fri, 14 Jun 2024 14:12:17 +0200",
+        "title": "Spirit Motors Johnny Bglove Lederhandschuh Kurz",
+        "link": "https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_10_NW_Handschuhe/240614_NW_Handschuhe_Meldung.html",
+        "description": "",
     }
     warning_raw = BeautifulSoup(warning_raw_string, "xml").find("item")
     warning = Warning(warning_raw).get_warning()
@@ -79,12 +73,61 @@ def test_lebensmittelwarnung_warningfeed_parsing():
     """
     Checks if the WarningFeed parsing works correctly.
     """
-    item_count = 5
-    warning_raw_item = '<item> <title>TITLE</title> <link>https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/1</link> <description><![CDATA[<img src="IMG_URL" width="100" /><br/> <b>Produktbezeichnung:</b> TITLE<br/> <b>Typ:</b> TYPE<br/> <b>Hersteller (Inverkehrbringer):</b> MANUFACTURER<br/> <b>Grund der Warnung:</b> WARNING<br/> <b>Betroffene Länder:</b> STATE A, STATE B<br/> ]]></description> <content:encoded><![CDATA[<img src="IMG_URL" width="100" /><br/> <b>Produktbezeichnung:</b> TITLE<br/> <b>Typ:</b> TYPE<br/> <b>Hersteller (Inverkehrbringer):</b> MANUFACTURER<br/> <b>Grund der Warnung:</b> WARNING<br/> <b>Betroffene Länder:</b> STATE A, STATE B<br/> ]]></content:encoded> <pubDate>Wed, 08 Sep 2021 10:00:00 +0000</pubDate> <guid>https://www.lebensmittelwarnung.de/bvl-lmw-de/detail/lebensmittel/1</guid> </item>'
+    item_count = 7
+    warning_raw_item = """
+		<item>
+		<title>Spirit Motors Johnny Bglove Lederhandschuh Kurz</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_10_NW_Handschuhe/240614_NW_Handschuhe_Meldung.html</link>
+		<pubDate>Fri, 14 Jun 2024 14:12:17 +0200</pubDate>
+		<description/>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_10_NW_Handschuhe/240614_NW_Handschuhe_Meldung.html</guid>
+		</item>
+		<item>
+		<title>Hähnchengeschnetzeltes in Champignon – Rahmsauce mit Spiralnudeln 400 Gramm</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_12_BY_Haenchengeschnetzeltes/240614_11_BY_Haenchengeschnetzeltes.html</link>
+		<pubDate>Fri, 14 Jun 2024 10:23:00 +0200</pubDate>
+		<description>27.07.24: K219193; 01.08.24: K219194, K219195; 30.07.24: K226282, K226281, K232681</description>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240614_12_BY_Haenchengeschnetzeltes/240614_11_BY_Haenchengeschnetzeltes.html</guid>
+		</item>
+		<item>
+		<title>Alpina Nylon Küchenzubehör</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240610_08_NW_Kuechenzubehoer/240610_NW_Kuechenzubehoer_Meldung.html</link>
+		<pubDate>Mon, 10 Jun 2024 16:00:00 +0200</pubDate>
+		<description>alle</description>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240610_08_NW_Kuechenzubehoer/240610_NW_Kuechenzubehoer_Meldung.html</guid>
+		</item>
+		<item>
+		<title>Diverse Salamiprodukte</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240607_07_SH_diverse_Salamiprodukte/240607_1_SH_diverse_Salamiprodukte.html</link>
+		<pubDate>Mon, 10 Jun 2024 07:12:12 +0200</pubDate>
+		<description/>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240607_07_SH_diverse_Salamiprodukte/240607_1_SH_diverse_Salamiprodukte.html</guid>
+		</item>
+		<item>
+		<title>Gel Mouse Pad</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240606_05_NW_Mousepad/240606_NW_Mousepad_Meldung.html</link>
+		<pubDate>Thu, 6 Jun 2024 11:23:00 +0200</pubDate>
+		<description/>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240606_05_NW_Mousepad/240606_NW_Mousepad_Meldung.html</guid>
+		</item>
+		<item>
+		<title>Thüringer Knacker 4x75g (300g)</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240605_03_TH_Thueringer_Knacker/240605_TH_Thueringer_Knacker.html</link>
+		<pubDate>Wed, 5 Jun 2024 10:12:00 +0200</pubDate>
+		<description>982203</description>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/06_Juni/240605_03_TH_Thueringer_Knacker/240605_TH_Thueringer_Knacker.html</guid>
+		</item>
+		<item>
+		<title>Honig Herbal Paste</title>
+		<link>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/05_Mai/240529_6_BW_Honig_Paste/240529_6_BW_Honig_Paste.html</link>
+		<pubDate>Wed, 29 May 2024 19:00:00 +0200</pubDate>
+		<description>Alle Chargen</description>
+		<guid>https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/05_Mai/240529_6_BW_Honig_Paste/240529_6_BW_Honig_Paste.html</guid>
+		</item>
+	"""
     warning_raw_pre = "<rss><channel>"
     warning_raw_post = "</channel></rss>"
-    warning_raw = warning_raw_pre + (warning_raw_item * item_count) + warning_raw_post
-    print(warning_raw)
+    warning_raw = warning_raw_pre + (warning_raw_item) + warning_raw_post
     feed = WarningFeed(warning_raw).get_output()
     assert (
         len(feed) == item_count

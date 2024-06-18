@@ -15,33 +15,34 @@ class WarningFeedUrl:
     VALID_CONTENT_SELECTORS = [
         "alle",
         "lebensmittel",
-        "kosmetische+mittel",
+        "kosmetischemittel",
         "bedarfsgegenstaende",
-        "mittel+zum+taetowieren",
+        "mittelzumtaetowieren",
+        "babyundkinderprodukte"
     ]
 
     VALID_REGION_SELECTORS = [
         "alle_bundeslaender",
-        "baden_wuerttemberg",
+        "badenwuerttemberg",
         "bayern",
         "berlin",
         "brandenburg",
         "bremen",
         "hamburg",
         "hessen",
-        "mecklenburg_vorpommern",
+        "mecklenburgvorpommern",
         "niedersachsen",
-        "nordrhein_westfalen",
-        "rheinland_pfalz",
+        "nordrheinwestfalen",
+        "rheinlandpfalz",
         "saarland",
         "sachsen",
-        "sachsen_anhalt",
-        "schleswig_holstein",
+        "sachsenanhalt",
+        "schleswigholstein",
         "thueringen",
     ]
 
     SOURCE_STRING = (
-        "https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/feed/{0}/{1}.rss"
+        "https://www.lebensmittelwarnung.de/___LMW-Redaktion/RSSNewsfeed/Functions/RssFeeds/rssnewsfeed_Alle_DE.xml?nn=314268{0}{1}"
     )
 
     def __init__(self, content: str, region: str):
@@ -49,6 +50,17 @@ class WarningFeedUrl:
             content in self.VALID_CONTENT_SELECTORS
             and region in self.VALID_REGION_SELECTORS
         ):
+            if content=="alle":
+                content=""
+            else:
+                content=f"&type={content}"
+
+            if region=="alle_bundeslaender":
+                region=""
+            else:
+                region=f"&state={region}"
+
+
             self.url = self.SOURCE_STRING.format(content, region)
         else:
             raise ValueError(
@@ -117,34 +129,11 @@ class Warning:
 
     def __parse(self, warning_raw: PageElement) -> str:
         guid = warning_raw.find("guid").text
-        self.dict["id"] = int(guid.split("/")[-1])
         self.dict["guid"] = guid
         self.dict["pubDate"] = warning_raw.find("pubDate").text
-
-        cdata_soup = BeautifulSoup(
-            # use description instead of content:encoded, wierd parsing issue
-            warning_raw.find("description").text,
-            "html.parser",
-        )
-        image_elem = cdata_soup.find("img")
-        if image_elem:
-            self.dict["imgSrc"] = image_elem["src"]
-        content_attrs = cdata_soup.find_all("b")
-        for attr in content_attrs:
-            attr_name = attr.text
-            attr_value = str(attr.next_sibling).strip()
-            if attr_name == "Produktbezeichnung:":
-                self.dict["title"] = attr_value
-            elif attr_name == "Typ:":
-                self.dict["type"] = attr_value
-            elif attr_name == "Hersteller (Inverkehrbringer):":
-                self.dict["manufacturer"] = attr_value
-            elif attr_name == "Grund der Warnung:":
-                self.dict["warning"] = attr_value
-            elif attr_name == "Betroffene Länder:":
-                affected_arr = [x.strip() for x in attr_value.split(",")]
-                self.dict["affectedStates"] = affected_arr
-
+        self.dict["description"] = warning_raw.find("description").text
+        self.dict["link"]=guid
+        self.dict["title"] = warning_raw.find("title").text
     def get_warning(self) -> dict:
         return self.dict
 

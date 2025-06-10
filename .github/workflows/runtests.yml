@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: ["macos-latest", "windows-latest","ubuntu-latest"]
-        python-version: ["3.9.13","3.8.10","3.10","3.11","3.12"]
+        python-version: ["3.9.13","3.10","3.11","3.12"] # removed 3.8, it's no longer getting security updates
       fail-fast: false
 
     runs-on: ${{matrix.os}}

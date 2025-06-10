@@ -57,7 +57,7 @@ de-berufssprachkurssuche = {version= "^0.1.0", optional = true}
 de-bewerberboerse = {version= "^0.1.0", optional = true}
 de-bundeshaushalt  = {version= "^1.0.0", optional = true}
 de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
-#de-bundestag-tagesordnung = {version= "^0.1.0", optional = true}
+de-bundestag-tagesordnung = {version= "^0.1.0", optional = true}
 de-coachingangebote = {version= "^0.1.0", optional = true}
 de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
 de-deutschlandatlas = {version= "^0.1.0", optional = true}
@@ -71,7 +71,7 @@ de-feiertage  = {version= "^1.0.1", optional = true}
 de-hilfsmittel = {version= "^0.1.0", optional = true}
 de-hochwasserzentralen = {version= "^0.1.0", optional = true}
 de-klinikatlas = {version= "^0.1.0", optional = true}
-de-luftqualitaet = {version= "^0.1.0", optional = true}
+#de-luftqualitaet = {version= "^0.1.0", optional = true} existiert nicht auf pypi
 de-marktstammdaten  = {version= "^0.1.0", optional = true}
 de-pegel-online = {version= "^0.1.0", optional = true}
 de-pflanzenschutzmittelzulassung = {version= "^0.1.0", optional = true}
@@ -94,7 +94,7 @@ bewerberboerse = ["de-bewerberboerse"]
 berufssprachkurssuche = ["de-berufssprachkurssuche"]
 bundeshaushalt = ["de-bundeshaushalt"]
 bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
-#bundestag_tagesordnung = ["de-bundestag-tagesordnung"]
+bundestag_tagesordnung = ["de-bundestag-tagesordnung"]
 coachingangebote = ["de-coachingangebote"]
 dashboarddeutschland = ["de-dashboarddeutschland"]
 destatis = ["de-destatis"]
@@ -108,7 +108,7 @@ feiertage = ["de-feiertage"]
 hilfsmittel = ["de-hilfsmittel"]
 hochwasserzentralen = ["de-hochwasserzentralen"]
 klinikatlas = ["de-klinikatlas"]
-luftqualitaet = ["de-luftqualitaet"]
+#luftqualitaet = ["de-luftqualitaet"] existiert nicht auf pypi
 marktstammdaten = ["de-marktstammdaten"]
 pegel_online = ["de-pegel-online"]
 pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
@@ -125,7 +125,7 @@ all = [
     "de-bewerberboerse",
     "de-bundeshaushalt",
     "de-bundestag-lobbyregister",
-   # "de-bundestag-tagesordnung",
+    "de-bundestag-tagesordnung",
     "de-coachingangebote",
     "de-dashboarddeutschland",
     "de-destatis",

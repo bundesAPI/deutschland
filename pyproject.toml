@@ -57,9 +57,13 @@ de-berufssprachkurssuche = {version= "^0.1.0", optional = true}
 de-bewerberboerse = {version= "^0.1.0", optional = true}
 de-bundeshaushalt  = {version= "^1.0.0", optional = true}
 de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
+de-bundestag-tagesordnung = {version= "^0.1.0", optional = true}
 de-coachingangebote = {version= "^0.1.0", optional = true}
 de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
+de-deutschlandatlas = {version= "^0.1.0", optional = true}
 de-destatis = {version= "^0.1.0", optional = true}
+de-diga = {version= "^0.1.0", optional = true}
+de-digitale-verwaltung = {version= "^0.1.0", optional = true}
 de-dip-bundestag = {version= "^0.1.0", optional = true}
 de-ecovisio  = {version= "^0.1.0", optional = true}
 de-entgeltatlas  = {version= "^0.1.0", optional = true}
@@ -86,9 +90,13 @@ bewerberboerse = ["de-bewerberboerse"]
 berufssprachkurssuche = ["de-berufssprachkurssuche"]
 bundeshaushalt = ["de-bundeshaushalt"]
 bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
+bundestag_tagesordnung = ["de-bundestag-tagesordnung"]
 coachingangebote = ["de-coachingangebote"]
 dashboarddeutschland = ["de-dashboarddeutschland"]
 destatis = ["de-destatis"]
+deutschlandatlas = ["de-deutschlandatlas"]
+diga = ["de-diga"]
+digitale_verwaltung = ["de-digitale-verwaltung"]
 dip_bundestag = ["de-dip-bundestag"]
 ecovisio = ["de-ecovisio"]
 entgeltatlas = ["de-entgeltatlas"]
@@ -109,10 +117,13 @@ all = [
     "de-bewerberboerse",
     "de-bundeshaushalt",
     "de-bundestag-lobbyregister",
+    "de-bundestag-tagesordnung",
     "de-coachingangebote",
     "de-dashboarddeutschland",
     "de-destatis",
-    "de-dip-bundestag",
+    "de-deutschlandatlas",
+    "de-diga",
+    "de-digitale-verwaltung",
     "de-dip-bundestag",
     "de-ecovisio",
     "de-entgeltatlas",

@@ -15,7 +15,7 @@ pip install deutschland
 
 ### Supported Python Versions
 ```
-3.8 - 3.12
+3.9 - 3.12
 ```
 Tested on Linux, MacOS and Windows 
 

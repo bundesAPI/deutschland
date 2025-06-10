@@ -68,11 +68,15 @@ de-dip-bundestag = {version= "^0.1.0", optional = true}
 de-ecovisio  = {version= "^0.1.0", optional = true}
 de-entgeltatlas  = {version= "^0.1.0", optional = true}
 de-feiertage  = {version= "^1.0.1", optional = true}
+de-hilfsmittel = {version= "^0.1.0", optional = true}
 de-hochwasserzentralen = {version= "^0.1.0", optional = true}
 de-klinikatlas = {version= "^0.1.0", optional = true}
+de-luftqualitaet = {version= "^0.1.0", optional = true}
 de-marktstammdaten  = {version= "^0.1.0", optional = true}
 de-pegel-online = {version= "^0.1.0", optional = true}
 de-pflanzenschutzmittelzulassung = {version= "^0.1.0", optional = true}
+de-regionalatlas = {version= "^0.1.0", optional = true}
+de-rigoletto = {version= "^0.1.0", optional = true}
 de-studiensuche  = {version= "^0.1.0", optional = true}
 de-tagesschau = {version= "^0.1.0", optional = true}
 de-weiterbildungssuche  = {version= "^0.1.0", optional = true}
@@ -101,11 +105,15 @@ dip_bundestag = ["de-dip-bundestag"]
 ecovisio = ["de-ecovisio"]
 entgeltatlas = ["de-entgeltatlas"]
 feiertage = ["de-feiertage"]
+hilfsmittel = ["de-hilfsmittel"]
 hochwasserzentralen = ["de-hochwasserzentralen"]
 klinikatlas = ["de-klinikatlas"]
+luftqualitaet = ["de-luftqualitaet"]
 marktstammdaten = ["de-marktstammdaten"]
 pegel_online = ["de-pegel-online"]
 pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
+regionalatlas = ["de-regionalatlas"]
+rigoletto = ["de-rigoletto"]
 studiensuche = ["de-studiensuche"]
 tagesschau = ["de-tagesschau"]
 vag = ["de-vag"]
@@ -128,11 +136,15 @@ all = [
     "de-ecovisio",
     "de-entgeltatlas",
     "de-feiertage",
+    "de-hilfsmittel",
     "de-hochwasserzentralen",
     "de-klinikatlas",
+    "de-luftqualitaet",
     "de-marktstammdaten",
     "de-pegel-online",
     "de-pflanzenschutzmittelzulassung",
+    "de-regionalatlas",
+    "de-rigoletto",
     "de-studiensuche",
     "de-tagesschau",
     "de-vag",

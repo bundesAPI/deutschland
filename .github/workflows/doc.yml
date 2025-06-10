@@ -18,7 +18,7 @@ jobs:
           sphinx-apidoc -o source/ ../src/deutschland
           make html
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4 # v3 is deprecated
         with:
           name: "documentation"
           path: ${{ github.workspace }}/sphinx-docs/_build

@@ -57,7 +57,7 @@ de-berufssprachkurssuche = {version= "^0.1.0", optional = true}
 de-bewerberboerse = {version= "^0.1.0", optional = true}
 de-bundeshaushalt  = {version= "^1.0.0", optional = true}
 de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
-de-bundestag-tagesordnung = {version= "^0.1.0", optional = true}
+de-bundestag-tagesordnung = {version= "^1.0.0", optional = true}
 de-coachingangebote = {version= "^0.1.0", optional = true}
 de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
 de-deutschlandatlas = {version= "^0.1.0", optional = true}
@@ -70,7 +70,7 @@ de-entgeltatlas  = {version= "^0.1.0", optional = true}
 de-feiertage  = {version= "^1.0.1", optional = true}
 de-hilfsmittel = {version= "^0.1.0", optional = true}
 de-hochwasserzentralen = {version= "^0.1.0", optional = true}
-de-klinikatlas = {version= "^0.1.0", optional = true}
+de-klinikatlas = {version= "^1.0.0", optional = true}
 #de-luftqualitaet = {version= "^0.1.0", optional = true} existiert nicht auf pypi
 de-marktstammdaten  = {version= "^0.1.0", optional = true}
 de-pegel-online = {version= "^0.1.0", optional = true}

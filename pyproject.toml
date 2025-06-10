@@ -63,7 +63,7 @@ de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
 de-deutschlandatlas = {version= "^0.1.0", optional = true}
 de-destatis = {version= "^0.1.0", optional = true}
 de-diga = {version= "^0.1.0", optional = true}
-de-digitale-verwaltung = {version= "^0.1.0", optional = true}
+de-digitale-verwaltung = {version= "^1.0.0", optional = true}
 de-dip-bundestag = {version= "^0.1.0", optional = true}
 de-ecovisio  = {version= "^0.1.0", optional = true}
 de-entgeltatlas  = {version= "^0.1.0", optional = true}

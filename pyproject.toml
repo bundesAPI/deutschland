@@ -80,33 +80,53 @@ de-vag  = {version= "^0.1.0", optional = true}
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
 
 [tool.poetry.extras]
-bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
-dip_bundestag = ["de-dip-bundestag"]
-pegel_online=  ["de-pegel-online"]
-ausbildungssuche  = ["de-ausbildungssuche"]
-berufssprachkurssuche = ["de-berufssprachkurssuche"]
-coachingangebote = ["de-coachingangebote"]
-entgeltatlas  = ["de-entgeltatlas"]
-hochwasserzentralen = ["de-hochwasserzentralen"]
-pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
-studiensuche  = ["de-studiensuche"]
-tagesschau = ["de-tagesschau"]
-feiertage = ["de-feiertage"]
-marktstammdaten = ["de-marktstammdaten"]
-weiterbildungssuche  =["de-weiterbildungssuche"]
-vag  =["de-vag"]
-abfallnavi  =["de-abfallnavi"]
-bundeshaushalt  =["de-bundeshaushalt"]
-ecovisio  =["de-ecovisio"]
-dashboarddeutschland=["de-dashboarddeutschland"]
-destatis = ["de-destatis"]
-klinikatlas = ["de-klinikatlas"]
+abfallnavi = ["de-abfallnavi"]
+ausbildungssuche = ["de-ausbildungssuche"]
 bewerberboerse = ["de-bewerberboerse"]
-all = ["de-bundestag-lobbyregister","de-dip-bundestag","de-pegel-online","de-ausbildungssuche",
-    "de-berufssprachkurssuche","de-coachingangebote","de-dip-bundestag","de-entgeltatlas",
-    "de-hochwasserzentralen","de-pflanzenschutzmittelzulassung","de-studiensuche",
-    "de-tagesschau", "de-weiterbildungssuche","de-feiertage","de-marktstammdaten","de-vag","de-abfallnavi","de-bundeshaushalt",
-    "de-ecovisio","de-dashboarddeutschland","de-destatis","de-klinikatlas","de-bewerberboerse"]
+berufssprachkurssuche = ["de-berufssprachkurssuche"]
+bundeshaushalt = ["de-bundeshaushalt"]
+bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
+coachingangebote = ["de-coachingangebote"]
+dashboarddeutschland = ["de-dashboarddeutschland"]
+destatis = ["de-destatis"]
+dip_bundestag = ["de-dip-bundestag"]
+ecovisio = ["de-ecovisio"]
+entgeltatlas = ["de-entgeltatlas"]
+feiertage = ["de-feiertage"]
+hochwasserzentralen = ["de-hochwasserzentralen"]
+klinikatlas = ["de-klinikatlas"]
+marktstammdaten = ["de-marktstammdaten"]
+pegel_online = ["de-pegel-online"]
+pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
+studiensuche = ["de-studiensuche"]
+tagesschau = ["de-tagesschau"]
+vag = ["de-vag"]
+weiterbildungssuche = ["de-weiterbildungssuche"]
+all = [
+    "de-abfallnavi",
+    "de-ausbildungssuche",
+    "de-berufssprachkurssuche",
+    "de-bewerberboerse",
+    "de-bundeshaushalt",
+    "de-bundestag-lobbyregister",
+    "de-coachingangebote",
+    "de-dashboarddeutschland",
+    "de-destatis",
+    "de-dip-bundestag",
+    "de-dip-bundestag",
+    "de-ecovisio",
+    "de-entgeltatlas",
+    "de-feiertage",
+    "de-hochwasserzentralen",
+    "de-klinikatlas",
+    "de-marktstammdaten",
+    "de-pegel-online",
+    "de-pflanzenschutzmittelzulassung",
+    "de-studiensuche",
+    "de-tagesschau",
+    "de-vag",
+    "de-weiterbildungssuche",
+]
 #lebensmittelwarnung =  ["de-lebensmittelwarnung"]
 
 [tool.poetry.group.dev.dependencies]

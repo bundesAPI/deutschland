@@ -11,7 +11,7 @@ packages = [
     { include = "deutschland", from = "src" },
 ]
 [tool.poetry.dependencies]
-python = ">=3.8,<4"
+python = ">=3.9,<4"
 requests = "^2.26.0"
 dateparser = "^1.0.0"
 beautifulsoup4 = "^4.9.3"
@@ -51,26 +51,36 @@ de-travelwarning= {version= "^0.1.0"}
 de-zoll= {version= "^0.1.0"}
 
 # Optional packages
+de-abfallnavi  = {version= "^0.1.0", optional = true}
 de-ausbildungssuche  = {version= "^0.1.0", optional = true}
 de-berufssprachkurssuche = {version= "^0.1.0", optional = true}
+de-bewerberboerse = {version= "^0.1.0", optional = true}
+de-bundeshaushalt  = {version= "^1.0.0", optional = true}
 de-bundestag-lobbyregister = {version= "^0.1.0", optional = true}
+de-bundestag-tagesordnung = {version= "^1.0.0", optional = true}
 de-coachingangebote = {version= "^0.1.0", optional = true}
+de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
+de-deutschlandatlas = {version= "^0.1.0", optional = true}
+de-destatis = {version= "^0.1.0", optional = true}
+de-diga = {version= "^0.1.0", optional = true}
+de-digitale-verwaltung = {version= "^1.0.0", optional = true}
 de-dip-bundestag = {version= "^0.1.0", optional = true}
+de-ecovisio  = {version= "^0.1.0", optional = true}
 de-entgeltatlas  = {version= "^0.1.0", optional = true}
+de-feiertage  = {version= "^1.0.1", optional = true}
+de-hilfsmittel = {version= "^1.0.0", optional = true}
 de-hochwasserzentralen = {version= "^0.1.0", optional = true}
+de-klinikatlas = {version= "^1.0.0", optional = true}
+#de-luftqualitaet = {version= "^0.1.0", optional = true} existiert nicht auf pypi
+de-marktstammdaten  = {version= "^0.1.0", optional = true}
 de-pegel-online = {version= "^0.1.0", optional = true}
 de-pflanzenschutzmittelzulassung = {version= "^0.1.0", optional = true}
+de-regionalatlas = {version= "^0.1.0", optional = true}
+de-rigoletto = {version= "^0.1.0", optional = true}
 de-studiensuche  = {version= "^0.1.0", optional = true}
 de-tagesschau = {version= "^0.1.0", optional = true}
 de-weiterbildungssuche  = {version= "^0.1.0", optional = true}
-de-feiertage  = {version= "^1.0.1", optional = true}
-de-marktstammdaten  = {version= "^0.1.0", optional = true}
 de-vag  = {version= "^0.1.0", optional = true}
-de-abfallnavi  = {version= "^0.1.0", optional = true}
-de-bundeshaushalt  = {version= "^1.0.0", optional = true}
-de-ecovisio  = {version= "^0.1.0", optional = true}
-de-dashboarddeutschland  = {version= "^0.1.0", optional = true}
-de-destatis = {version= "^0.1.0", optional = true}
 # Tests are for non openapi version of this package. Leave out for now.
 #de-lebensmittelwarnung = {version="^0.1.0",optional=true}
 
@@ -78,31 +88,68 @@ de-destatis = {version= "^0.1.0", optional = true}
 "Bug Tracker" = "https://github.com/bundesAPI/deutschland/issues"
 
 [tool.poetry.extras]
-bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
-dip_bundestag = ["de-dip-bundestag"]
-pegel_online=  ["de-pegel-online"]
-ausbildungssuche  = ["de-ausbildungssuche"]
+abfallnavi = ["de-abfallnavi"]
+ausbildungssuche = ["de-ausbildungssuche"]
+bewerberboerse = ["de-bewerberboerse"]
 berufssprachkurssuche = ["de-berufssprachkurssuche"]
+bundeshaushalt = ["de-bundeshaushalt"]
+bundestag_lobbyregister = ["de-bundestag-lobbyregister"]
+bundestag_tagesordnung = ["de-bundestag-tagesordnung"]
 coachingangebote = ["de-coachingangebote"]
-entgeltatlas  = ["de-entgeltatlas"]
-hochwasserzentralen = ["de-hochwasserzentralen"]
-pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
-studiensuche  = ["de-studiensuche"]
-tagesschau = ["de-tagesschau"]
-feiertage = ["de-feiertage"]
-marktstammdaten = ["de-marktstammdaten"]
-weiterbildungssuche  =["de-weiterbildungssuche"]
-vag  =["de-vag"]
-abfallnavi  =["de-abfallnavi"]
-bundeshaushalt  =["de-bundeshaushalt"]
-ecovisio  =["de-ecovisio"]
-dashboarddeutschland=["de-dashboarddeutschland"]
+dashboarddeutschland = ["de-dashboarddeutschland"]
 destatis = ["de-destatis"]
-all = ["de-bundestag-lobbyregister","de-dip-bundestag","de-pegel-online","de-ausbildungssuche",
-    "de-berufssprachkurssuche","de-coachingangebote","de-dip-bundestag","de-entgeltatlas",
-    "de-hochwasserzentralen","de-pflanzenschutzmittelzulassung","de-studiensuche",
-    "de-tagesschau", "de-weiterbildungssuche","de-feiertage","de-marktstammdaten","de-vag","de-abfallnavi","de-bundeshaushalt",
-    "de-ecovisio","de-dashboarddeutschland","de-destatis"]
+deutschlandatlas = ["de-deutschlandatlas"]
+diga = ["de-diga"]
+digitale_verwaltung = ["de-digitale-verwaltung"]
+dip_bundestag = ["de-dip-bundestag"]
+ecovisio = ["de-ecovisio"]
+entgeltatlas = ["de-entgeltatlas"]
+feiertage = ["de-feiertage"]
+hilfsmittel = ["de-hilfsmittel"]
+hochwasserzentralen = ["de-hochwasserzentralen"]
+klinikatlas = ["de-klinikatlas"]
+#luftqualitaet = ["de-luftqualitaet"] existiert nicht auf pypi
+marktstammdaten = ["de-marktstammdaten"]
+pegel_online = ["de-pegel-online"]
+pflanzenschutzmittelzulassung = ["de-pflanzenschutzmittelzulassung"]
+regionalatlas = ["de-regionalatlas"]
+rigoletto = ["de-rigoletto"]
+studiensuche = ["de-studiensuche"]
+tagesschau = ["de-tagesschau"]
+vag = ["de-vag"]
+weiterbildungssuche = ["de-weiterbildungssuche"]
+all = [
+    "de-abfallnavi",
+    "de-ausbildungssuche",
+    "de-berufssprachkurssuche",
+    "de-bewerberboerse",
+    "de-bundeshaushalt",
+    "de-bundestag-lobbyregister",
+    "de-bundestag-tagesordnung",
+    "de-coachingangebote",
+    "de-dashboarddeutschland",
+    "de-destatis",
+    "de-deutschlandatlas",
+    "de-diga",
+    "de-digitale-verwaltung",
+    "de-dip-bundestag",
+    "de-ecovisio",
+    "de-entgeltatlas",
+    "de-feiertage",
+    "de-hilfsmittel",
+    "de-hochwasserzentralen",
+    "de-klinikatlas",
+    "de-luftqualitaet",
+    "de-marktstammdaten",
+    "de-pegel-online",
+    "de-pflanzenschutzmittelzulassung",
+    "de-regionalatlas",
+    "de-rigoletto",
+    "de-studiensuche",
+    "de-tagesschau",
+    "de-vag",
+    "de-weiterbildungssuche",
+]
 #lebensmittelwarnung =  ["de-lebensmittelwarnung"]
 
 [tool.poetry.group.dev.dependencies]

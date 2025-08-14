@@ -1,3 +1,4 @@
+
 [tool.poetry]
 name = "deutschland"
 version = "0.4.2"
@@ -23,12 +24,12 @@ numpy = [
 
 pillow = "^10.0.0"
 mapbox-vector-tile = "^2.0.1"
-lxml = "^4.9.3"
 pandas = [
     {version = "*", python = ">=3.8,<3.12"},
     {version = ">2.1.2", python = ">=3.12"}
 ]
-
+shapely = { version = "<=2.0.1", markers = "python_version <= '3.8'"}
+lxml = { version = ">4.9.4", markers = "python_version >= '3.13'"}
 
 # 1.16.0 problem: https://github.com/microsoft/onnxruntime/issues/17631
 onnxruntime = ">1.10.0,!=1.16.0"

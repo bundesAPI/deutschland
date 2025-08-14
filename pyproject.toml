@@ -33,7 +33,8 @@ lxml = [ { version = "^4.9.3", markers = "python_version < '3.13'"},
 { version = ">4.9.4", markers = "python_version >= '3.13'"}]
 
 # 1.16.0 problem: https://github.com/microsoft/onnxruntime/issues/17631
-onnxruntime = ">1.10.0,!=1.16.0"
+onnxruntime = [{version=">1.10.0,!=1.16.0", markers= "python_version >='3.10'"},
+               {version="<=1.19.2", markers= "python_version <= '3.9'"}]
 
 # Those are packages which were included in previous release so not optional
 de-autobahn = {version = "^1.0.4"}

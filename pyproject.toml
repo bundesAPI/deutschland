@@ -29,7 +29,8 @@ pandas = [
     {version = ">2.1.2", python = ">=3.12"}
 ]
 shapely = { version = "<=2.0.1", markers = "python_version <= '3.8'"}
-lxml = { version = ">4.9.4", markers = "python_version >= '3.13'"}
+lxml = [ { version = "^4.9.3", markers = "python_version < '3.13'"},
+{ version = ">4.9.4", markers = "python_version >= '3.13'"}]
 
 # 1.16.0 problem: https://github.com/microsoft/onnxruntime/issues/17631
 onnxruntime = ">1.10.0,!=1.16.0"

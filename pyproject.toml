@@ -157,8 +157,7 @@ all = [
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
-black = "22.8.0"
-isort = "5.12.0"
+ruff = ">=0.11.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -184,5 +183,16 @@ commands =
 """
 
 
-[tool.isort]
-profile = "black"
+[tool.ruff]
+line-length = 88
+extend-exclude = ["docs-sphinx"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["deutschland"]

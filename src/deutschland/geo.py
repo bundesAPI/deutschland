@@ -99,8 +99,8 @@ class Geo:
         return parsed
 
     def __parse(self, data, x, y):
-        bottom_left = self.__num2deg(int(x) + 1, int(y) + 1, int(self.LEVEL))
-        top_right = self.__num2deg(int(x), int(y), int(self.LEVEL))
+        self.__num2deg(int(x) + 1, int(y) + 1, int(self.LEVEL))
+        self.__num2deg(int(x), int(y), int(self.LEVEL))
 
         result = {}
         for feature in data.keys():
@@ -138,9 +138,9 @@ class Geo:
                                 coords = self.__vectorToCoords(
                                     int(x), int(y) + 1, self.LEVEL, c_obj[0], c_obj[1]
                                 )
-                                i["geometry"]["coordinates"][e_num][f_num][
-                                    c_num
-                                ] = coords
+                                i["geometry"]["coordinates"][e_num][f_num][c_num] = (
+                                    coords
+                                )
                             i["geometry"]["coordinates"][e_num][f_num].append(
                                 i["geometry"]["coordinates"][e_num][f_num][0]
                             )

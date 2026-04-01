@@ -6,9 +6,12 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-      - uses: psf/black@stable
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          options: "--check --extend-exclude docs-sphinx"
-          version: "22.8.0"
+          python-version: "3.12"
+      - run: pip install ruff
+      - name: Ruff format check
+        run: ruff format --check --extend-exclude docs-sphinx .
+      - name: Ruff lint check
+        run: ruff check --extend-exclude docs-sphinx .

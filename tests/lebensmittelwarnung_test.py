@@ -15,9 +15,9 @@ def test_lebensmittelwarnung_all_content_types_all_regions():
     """
     lw = Lebensmittelwarnung()
     data = lw.get()
-    assert (
-        len(data) > 0
-    ), "Found no data in the Lebensmittelwarnung DB without search limitations, although there (probably) should be."
+    assert len(data) > 0, (
+        "Found no data in the Lebensmittelwarnung DB without search limitations, although there (probably) should be."
+    )
 
 
 def test_lebensmittelwarnung_invalid_content_type_invalid_region():
@@ -26,7 +26,7 @@ def test_lebensmittelwarnung_invalid_content_type_invalid_region():
     """
     lw = Lebensmittelwarnung()
     with pytest.raises(ValueError):
-        data = lw.get("wrong", "selector")
+        lw.get("wrong", "selector")
 
 
 def test_lebensmittelwarnung_warningfeed_with_invalid_content_invalid_region():
@@ -38,7 +38,7 @@ def test_lebensmittelwarnung_warningfeed_with_invalid_content_invalid_region():
         "https://www.lebensmittelwarnung.de/bvl-lmw-de/opensaga/feed/abc/xyz.rss"
     )
     with pytest.raises(ConnectionError):
-        feed = WarningFeed._WarningFeed__download(wrong_url)
+        WarningFeed._WarningFeed__download(wrong_url)
 
 
 def test_lebensmittelwarnung_warningfeedurl_create():
@@ -129,6 +129,6 @@ def test_lebensmittelwarnung_warningfeed_parsing():
     warning_raw_post = "</channel></rss>"
     warning_raw = warning_raw_pre + (warning_raw_item) + warning_raw_post
     feed = WarningFeed(warning_raw).get_output()
-    assert (
-        len(feed) == item_count
-    ), "WarningFeed parsing failed, it created too few warning dictionaries."
+    assert len(feed) == item_count, (
+        "WarningFeed parsing failed, it created too few warning dictionaries."
+    )

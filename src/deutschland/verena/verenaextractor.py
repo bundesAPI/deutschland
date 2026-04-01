@@ -63,7 +63,7 @@ class VerenaExtractor:
         school_id = content.find("strong").text
         result_elems = []
         for desc_elems in content.contents[6:-1]:
-            if type(desc_elems) == element.NavigableString:
+            if isinstance(desc_elems, element.NavigableString):
                 result_elems.append(desc_elems.strip().replace("\xa0", " "))
         desc = "\n".join(result_elems)
         return school_id, desc
@@ -82,7 +82,7 @@ class VerenaExtractor:
         strong = content.findAll("strong")
         replacement_job_title = strong[0].text
         subjects = [x.text for x in strong[1:]]
-        if type(content.contents[-1]) == element.NavigableString:
+        if isinstance(content.contents[-1], element.NavigableString):
             comments_or_empty = content.contents[-1].strip()
             if comments_or_empty:
                 comments = comments_or_empty
@@ -130,7 +130,7 @@ class VerenaExtractor:
         content_elems = content.contents
         result_elems = []
         for elem in content_elems:
-            if type(elem) == element.NavigableString:
+            if isinstance(elem, element.NavigableString):
                 result_elems.append(elem.strip())
         return result_elems[1], result_elems[3]
 
@@ -154,7 +154,7 @@ class VerenaExtractor:
                 homepage = link["href"]
         content_arr = content.contents
         for x in content_arr:
-            if type(x) == element.NavigableString:
+            if isinstance(x, element.NavigableString):
                 if "☎" in x:
                     phone = x.replace("☎", "").strip()
                 elif "Fax" in x:
@@ -199,7 +199,7 @@ class VerenaExtractor:
             data_itnrw_coords = data_itnrw_coords[1:-1].split(";")
             coord_system = data_itnrw_coords[0]
             coords = [int(x.strip()) for x in data_itnrw_coords[1].split(",")]
-            name = data_itnrw_coords[2]
+            data_itnrw_coords[2]
             map_onclick = data_itnrw_coords[3]
             post_adress = self.map_onclick_regex.sub("", map_onclick)
             post_adress = post_adress.strip()

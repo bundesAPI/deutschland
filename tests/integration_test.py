@@ -1,5 +1,3 @@
-import datetime
-
 from deutschland.bundesnetzagentur import Rufzeichen
 from deutschland.bundeswahlleiter import Bundeswahlleiter
 

@@ -4,9 +4,9 @@ from deutschland.verena.verenadownloader import VerenaDownloader
 def test_downloader_page_count():
     vd = VerenaDownloader()
     res = vd.scrape()
-    assert (
-        len(res) > 0
-    ), "Scraping all pages of the VERENA portal (block size 100) returned 0 pages. It very likely shouldn't."
+    assert len(res) > 0, (
+        "Scraping all pages of the VERENA portal (block size 100) returned 0 pages. It very likely shouldn't."
+    )
 
 
 def test_downloader_page_content():
@@ -16,9 +16,9 @@ def test_downloader_page_content():
     for x in res:
         if len(x) == 0:
             any_empty = True
-    assert (
-        not any_empty
-    ), "Scraping all pages of the Verena portal returned a empty page len(sourcecode) == 0."
+    assert not any_empty, (
+        "Scraping all pages of the Verena portal returned a empty page len(sourcecode) == 0."
+    )
 
 
 def test_downloader__generate_all_listing_urls_content():
@@ -30,9 +30,9 @@ def test_downloader__generate_all_listing_urls_content():
     urls = vd._VerenaDownloader__generate_all_listing_urls(
         action_id, search_id, opening_count
     )
-    assert (
-        urls[0] == valid_url
-    ), "Generating the urls used to request all listing pages failed. Listing urls are malformed."
+    assert urls[0] == valid_url, (
+        "Generating the urls used to request all listing pages failed. Listing urls are malformed."
+    )
 
 
 def test_downloader__generate_all_list_urls_count():
